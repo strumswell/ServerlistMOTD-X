@@ -19,6 +19,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
+//TODO: VersionText
 public class RestrictedModeMotd implements MotdInterface {
 
 	@Override
@@ -26,9 +27,9 @@ public class RestrictedModeMotd implements MotdInterface {
 		if (Main.IP_UUID.containsKey(ip)) {
 			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
 			if (p.isOp()) {
-				return SpigotConfig.getWhitelistMotd();
-			} else return SpigotConfig.getNotWhitelistedMotd();
-		} else return SpigotConfig.getNotWhitelistedMotd();
+				return SpigotConfig.getRestrictedAccessGrantedMotd();
+			} else return SpigotConfig.getRestrictedAccessDeniedMotd();
+		} else return SpigotConfig.getRestrictedAccessDeniedMotd();
 	}
 	
 	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {

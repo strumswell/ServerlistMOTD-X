@@ -24,7 +24,7 @@ public class WhitelistMotd implements MotdInterface {
 	@Override
 	public String getMOTD(InetAddress ip) {
 		OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-		if (Bukkit.getWhitelistedPlayers().contains(p)) {
+		if (Bukkit.getWhitelistedPlayers().contains(p) || p.isOp()) {
 			return SpigotConfig.getWhitelistMotd();
 		} else return SpigotConfig.getNotWhitelistedMotd();
 	}
