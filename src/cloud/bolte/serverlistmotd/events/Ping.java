@@ -38,7 +38,7 @@ public class Ping implements Listener{
 				break;
 			case RANDOM:
 				motd = new RandomMotd();
-				e.setMotd(motd.getMOTD(ip));
+				e.setMotd(motd.formatMotd(motd.getMOTD(ip), ip));
 				break;
 			default:
 			}
@@ -52,11 +52,11 @@ public class Ping implements Listener{
 				break;
 			case WHITELIST:
 				WhitelistMotd whitemotd = new WhitelistMotd();
-				//whitemotd.setWhiteMotd(e, ip);
+				whitemotd.setWhitelistMotd(e, ip);
 				break;
 			case RESTRICTED:
 				RestrictedModeMotd restrictedmotd = new RestrictedModeMotd();
-				//restrictedmotd.setRestrictedMotd(e, ip));
+				restrictedmotd.setRestrictedMotd(e, ip);
 				break;
 			default:
 				break;

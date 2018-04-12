@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
+import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
 import cloud.bolte.serverlistmotd.motd.MotdState;
 
 /*
@@ -22,7 +23,7 @@ import cloud.bolte.serverlistmotd.motd.MotdState;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: WhitelistMOTD, RandomMOTDm Slots Gedöns, RestrictedMode, 
+//TODO: Slots Gedöns
 //TODO: HashMapSaver, SaveTimer, Commands
 
 public class Main extends JavaPlugin implements Listener {
@@ -41,5 +42,6 @@ public class Main extends JavaPlugin implements Listener {
 
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
 	} 	
 }

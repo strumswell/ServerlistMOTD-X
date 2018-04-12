@@ -2,6 +2,14 @@ package cloud.bolte.serverlistmotd.motd;
 
 import java.net.InetAddress;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.event.server.ServerListPingEvent;
+
+import cloud.bolte.serverlistmotd.Main;
+import cloud.bolte.serverlistmotd.SpigotConfig;
+
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
  * ServerlistMOTD is licensed under a
@@ -15,14 +23,20 @@ public class RestrictedModeMotd implements MotdInterface {
 
 	@Override
 	public String getMOTD(InetAddress ip) {
-		// TODO Auto-generated method stub
-		return null;
+		if (Main.IP_UUID.containsKey(ip)) {
+			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
+			if (p.isOp()) {
+				return SpigotConfig.getWhitelistMotd();
+			} else return SpigotConfig.getNotWhitelistedMotd();
+		} else return SpigotConfig.getNotWhitelistedMotd();
+	}
+	
+	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {
+		e.setMotd(formatMotd(getMOTD(ip), ip));
 	}
 
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
-		// TODO Auto-generated method stub
-		return null;
+		return ChatColor.translateAlternateColorCodes('&', motd).replaceAll("%line%", "\n");
 	}
-
 }

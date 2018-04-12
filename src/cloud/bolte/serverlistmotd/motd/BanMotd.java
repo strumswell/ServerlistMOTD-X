@@ -24,6 +24,11 @@ import cloud.bolte.serverlistmotd.ban.SpigotBan;
 
 public class BanMotd implements MotdInterface {
 
+	/* 
+	 * 
+	 * 
+	 * 
+	 */
 	@Override
 	public String getMOTD(InetAddress ip) {
 		OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));

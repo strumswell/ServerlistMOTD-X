@@ -48,6 +48,13 @@ public class MotdState {
 			motd = Motd.RANDOM;
 		} else motd = Motd.STANDARD;
 		
+		/*
+		 * From lowest priority to highest!
+		 * If Ban and Restricted are enabled in config, Restricted will always be enabled.
+		 * If Ban and Whitelist are enabled in config, Whitelist will always be enabled.
+		 * If Whitelist and Restricted are enabled in config, Restricted will always be enabled.
+		 * 
+		 */
 		motdExtension = MotdExtension.NONE; //prevent NPE
 		if (SpigotConfig.banMotdEnabled()) motdExtension = MotdExtension.BAN;
 		if (SpigotConfig.whitelistMotdEnabled()) motdExtension = MotdExtension.WHITELIST;
