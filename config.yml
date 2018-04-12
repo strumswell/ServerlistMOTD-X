@@ -1,0 +1,98 @@
+# ----------------------------------------- [ Configuration File ]  ------------------------------------------ #
+# FAQ:
+#   - "Why IP Logging?": Needed for identifying players in the serverlist by their IP. Used in %player%, %money"
+#      You can turn it off if you have to comply with some data protection law. IPs and UUIDs of players are
+#      stored locally inside the IP_UUID.dat. 
+#   - "Connection turns red in serverlist with VersionText on.": Ever seen when your server is outdated in the 
+#      serverlist? SMOTD simulates this and changes the text. This is just cosmetical!
+#   - "Plugin ServerlistMOTD_10.0.3_ created a profile with 'HoverText' as an UUID.": Your HoverText normally
+#      contains a list of players. SMOTD clears that and creates a fake player with your text as its name.
+#
+################################################################################################################
+
+Motd:
+  Message:
+    Regulars: '&2Welcome back, &e%player%&2! %line%&aIt''s a %weather% %time%.'
+    Newbies: '&2Welcome newbie! %line%&aIt''s a %weather% %time%.'
+  RandomMessages:
+    Enable: false
+    Regulars:
+    - '&bHey %player%! %line%&3Those Motds change totally random!'
+    - '&2You can add as many Motds as you want!'
+    - '&eAdd bullet points to add more Motds!'
+    - '&3The weather ist %weather% and it is %time%'
+    Newbies:
+    - '&bHey Newbie. %line%&3Those Motds change totally random!'
+    - '&2You can add as many Motds as you want!'
+    - '&eAdd bullet points to add more Motds!'
+    - '&3The weather ist %weather% and it is %time%.'
+  BanMessage: 
+    Enable: false
+    MessageTempBan: '&cYou are banned! Reason: &e%reason%%line%&cExpiration: &e%expdate% at
+      %exptime%'
+    MessageForeverBan: '&cYou are banned! Reason: &e%reason%%line%&cExpiration: &eNEVER'
+    FormatDate: 'DD/MM/YYYY'
+    FormatTime: 'hh:mm:ss'
+  WhitelistMessage:
+    Enable: false
+    MessageWhitelisted: '&cWelcome back, &e%player%&c!%line%&c&oYou are on the whitelist.'
+    MessageNotWhitelisted: '&cYou are &lNOT &cwhitelisted.%line%&c&oPlease contact the server owner.'
+  TimeVariable:
+    NightText: night
+    DayText: day
+    World: world
+  WeatherVariable:
+    RainText: rainy
+    SunText: clear
+    World: world
+  Slots:
+    FakeMaxPlayer:
+      Enable: false
+      Number: 200
+    FakeOnlinePlayer:
+      Enable: false
+      Number: 122
+      RandomNumber:
+        Enable: false
+        Max: 20
+        Min: 15
+    VersionText:
+      Enable: false
+      Message: '&aJoin now!  &e%realonline%/%realslots%'
+    UnknownSlots:
+      Enable: false
+    SlotsPlusOne:
+      Enable: false
+      MinSlots: 5
+      MaxSlots: 100
+      AddSlotsToOnline: 1 
+    OnlineMultiplier:
+      Enable: false
+      MinSlots: 100
+      MaxSlots: 2500
+      AddSlotsWhenOnline>Slots: 1
+      MultiplyBy: 5 
+  HoverText:
+    Enable: false
+    Messages:
+    - '&7>>>>>>> &6ServerlistMOTD &7<<<<<<<'
+    - ' &e-> This is a TEST!'
+    - ' &e-> Strumswell loves you. &c&l<3'
+    - '&eAdd lines by adding bullet points!'
+AutoSaveConfig:
+  IntervalInMin: 30
+RestrictedMode:
+  Enable: false
+  Motd:
+    AccessGranted: '&4Server is in restricted mode! You are able to join.'
+    AccessDenied: '&4Can''t connect to server.'
+  Slots:
+    VersionText: ''
+  KickMessage: 'java.net.ConnectException: Connection timed out: no further information:'
+RandomPlayerVariable:
+  UseTextWhenNobodyOnline: 
+    Enable: false
+    Text: 'Player'
+  UseDatabaseNameWhenNobodyOnline: 
+    Enable: true
+DoNOTtouchMe: 5.0

@@ -1,0 +1,12 @@
+name: ServerlistMOTD
+author: Strumswell
+version: X
+description: Change your Serverlist Motd!
+load: POSTWORLD
+depend: []
+softdepend: [Vault, BanManager, MaxBans]
+loadbefore: [Vault]
+main: cloud.bolte.serverlistmotd.Main
+commands:
+  serverlist:
+    description: Main command of ServerlistMOTD.
