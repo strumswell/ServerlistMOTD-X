@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import cloud.bolte.serverlistmotd.cmd.Serverlist;
 import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
@@ -26,7 +27,7 @@ import cloud.bolte.serverlistmotd.util.IO;
  */
 
 //TODO: Slots Gedöns
-//TODO: HashMapSaver, SaveTimer, Commands
+//TODO: SaveTimer, Commands
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
@@ -46,5 +47,7 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
+		
+		this.getCommand("serverlist").setExecutor(new Serverlist());
 	} 	
 }

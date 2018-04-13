@@ -2,6 +2,8 @@ package cloud.bolte.serverlistmotd;
 
 import java.util.List;
 
+import org.bukkit.configuration.file.FileConfiguration;
+
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
  * ServerlistMOTD is licensed under a
@@ -16,7 +18,7 @@ public class SpigotConfig {
 	public SpigotConfig(Main main) {
 		SpigotConfig.main = main;
 	}
-	
+		
 	/*
 	 * STRINGS & LISTS
 	 */
@@ -94,5 +96,9 @@ public class SpigotConfig {
 	
 	public static boolean restrictedModeEnabled() {
 		return main.getConfig().getBoolean("RestrictedMode.Enable");
+	}
+	
+	public static void reloadSmotdConfig() {
+		main.reloadConfig();
 	}
 }

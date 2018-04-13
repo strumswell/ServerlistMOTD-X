@@ -1,6 +1,6 @@
 name: ServerlistMOTD
 author: Strumswell
-version: X
+version: X-FIRESTORM
 description: Change your Serverlist Motd!
 load: POSTWORLD
 depend: []
@@ -8,5 +8,15 @@ softdepend: [Vault, BanManager, MaxBans]
 loadbefore: [Vault]
 main: cloud.bolte.serverlistmotd.Main
 commands:
-  serverlist:
-    description: Main command of ServerlistMOTD.
+   serverlist:
+     description: Show list of commands
+     aliases: [sl, smotd]
+     permission: serverlist
+     permission-message: §e§oServerlist§6§lMOTD §7> §cYou don't have permissions!
+     usage: §e§oServerlist§6§lMOTD §7> §cWrong syntax! See /serverlist
+permissions:
+   serverlist.*:
+     description: Gives access to all commands
+     children:
+       serverlist: true
+       serverlist.reload: true
