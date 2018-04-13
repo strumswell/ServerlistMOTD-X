@@ -1,5 +1,6 @@
 package cloud.bolte.serverlistmotd;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
 import cloud.bolte.serverlistmotd.motd.MotdState;
+import cloud.bolte.serverlistmotd.util.IO;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -31,11 +33,12 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onDisable() {
-
+		IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 	}
 
 	@Override
 	public void onEnable() {
+		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 		saveDefaultConfig();
 		SpigotConfig config = new SpigotConfig(this);
 		MotdState state = new MotdState();
