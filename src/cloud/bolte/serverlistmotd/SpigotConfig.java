@@ -2,8 +2,6 @@ package cloud.bolte.serverlistmotd;
 
 import java.util.List;
 
-import org.bukkit.configuration.file.FileConfiguration;
-
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
  * ServerlistMOTD is licensed under a
@@ -38,12 +36,16 @@ public class SpigotConfig {
 		return main.getConfig().getStringList("Motd.RandomMessages.Regulars");
 	}
 
-	public static String getBanForeverMotd() {
-		return main.getConfig().getString("Motd.BanMessage.MessageForeverBan");
+	public static List<String> getHoverText() {
+		return main.getConfig().getStringList("Motd.HoverText.Messages");
 	}
 	
 	public static String getBanTempMotd() {
 		return main.getConfig().getString("Motd.BanMessage.MessageTempBan");
+	}
+	
+	public static String getBanForeverMotd() {
+		return main.getConfig().getString("Motd.BanMessage.MessageForeverBan");
 	}
 	
 	public static String getWhitelistMotd() {
@@ -78,6 +80,39 @@ public class SpigotConfig {
 		return main.getConfig().getString("RestrictedMode.Slots.VersionText");
 	}
 	
+	public static String getVersionText() {
+		return main.getConfig().getString("Motd.Slots.VersionText.Text");
+	}
+	
+	public static String getRandomPlayerVariableText() {
+		return main.getConfig().getString("RandomPlayerVariable.UseTextWhenNobodyOnline.Text");
+	}
+	
+	public static String getRainText() {
+		return main.getConfig().getString("Motd.WeatherVariable.RainText");
+	}
+	
+	public static String getSunText() {
+		return main.getConfig().getString("Motd.WeatherVariable.SunText");
+	}
+	
+	public static String getWeatherWorld() {
+		return main.getConfig().getString("Motd.WeatherVariable.World");
+	}
+	
+	public static String getTimeWorld() {
+		return main.getConfig().getString("Motd.TimeVariable.World");
+	}
+	
+	public static String getDayText() {
+		return main.getConfig().getString("Motd.TimeVariable.DayText");
+	}
+	
+	public static String getNightText() {
+		return main.getConfig().getString("Motd.TimeVariable.NightText");
+	}
+	
+	
 	/*
 	 * BOOLEANS
 	 */
@@ -96,6 +131,70 @@ public class SpigotConfig {
 	
 	public static boolean restrictedModeEnabled() {
 		return main.getConfig().getBoolean("RestrictedMode.Enable");
+	}
+	
+	public static boolean fakeMaxPlayerEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.FakeMaxPlayer.Enable");
+	}
+	
+	public static boolean fakeOnlinePlayerEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.FakeOnlinePlayer.Enable");
+	}
+	
+	public static boolean fakeOnlinePlayerRandomNumberEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.FakeOnlinePlayer.RandomNumber.Enable");
+	}
+	
+	public static boolean versionTextEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.VersionText.Enable");
+	}
+	
+	public static boolean unknownSlotsEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.UnknownSlots.Enable");
+	}
+	
+	public static boolean slotsPlusOneEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.SlotsPlusOne.Enable");
+	}
+	
+	public static boolean onlineMultiplierEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.OnlineMultiplier.Enable");
+	}
+	
+	public static boolean hoverTextEnabled() {
+		return main.getConfig().getBoolean("Motd.HoverText.Enable");
+	}
+	
+	public static boolean randomPlayerVariableUseTextEnabled() {
+		return main.getConfig().getBoolean("RandomPlayerVariable.UseTextWhenNobodyOnline.Enable");
+	}
+	
+	public static boolean randomPlayerVariableUseDBEnabled() {
+		return main.getConfig().getBoolean("RandomPlayerVariable.UseDatabaseNameWhenNobodyOnline.Enable");
+	}
+	
+	/*
+	 * INT
+	 */
+	
+	public static int autoSaveIntervalInMin() {
+		return main.getConfig().getInt("AutoSaveConfig.IntervalInMin");
+	}
+	
+	public static int getFakeMaxPlayerNumber() {
+		return main.getConfig().getInt("Motd.Slots.FakeMaxPlayer.Number");
+	}
+	
+	public static int getFakeOnlinePlayerNumber() {
+		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.Number");
+	}
+	
+	public static int getFakeOnlinePlayerRandomNumberMin() {
+		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.RandomNumber.Min");
+	}
+	
+	public static int getFakeOnlinePlayerRandomNumberMax() {
+		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.RandomNumber.Max");
 	}
 	
 	public static void reloadSmotdConfig() {

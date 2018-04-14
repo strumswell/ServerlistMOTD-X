@@ -2,12 +2,13 @@ package cloud.bolte.serverlistmotd.motd;
 
 import java.net.InetAddress;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.variables.PlayerVariable;
+import cloud.bolte.serverlistmotd.variables.TimeVariable;
+import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -32,12 +33,12 @@ public class ClassicMotd implements MotdInterface{
 		String formattedMotd;
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
 		formattedMotd = formattedMotd.replaceAll("%line%", "\n")
-		.replaceAll("%weather%", "clear")
-		.replaceAll("%time%", "day");
+		.replaceAll("%weather%", WeatherVariable.getWeather())
+		.replaceAll("%time%", TimeVariable.getTime());
 		
-		if (Main.IP_UUID.containsKey(ip)) {
-			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-			formattedMotd = formattedMotd.replaceAll("%player%", p.getName());
+		if (PlayerVariable.isKnownPlayer(ip)) {
+			formattedMotd = formattedMotd
+					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip));
 		}
 		return formattedMotd;
 	}

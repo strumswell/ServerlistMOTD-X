@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import cloud.bolte.serverlistmotd.cmd.Serverlist;
 import cloud.bolte.serverlistmotd.events.IpLogging;
@@ -49,5 +50,13 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
 		
 		this.getCommand("serverlist").setExecutor(new Serverlist());
+		
+		BukkitScheduler scheduler = getServer().getScheduler();
+        scheduler.runTaskTimerAsynchronously(this, new Runnable() {
+            @Override
+            public void run() {
+        		IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
+            }
+        }, SpigotConfig.autoSaveIntervalInMin()*1200L, SpigotConfig.autoSaveIntervalInMin()*1200L);
 	} 	
 }

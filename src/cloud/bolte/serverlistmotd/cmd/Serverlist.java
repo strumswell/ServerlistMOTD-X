@@ -14,7 +14,7 @@ public class Serverlist implements CommandExecutor {
 			case 0:
 				sender.sendMessage("§8§l---------------------------------");
 				sender.sendMessage("§e§lServerlist§6§lMOTD | §cFIRESTORM UPDATE");
-				sender.sendMessage("§7§   §o~by Strumswell");
+				sender.sendMessage("§7   §o~by Strumswell");
 				sender.sendMessage("§8§l---------------------------------");
 				sender.sendMessage("§6§l> §eList of commands:");
 				sender.sendMessage("  §e/serverlist §7§o* help screen");
