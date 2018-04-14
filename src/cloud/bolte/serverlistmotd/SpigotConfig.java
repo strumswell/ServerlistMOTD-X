@@ -81,35 +81,35 @@ public class SpigotConfig {
 	}
 	
 	public static String getVersionText() {
-		return main.getConfig().getString("Motd.Slots.VersionText.Text");
+		return main.getConfig().getString("Motd.Slots.VersionText.Message");
 	}
 	
 	public static String getRandomPlayerVariableText() {
-		return main.getConfig().getString("RandomPlayerVariable.UseTextWhenNobodyOnline.Text");
+		return main.getConfig().getString("Variables.RandomPlayerVariable.UseTextWhenNobodyOnline.Text");
 	}
 	
 	public static String getRainText() {
-		return main.getConfig().getString("Motd.WeatherVariable.RainText");
+		return main.getConfig().getString("Variables.WeatherVariable.RainText");
 	}
 	
 	public static String getSunText() {
-		return main.getConfig().getString("Motd.WeatherVariable.SunText");
+		return main.getConfig().getString("Variables.WeatherVariable.SunText");
 	}
 	
 	public static String getWeatherWorld() {
-		return main.getConfig().getString("Motd.WeatherVariable.World");
+		return main.getConfig().getString("Variables.WeatherVariable.World");
 	}
 	
 	public static String getTimeWorld() {
-		return main.getConfig().getString("Motd.TimeVariable.World");
+		return main.getConfig().getString("Variables.TimeVariable.World");
 	}
 	
 	public static String getDayText() {
-		return main.getConfig().getString("Motd.TimeVariable.DayText");
+		return main.getConfig().getString("Variables.TimeVariable.DayText");
 	}
 	
 	public static String getNightText() {
-		return main.getConfig().getString("Motd.TimeVariable.NightText");
+		return main.getConfig().getString("Variables.TimeVariable.NightText");
 	}
 	
 	
@@ -166,11 +166,11 @@ public class SpigotConfig {
 	}
 	
 	public static boolean randomPlayerVariableUseTextEnabled() {
-		return main.getConfig().getBoolean("RandomPlayerVariable.UseTextWhenNobodyOnline.Enable");
+		return main.getConfig().getBoolean("Variables.RandomPlayerVariable.UseTextWhenNobodyOnline.Enable");
 	}
 	
 	public static boolean randomPlayerVariableUseDBEnabled() {
-		return main.getConfig().getBoolean("RandomPlayerVariable.UseDatabaseNameWhenNobodyOnline.Enable");
+		return main.getConfig().getBoolean("Variables.RandomPlayerVariable.UseDatabaseNameWhenNobodyOnline.Enable");
 	}
 	
 	/*

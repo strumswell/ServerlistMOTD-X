@@ -16,6 +16,7 @@ import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
 import cloud.bolte.serverlistmotd.motd.MotdState;
+import cloud.bolte.serverlistmotd.slots.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.util.IO;
 
 /*
@@ -28,7 +29,7 @@ import cloud.bolte.serverlistmotd.util.IO;
  */
 
 //TODO: Slots Gedöns
-//TODO: SaveTimer, Commands
+//TODO: SaveTimer, Commands, check if world from config is there.
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
@@ -43,11 +44,16 @@ public class Main extends JavaPlugin implements Listener {
 		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 		saveDefaultConfig();
 		SpigotConfig config = new SpigotConfig(this);
+		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		MotdState state = new MotdState();
+		
+		pli.listenToServerlistPackets();
 
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
+		
+		
 		
 		this.getCommand("serverlist").setExecutor(new Serverlist());
 		

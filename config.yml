@@ -37,14 +37,6 @@ Motd:
     Enable: false
     MessageWhitelisted: '&cWelcome back, &e%player%&c!%line%&c&oYou are on the whitelist.'
     MessageNotWhitelisted: '&cYou are &lNOT &cwhitelisted.%line%&c&oPlease contact the server owner.'
-  TimeVariable:
-    NightText: night
-    DayText: day
-    World: world
-  WeatherVariable:
-    RainText: rainy
-    SunText: clear
-    World: world
   Slots:
     FakeMaxPlayer:
       Enable: false
@@ -52,10 +44,6 @@ Motd:
     FakeOnlinePlayer:
       Enable: false
       Number: 122
-      RandomNumber:
-        Enable: false
-        Max: 20
-        Min: 15
     VersionText:
       Enable: false
       Message: '&aJoin now!  &e%realonline%/%realslots%'
@@ -79,6 +67,24 @@ Motd:
     - ' &e-> This is a TEST!'
     - ' &e-> Strumswell loves you. &c&l<3'
     - '&eAdd lines by adding bullet points!'
+Variables:
+  TimeVariable:
+    NightText: night
+    DayText: day
+    World: world
+  WeatherVariable:
+    RainText: rainy
+    SunText: clear
+    World: world
+  RandomNumberVariable:
+    Max: 100
+    Min: 90
+  RandomPlayerVariable:
+    UseTextWhenNobodyOnline: 
+      Enable: false
+      Text: 'Player'
+    UseDatabaseNameWhenNobodyOnline: 
+      Enable: true
 AutoSaveConfig:
   IntervalInMin: 30
 RestrictedMode:
@@ -89,10 +95,3 @@ RestrictedMode:
   Slots:
     VersionText: ''
   KickMessage: 'java.net.ConnectException: Connection timed out: no further information:'
-RandomPlayerVariable:
-  UseTextWhenNobodyOnline: 
-    Enable: false
-    Text: 'Player'
-  UseDatabaseNameWhenNobodyOnline: 
-    Enable: true
-DoNOTtouchMe: 5.0

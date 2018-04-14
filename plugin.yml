@@ -3,7 +3,7 @@ author: Strumswell
 version: X-FIRESTORM
 description: Change your Serverlist Motd!
 load: POSTWORLD
-depend: []
+depend: [ProtocolLib]
 softdepend: [Vault, BanManager, MaxBans]
 loadbefore: [Vault]
 main: cloud.bolte.serverlistmotd.Main
