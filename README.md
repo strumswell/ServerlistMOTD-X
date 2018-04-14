@@ -6,6 +6,8 @@ A plugin for the Spigot API. ServerlistMOTD allows you to change your MOTD in th
 Project page: https://dev.bukkit.org/projects/serverlistmotd
 ServerlistMOTD is one of the most popular serverlist plugins for the SpigotAPI with over 35,000 downloads.
 
+![smotd](https://i.imgur.com/z3uzpYZ.png)
+
 ### Support
 
 I started developing ServerlistMOTD in 2014. I am currently doing a small rewrite and publish ServerlistMOTD alongside here on Github to allow other people to continue this project in the future.
