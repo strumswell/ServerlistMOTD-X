@@ -4,7 +4,7 @@
 
 A plugin for the Spigot API. ServerlistMOTD allows you to change your MOTD in the serverlist. You can set custom MOTDs for known players or welcome new players with a special MOTD to get the players attention. This plugin is HIGHLY compatibile with old and new versions of Bukkit/Spigot!
 Project page: https://dev.bukkit.org/projects/serverlistmotd
-ServerlistMOTD is one of the most popular plugins for the SpigotAPI with over 35,000 downloads.
+ServerlistMOTD is one of the most popular serverlist plugins for the SpigotAPI with over 35,000 downloads.
 
 ### Support
 
