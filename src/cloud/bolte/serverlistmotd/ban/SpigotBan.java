@@ -1,5 +1,10 @@
 package cloud.bolte.serverlistmotd.ban;
 
+import org.bukkit.Bukkit;
+import org.bukkit.BanList.Type;
+
+import cloud.bolte.serverlistmotd.SpigotConfig;
+
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
  * ServerlistMOTD is licensed under a
@@ -8,11 +13,6 @@ package cloud.bolte.serverlistmotd.ban;
  * You should have received a copy of the license along with this work.
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
-
-import org.bukkit.Bukkit;
-import org.bukkit.BanList.Type;
-
-import cloud.bolte.serverlistmotd.SpigotConfig;
 
 public class SpigotBan implements BanInterface {
 

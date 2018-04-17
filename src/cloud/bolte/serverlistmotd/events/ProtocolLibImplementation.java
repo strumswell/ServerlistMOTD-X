@@ -1,4 +1,4 @@
-package cloud.bolte.serverlistmotd.slots;
+package cloud.bolte.serverlistmotd.events;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -8,6 +8,19 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.slots.HoverText;
+import cloud.bolte.serverlistmotd.slots.OnlineMultiplier;
+import cloud.bolte.serverlistmotd.slots.SlotsPlusOne;
+import cloud.bolte.serverlistmotd.slots.VersionText;
+
+/*
+ * ServerlistMOTD (c) by Strumswell, Philipp Bolte
+ * ServerlistMOTD is licensed under a
+ * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+ * 
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
+ */
 
 public class ProtocolLibImplementation {
 	
@@ -18,7 +31,6 @@ public class ProtocolLibImplementation {
 	
 	public void listenToServerlistPackets() {
 		System.out.println("[ServerlistMOTD] Hooking into ProtocolLib.");
-		
 		ProtocolLibrary.getProtocolManager().addPacketListener(new PacketAdapter(
 			PacketAdapter.params(main, PacketType.Status.Server.SERVER_INFO).optionAsync()) {
 			
@@ -39,11 +51,11 @@ public class ProtocolLibImplementation {
 				}
 				
 				if (SpigotConfig.slotsPlusOneEnabled()) {
-					//SlotsPlusOne.activateSPO(ping);
+					SlotsPlusOne.acitvateSlotsPlusOne(ping);
 				}
 				
 				if (SpigotConfig.onlineMultiplierEnabled()) {
-					//OnlineMultiplier.activateOM(ping);
+					OnlineMultiplier.activateOnlineMultiplier(ping);
 				}
 				
 				if (SpigotConfig.unknownSlotsEnabled()) {

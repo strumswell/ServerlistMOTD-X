@@ -14,9 +14,9 @@ import org.bukkit.scheduler.BukkitScheduler;
 import cloud.bolte.serverlistmotd.cmd.Serverlist;
 import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
+import cloud.bolte.serverlistmotd.events.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
 import cloud.bolte.serverlistmotd.motd.MotdState;
-import cloud.bolte.serverlistmotd.slots.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.util.IO;
 
 /*
@@ -28,8 +28,8 @@ import cloud.bolte.serverlistmotd.util.IO;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: Slots Gedöns
-//TODO: SaveTimer, Commands, check if world from config is there.
+//TODO: Testing, Config moving methods
+//TODO: Commands, check if world from config is there, doppelte Einträge in HashMap
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();

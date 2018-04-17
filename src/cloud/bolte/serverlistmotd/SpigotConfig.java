@@ -197,6 +197,41 @@ public class SpigotConfig {
 		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.RandomNumber.Max");
 	}
 	
+	public static int getOnlineMultiplierMinSlots() {
+		return main.getConfig().getInt("Motd.Slots.OnlineMultiplier.MinSlots");
+	}
+	
+	public static int getOnlineMultiplierMaxSlots() {
+		return main.getConfig().getInt("Motd.Slots.OnlineMultiplier.MaxSlots");
+	}
+	
+	public static int getOnlineMultiplierAddSlots() {
+		return main.getConfig().getInt("Motd.Slots.OnlineMultiplier.AddSlotsWhenOnline>MinSlots");
+	}
+	
+	public static int getSlotsPlusOneMinSlots() {
+		return main.getConfig().getInt("Motd.Slots.SlotsPlusOne.MinSlots");
+	}
+	
+	public static int getSlotsPlusOneMaxSlots() {
+		return main.getConfig().getInt("Motd.Slots.SlotsPlusOne.MaxSlots");
+	}
+	
+	public static int getSlotsPlusOneAddSlotsToOnline() {
+		return main.getConfig().getInt("Motd.Slots.SlotsPlusOne.AddSlotsToOnline");
+	}
+	
+	
+	/*
+	 * DOUBLE
+	 */
+	
+	public static double getOnlineMultiplier() {
+		return main.getConfig().getDouble("Motd.Slots.OnlineMultiplier.MultiplyBy");
+	}
+	
+
+	
 	public static void reloadSmotdConfig() {
 		main.reloadConfig();
 	}

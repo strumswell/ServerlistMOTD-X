@@ -58,7 +58,7 @@ Motd:
       Enable: false
       MinSlots: 100
       MaxSlots: 2500
-      AddSlotsWhenOnline>Slots: 1
+      AddSlotsWhenOnline>MinSlots: 1
       MultiplyBy: 5 
   HoverText:
     Enable: false
