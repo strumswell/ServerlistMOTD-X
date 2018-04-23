@@ -18,6 +18,7 @@ import cloud.bolte.serverlistmotd.events.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
 import cloud.bolte.serverlistmotd.motd.MotdState;
 import cloud.bolte.serverlistmotd.util.IO;
+import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -45,16 +46,15 @@ public class Main extends JavaPlugin implements Listener {
 		saveDefaultConfig();
 		SpigotConfig config = new SpigotConfig(this);
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
+		VaultIntegration vault = new VaultIntegration(this);
 		MotdState state = new MotdState();
 		
 		pli.listenToServerlistPackets();
 
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
-		
-		
-		
+		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);	
+			
 		this.getCommand("serverlist").setExecutor(new Serverlist());
 		
 		BukkitScheduler scheduler = getServer().getScheduler();

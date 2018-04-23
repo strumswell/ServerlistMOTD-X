@@ -38,6 +38,7 @@ public class RestrictedModeMotd implements MotdInterface {
 
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
-		return ChatColor.translateAlternateColorCodes('&', motd).replaceAll("%line%", "\n");
+		return ChatColor.translateAlternateColorCodes('&', motd)
+				.replaceAll("%line%", "\n");
 	}
 }

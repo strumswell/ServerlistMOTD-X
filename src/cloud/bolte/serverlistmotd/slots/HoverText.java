@@ -11,6 +11,7 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
@@ -38,7 +39,7 @@ public class HoverText {
 		line = ChatColor.translateAlternateColorCodes('&', line)
 				.replaceAll("%weather%", WeatherVariable.getWeather())
 				.replaceAll("%time%", TimeVariable.getTime()
-				.replaceAll("%randomplayer%", "55"));
+				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
 		return line;
 	}
 }

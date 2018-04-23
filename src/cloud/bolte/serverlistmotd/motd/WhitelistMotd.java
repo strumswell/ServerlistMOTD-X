@@ -9,7 +9,9 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.variables.MoneyVariable;
 import cloud.bolte.serverlistmotd.variables.PlayerVariable;
+import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -40,10 +42,13 @@ public class WhitelistMotd implements MotdInterface {
 
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
-		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd).replaceAll("%line%", "\n");
+		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
+				.replaceAll("%line%", "\n")
+				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
-					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip));
+					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip)
+					.replaceAll("%money%", MoneyVariable.getMoney(ip)+""));
 		}
 		return formattedMotd;
 	}

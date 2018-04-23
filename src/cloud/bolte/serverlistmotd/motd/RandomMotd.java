@@ -8,7 +8,9 @@ import org.bukkit.ChatColor;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.variables.MoneyVariable;
 import cloud.bolte.serverlistmotd.variables.PlayerVariable;
+import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
@@ -41,11 +43,13 @@ public class RandomMotd implements MotdInterface {
 		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
 				.replaceAll("%line%", "\n")
 				.replaceAll("%weather%", WeatherVariable.getWeather())
-				.replaceAll("%time%", TimeVariable.getTime());		
+				.replaceAll("%time%", TimeVariable.getTime()
+			    .replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
-					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip));
+					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip)
+					.replaceAll("%money%", MoneyVariable.getMoney(ip)+""));
 		}
 		return formattedMotd;
 	}

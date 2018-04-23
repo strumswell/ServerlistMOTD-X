@@ -12,6 +12,8 @@ import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.ban.BanInterface;
 import cloud.bolte.serverlistmotd.ban.SpigotBan;
+import cloud.bolte.serverlistmotd.variables.TimeVariable;
+import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -47,11 +49,10 @@ public class BanMotd implements MotdInterface {
 		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
 		String formattedMotd;
 		
-		//TODO: Weather and Time
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
 		formattedMotd = formattedMotd.replaceAll("%line%", "\n")
-							.replaceAll("%weather%", "clear")
-							.replaceAll("%time%", "day");
+							.replaceAll("%weather%", WeatherVariable.getWeather())
+							.replaceAll("%time%", TimeVariable.getTime());
 			
 		//if spigot ban, banmanger...
 		ban = new SpigotBan();
