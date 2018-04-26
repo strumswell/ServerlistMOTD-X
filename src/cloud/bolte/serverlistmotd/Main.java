@@ -29,43 +29,54 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: Testing, Config moving methods
-//TODO: Commands, check if world from config is there, doppelte Einträge in HashMap
+//TODO: Testing (IP_UUID from old ver working?, ...)
+//TODO: Commands, Ban plugins
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
-	
+
 	@Override
 	public void onDisable() {
-		IO.removeUnusedEntries(); //Experimental
+		//Prepare HashMap and save it to disk
+		IO.removeUnusedEntries(); // Experimental
 		IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 	}
 
 	@Override
 	public void onEnable() {
+		//Load Userdata in HashMap & write config if necessary 
 		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 		saveDefaultConfig();
 		
+		//Handover plugin instance to classes
 		SpigotConfig config = new SpigotConfig(this);
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		MotdState state = new MotdState();
 		
+		//Check if world set in config exists (time, weather var!)
+		config.worldConfigCheck();
+		
+		//Start ProtocolLib for slots stuff
 		pli.listenToServerlistPackets();
-
+		
+		//Register listeners
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);	
-			
+		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
+		
+		//Register command
 		this.getCommand("serverlist").setExecutor(new Serverlist());
 		
+		//Setup Vault for money var
 		VaultIntegration.setupVault();
 		
+		//Timer for saving userdata to disk 
 		BukkitScheduler scheduler = getServer().getScheduler();
-        scheduler.runTaskTimerAsynchronously(this, new Runnable() {
-            @Override
-            public void run() {
-        		IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
-            }
-        }, SpigotConfig.autoSaveIntervalInMin()*1200L, SpigotConfig.autoSaveIntervalInMin()*1200L);
-	} 	
+		scheduler.runTaskTimerAsynchronously(this, new Runnable() {
+			@Override
+			public void run() {
+				IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
+			}
+		}, SpigotConfig.autoSaveIntervalInMin() * 1200L, SpigotConfig.autoSaveIntervalInMin() * 1200L);
+	}
 }

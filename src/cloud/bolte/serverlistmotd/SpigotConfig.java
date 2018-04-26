@@ -2,6 +2,8 @@ package cloud.bolte.serverlistmotd;
 
 import java.util.List;
 
+import org.bukkit.Bukkit;
+
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
  * ServerlistMOTD is licensed under a
@@ -234,5 +236,17 @@ public class SpigotConfig {
 	
 	public static void reloadSmotdConfig() {
 		main.reloadConfig();
+	}
+	
+	public void worldConfigCheck() {
+		if (getWeatherWorld() == null || getTimeWorld() == null) {
+			Bukkit.getLogger().severe("[ServerlistMOTD] Can't find the defined world from config. Please set your world name in config!");
+			System.out.println("[ServerlistMOTD] |------------------------------------|");
+			System.out.println("[ServerlistMOTD] |                                    |");
+			System.out.println("[ServerlistMOTD] |Please change WORLD NAME in config! |");
+			System.out.println("[ServerlistMOTD] |                                    |");
+			System.out.println("[ServerlistMOTD] |------------------------------------|");
+			Bukkit.getPluginManager().disablePlugin(main);
+		}
 	}
 }
