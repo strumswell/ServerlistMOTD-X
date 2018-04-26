@@ -41,8 +41,8 @@ public class ClassicMotd implements MotdInterface{
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
-					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip)
-					.replaceAll("%money%", MoneyVariable.getMoney(ip)+""));
+					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip))
+					.replaceAll("%money%", MoneyVariable.getMoney(ip)+"");
 		}
 		return formattedMotd;
 	}

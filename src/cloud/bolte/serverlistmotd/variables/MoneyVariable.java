@@ -18,16 +18,12 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
 public class MoneyVariable {
 	
-	private static Main main;
-	public MoneyVariable(Main main) {
-		MoneyVariable.main = main;
-	}
-	
-	@SuppressWarnings("deprecation")
 	public static Double getMoney(InetAddress ip) {
-		if (main.getServer().getPluginManager().getPlugin("Vault") != null) {
-			return VaultIntegration.economy.getBalance
-					(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName());
-		} else return 0d;
+		try {
+			return VaultIntegration.getEcononomy().getBalance
+						(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)));
+		} catch (NullPointerException npe) {
+			return -1d;
+		}
 	}
 }

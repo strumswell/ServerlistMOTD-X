@@ -1,5 +1,6 @@
 package cloud.bolte.serverlistmotd.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import cloud.bolte.serverlistmotd.Main;
@@ -18,38 +19,55 @@ import net.milkbowl.vault.permission.Permission;
 
 public class VaultIntegration {
 	
-	private static Main main;
-	public VaultIntegration(Main main) {
-		VaultIntegration.main = main;
-	}
-	
-	 public static Permission permission = null;
-	 public static Economy economy = null;
+	 public static Permission perms = null;
+	 public static Economy econ = null;
 	 public static Chat chat = null;
 
-	 private boolean setupPermissions() {
-	      RegisteredServiceProvider<Permission> permissionProvider = main.getServer().getServicesManager().getRegistration(net.milkbowl.vault.permission.Permission.class);
-	      if (permissionProvider != null) {
-	          permission = permissionProvider.getProvider();
-	      }
-	      return (permission != null);
-	  }
+	 private static boolean setupPermissions() {
+	     RegisteredServiceProvider<Permission> rsp = Bukkit.getServer().getServicesManager().getRegistration(Permission.class);
+	     perms = rsp.getProvider();
+	     return perms != null;
+	 }
 
-	  private boolean setupChat() {
-	        RegisteredServiceProvider<Chat> chatProvider = main.getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
-	        if (chatProvider != null) {
-	            chat = chatProvider.getProvider();
-	        }
+	 private static boolean setupChat() {
+	     RegisteredServiceProvider<Chat> rsp = Bukkit.getServer().getServicesManager().getRegistration(Chat.class);
+	     chat = rsp.getProvider();
+	     return chat != null;
+	 }
 
-	        return (chat != null);
-	  }
+	 private static boolean setupEconomy() {
+		 if (Bukkit.getPluginManager().getPlugin("Vault") == null) {
+			 Bukkit.getLogger().warning("[ServerlistMOTD] Couldn't find Vault. No %money%!");
+	         return false;
+	     }
+		 
+		 Bukkit.getLogger().info("[ServerlistMOTD] Hooking into Vault.");
 
-	  private boolean setupEconomy() {
-	        RegisteredServiceProvider<Economy> economyProvider = main.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-	        if (economyProvider != null) {
-	            economy = economyProvider.getProvider();
-	        }
+	     RegisteredServiceProvider<Economy> rsp = Bukkit.getServer().getServicesManager().getRegistration(Economy.class);
+	     if (rsp == null) {
+			 Bukkit.getLogger().warning("[ServerlistMOTD] Couldn't find Economy-Plugin. No %money%!");
+	         return false;
+	     }
+	     econ = rsp.getProvider();
+	     return econ != null;
+	 }
+	  
+	 public static Economy getEcononomy() {
+	 	 return econ;
+	 }
 
-	        return (economy != null);
-	  }
+	 public static Permission getPermissions() {
+	 	 return perms;
+	 }
+
+	 public static Chat getChat() {
+		 return chat;
+	 }
+
+	  
+	 public static void setupVault() {
+		 setupEconomy();
+	     setupChat();
+		 setupPermissions();
+	 }
 }

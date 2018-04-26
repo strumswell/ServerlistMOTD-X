@@ -37,6 +37,7 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onDisable() {
+		IO.removeUnusedEntries(); //Experimental
 		IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 	}
 
@@ -44,9 +45,9 @@ public class Main extends JavaPlugin implements Listener {
 	public void onEnable() {
 		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
 		saveDefaultConfig();
+		
 		SpigotConfig config = new SpigotConfig(this);
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
-		VaultIntegration vault = new VaultIntegration(this);
 		MotdState state = new MotdState();
 		
 		pli.listenToServerlistPackets();
@@ -56,6 +57,8 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);	
 			
 		this.getCommand("serverlist").setExecutor(new Serverlist());
+		
+		VaultIntegration.setupVault();
 		
 		BukkitScheduler scheduler = getServer().getScheduler();
         scheduler.runTaskTimerAsynchronously(this, new Runnable() {

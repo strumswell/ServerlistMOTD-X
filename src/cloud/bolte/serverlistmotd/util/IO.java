@@ -94,7 +94,9 @@ public class IO {
 	 * Invertes HashMap two times to remove possible duplicates
 	 */
 	public static void removeUnusedEntries() {
+		long start = System.currentTimeMillis();
 		Main.IP_UUID = invert(invert(Main.IP_UUID));
+		System.out.println("[ServerlistMOTD] Removed duplicates in userdata in "+(System.currentTimeMillis()-start)+"ms.");
 	}
 
 	/**
