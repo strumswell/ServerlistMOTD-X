@@ -30,7 +30,7 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  */
 
 //TODO: Testing (IP_UUID from old ver working?, ...)
-//TODO: Commands, Ban plugins
+//TODO: Commands
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
@@ -51,6 +51,7 @@ public class Main extends JavaPlugin implements Listener {
 		//Handover plugin instance to classes
 		SpigotConfig config = new SpigotConfig(this);
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
+		//Check which motds are enabled via config and initiate them
 		MotdState state = new MotdState();
 		
 		//Check if world set in config exists (time, weather var!)

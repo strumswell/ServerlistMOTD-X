@@ -1,5 +1,7 @@
 package cloud.bolte.serverlistmotd.motd;
 
+import org.bukkit.Bukkit;
+
 import cloud.bolte.serverlistmotd.SpigotConfig;
 
 /*
@@ -32,7 +34,7 @@ public class MotdState {
 	 *
 	 */
 	public enum MotdExtension {
-		NONE, BAN, WHITELIST, RESTRICTED
+		NONE, BAN_SPIGOT, BAN_MAXBANS, BAN_BANMANAGER, WHITELIST, RESTRICTED
 	}
 	
 	public static Motd motd;
@@ -56,7 +58,9 @@ public class MotdState {
 		 * 
 		 */
 		motdExtension = MotdExtension.NONE; //prevent NPE
-		if (SpigotConfig.banMotdEnabled()) motdExtension = MotdExtension.BAN;
+		if (SpigotConfig.banMotdEnabled()) motdExtension = MotdExtension.BAN_SPIGOT;
+		if (Bukkit.getServer().getPluginManager().getPlugin("MaxBans") != null) motdExtension = MotdExtension.BAN_MAXBANS;
+		if (Bukkit.getServer().getPluginManager().getPlugin("BanManager") != null) motdExtension = MotdExtension.BAN_BANMANAGER;
 		if (SpigotConfig.whitelistMotdEnabled()) motdExtension = MotdExtension.WHITELIST;
 		if (SpigotConfig.restrictedModeEnabled()) motdExtension = MotdExtension.RESTRICTED;
 	}

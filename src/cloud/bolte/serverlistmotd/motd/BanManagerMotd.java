@@ -1,19 +1,19 @@
 package cloud.bolte.serverlistmotd.motd;
 
 import java.net.InetAddress;
+import java.util.Date;
 
-import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.ban.BanInterface;
-import cloud.bolte.serverlistmotd.ban.SpigotBan;
+import cloud.bolte.serverlistmotd.ban.BanManager;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
+import me.confuser.banmanager.BmAPI;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -24,51 +24,47 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class BanMotd implements MotdInterface {
+//UNTESTED
 
-	/* 
-	 * Returns either the temp or fullban motd. 
-	 */
+public class BanManagerMotd implements MotdInterface{
+
 	@Override
 	public String getMOTD(InetAddress ip) {
 		//TEMP BAN
-		if (Bukkit.getBanList(Type.NAME).getBanEntry(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName())
-				.getExpiration() != null) {
+		if (Long.valueOf(BmAPI.getCurrentBan(Main.IP_UUID.get(ip)).getExpires()) != null) {
 			return SpigotConfig.getBanTempMotd();
 		//FULL BAN
-		} else
+		} else {
 			return SpigotConfig.getBanForeverMotd();
+		}
 	}
 	
-	/*
-	 * Sets the motd via ProtocolLib
-	 */
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip)) {
-			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-			if (p.isBanned()) {
+			if (BmAPI.isBanned(Main.IP_UUID.get(ip))) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
 			}
 		}
 	}
 	
-	/*
-	 * Returns formatted motd with colors
-	 * and variables depending on the type
-	 */
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
-		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
 		formattedMotd = formattedMotd.replaceAll("%line%", "\n").replaceAll("%weather%", WeatherVariable.getWeather())
 				.replaceAll("%time%", TimeVariable.getTime());
 
-		BanInterface ban = new SpigotBan();
+		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
 
+		BanInterface ban = new BanManager();
+		Date timestampconv = new Date((long) ban.expires(playerName) * 1000);
+
+		// FULL BAN
+		if (timestampconv.getYear() + 1900 == 1970) {
+			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName));
 		// TEMP BAN
-		if (Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration() != null) {
+		} else {
 			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName))
 					.replaceAll("%expdate%", ban.date(playerName)).replaceAll("%exptime%", ban.time(playerName))
 					.replaceAll("%expsec%", ban.banExpDateSec(playerName))
@@ -77,9 +73,7 @@ public class BanMotd implements MotdInterface {
 					.replaceAll("%expday%", ban.banExpDateDay(playerName))
 					.replaceAll("%expmonth%", ban.banExpDateMonth(playerName))
 					.replaceAll("%expyear%", ban.banExpDateYear(playerName));
-			// FULL BAN
-		} else
-			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName));
+		}
 		return formattedMotd;
 	}
 }

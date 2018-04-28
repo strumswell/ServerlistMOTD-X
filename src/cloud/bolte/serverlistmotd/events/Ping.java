@@ -41,15 +41,22 @@ public class Ping implements Listener{
 				e.setMotd(motd.formatMotd(motd.getMOTD(ip), ip));
 				break;
 			default:
+				break;
 			}
 		} else System.out.println("[ServerlistMOTD] Oooops. Something went wrong creating the MOTD!");
 		
 		if (MotdState.motdExtension != null) {
 			switch(MotdState.motdExtension) {
-			case BAN:
+			case BAN_SPIGOT:
 				BanMotd banmotd = new BanMotd();
 				banmotd.setBanMotd(e, ip);
 				break;
+			case BAN_MAXBANS:
+				BanMotd maxbanmotd = new BanMotd();
+				maxbanmotd.setBanMotd(e, ip);
+			case BAN_BANMANAGER:
+				BanMotd banmanagermotd = new BanMotd();
+				banmanagermotd.setBanMotd(e, ip);
 			case WHITELIST:
 				WhitelistMotd whitemotd = new WhitelistMotd();
 				whitemotd.setWhitelistMotd(e, ip);
