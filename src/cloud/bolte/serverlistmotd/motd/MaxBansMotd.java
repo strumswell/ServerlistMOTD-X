@@ -41,11 +41,9 @@ public class MaxBansMotd implements MotdInterface {
 	
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		//Check if player is known and set motd
-		if (Main.IP_UUID.containsKey(ip)) {
-			if (MaxBans.instance.getBanManager()
+		if (Main.IP_UUID.containsKey(ip) && MaxBans.instance.getBanManager()
 					.getBan(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName()) != null) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
-			}
 		}
 	}
 

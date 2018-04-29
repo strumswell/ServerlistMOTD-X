@@ -113,7 +113,6 @@ public class BanManager implements BanInterface {
 	@Override
 	public String time(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv = new java.util.Date((long) this.expires(playerName) * 1000);
 			return SpigotConfig.getFormatTime()
 					.replaceAll("hh", banExpDateHour(playerName))
 					.replaceAll("mm", banExpDateMin(playerName))

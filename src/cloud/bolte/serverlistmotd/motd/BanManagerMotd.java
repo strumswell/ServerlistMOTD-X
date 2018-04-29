@@ -30,20 +30,16 @@ public class BanManagerMotd implements MotdInterface{
 
 	@Override
 	public String getMOTD(InetAddress ip) {
-		//TEMP BAN
 		if (Long.valueOf(BmAPI.getCurrentBan(Main.IP_UUID.get(ip)).getExpires()) != null) {
 			return SpigotConfig.getBanTempMotd();
-		//FULL BAN
 		} else {
 			return SpigotConfig.getBanForeverMotd();
 		}
 	}
 	
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
-		if (Main.IP_UUID.containsKey(ip)) {
-			if (BmAPI.isBanned(Main.IP_UUID.get(ip))) {
+		if (Main.IP_UUID.containsKey(ip) && BmAPI.isBanned(Main.IP_UUID.get(ip))) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
-			}
 		}
 	}
 	

@@ -20,7 +20,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 public class RestrictedModeJoin implements Listener{
 	
     @EventHandler
-	public void LogInRestrictedMode(PlayerLoginEvent e) {
+	public void logInRestrictedMode(PlayerLoginEvent e) {
     	if (SpigotConfig.restrictedModeEnabled()) {
     		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("ServerlistMOTD.restricted.join")) {
     			e.allow();	

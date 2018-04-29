@@ -25,18 +25,18 @@ public class VersionText {
 	}
 	
 	//TODO: SLOTS PLUS ONE VAR
-	private static String formatText(String text) {
+	private static String formatText(String versionText) {
 		String realslots = Bukkit.getServer().getMaxPlayers()+"";
 		String realonline = Bukkit.getServer().getOnlinePlayers().size()+"";
 		String fakeslots = SpigotConfig.getFakeMaxPlayerNumber()+"";
 		String fakeonline = SpigotConfig.getFakeOnlinePlayerNumber()+"";
 		
-		text = ChatColor.translateAlternateColorCodes('&', text)
+		versionText = ChatColor.translateAlternateColorCodes('&', versionText)
 				.replaceAll("%realslots%", realslots)
 				.replaceAll("%realonline%", realonline)
 				.replaceAll("%fakeonline%", fakeonline)
 				.replaceAll("%fakeslots%", fakeslots)
 				.replaceAll("%slotsplusone%", "");		
-		return text;
+		return versionText;
 	}
 }

@@ -52,7 +52,7 @@ public class Main extends JavaPlugin implements Listener {
 		SpigotConfig config = new SpigotConfig(this);
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		//Check which motds are enabled via config and initiate them
-		MotdState state = new MotdState();
+		new MotdState();
 		
 		//Check if world set in config exists (time, weather var!)
 		config.worldConfigCheck();

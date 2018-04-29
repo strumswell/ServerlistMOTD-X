@@ -35,11 +35,11 @@ public class HoverText {
 	}
 	
 	//TODO RANDOM PLAYER
-	private static String formatText(String line) {
-		line = ChatColor.translateAlternateColorCodes('&', line)
+	private static String formatText(String hoverLine) {
+		hoverLine = ChatColor.translateAlternateColorCodes('&', hoverLine)
 				.replaceAll("%weather%", WeatherVariable.getWeather())
 				.replaceAll("%time%", TimeVariable.getTime()
 				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
-		return line;
+		return hoverLine;
 	}
 }

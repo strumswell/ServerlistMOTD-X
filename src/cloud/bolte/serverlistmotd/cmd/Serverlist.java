@@ -62,6 +62,8 @@ public class Serverlist implements CommandExecutor {
 					return true;
 					
 				} else return false;
+			default:
+				
 			}
 		}  
 		return false;

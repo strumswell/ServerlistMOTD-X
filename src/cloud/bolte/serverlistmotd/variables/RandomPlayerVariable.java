@@ -20,7 +20,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class RandomPlayerVariable {
-	static Random random = new Random();
+	private static Random random = new Random();
 
 	public static String getRandomPlayer() {
 		if (Bukkit.getOnlinePlayers().size() > 0) {

@@ -54,9 +54,11 @@ public class Ping implements Listener{
 			case BAN_MAXBANS:
 				BanMotd maxbanmotd = new BanMotd();
 				maxbanmotd.setBanMotd(e, ip);
+				break;
 			case BAN_BANMANAGER:
 				BanMotd banmanagermotd = new BanMotd();
 				banmanagermotd.setBanMotd(e, ip);
+				break;
 			case WHITELIST:
 				WhitelistMotd whitemotd = new WhitelistMotd();
 				whitemotd.setWhitelistMotd(e, ip);

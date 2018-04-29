@@ -41,7 +41,7 @@ public class BanMotd implements MotdInterface {
 	}
 	
 	/*
-	 * Sets the motd via ProtocolLib
+	 * Sets the motd
 	 */
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip)) {

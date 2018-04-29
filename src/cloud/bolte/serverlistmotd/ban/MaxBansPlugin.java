@@ -35,7 +35,6 @@ public class MaxBansPlugin implements BanInterface {
 	public Long expires(String playerName) {
 		if (getBan(playerName) instanceof TempBan) {
 			TempBan temp = (TempBan) getBan(playerName);
-			Date d = new Date(temp.getExpires());
 			return temp.getExpires();
 		} else {
 			return 3555L;
@@ -45,7 +44,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String banExpDateSec(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv = new Date(this.expires(playerName));
 			return timestampconv.getSeconds()+"";
 		} else {
 		return "0";
@@ -55,7 +54,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String banExpDateMin(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv=new Date(this.expires(playerName));
 			return timestampconv.getMinutes()+"";
 		} else {
 		return "0";
@@ -65,7 +64,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String banExpDateHour(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv=new Date(this.expires(playerName));
 			return timestampconv.getHours()+"";
 		} else {
 		return "0";
@@ -75,7 +74,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String banExpDateDay(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv=new Date(this.expires(playerName));
 			return timestampconv.getDate()+"";
 		} else {
 		return "0";
@@ -85,7 +84,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String banExpDateMonth(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv=new Date(this.expires(playerName));
 			return timestampconv.getMonth()+1+"";
 		} else {
 		return "0";
@@ -95,7 +94,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String banExpDateYear(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv=new Date(this.expires(playerName));
 			return timestampconv.getYear()-100+"";
 		} else {
 		return "0";
@@ -105,7 +104,7 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String date(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
+			Date timestampconv=new Date(this.expires(playerName));
 			return SpigotConfig.getFormatDate()
 					 .replaceAll("DD", banExpDateDay(playerName))
 					 .replaceAll("MM", banExpDateMonth(playerName))
@@ -119,7 +118,6 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String time(String playerName) {
 		if (this.expires(playerName) != null) {
-			java.util.Date timestampconv=new java.util.Date(this.expires(playerName));
 			return SpigotConfig.getFormatTime()
 					 .replaceAll("hh", banExpDateHour(playerName))
 					 .replaceAll("mm", banExpDateMin(playerName))

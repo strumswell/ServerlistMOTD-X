@@ -23,7 +23,7 @@ public class WeatherVariable {
 		boolean thunder = Bukkit.getServer().getWorld(SpigotConfig.getWeatherWorld()).isThundering();
 		boolean rain = Bukkit.getServer().getWorld(SpigotConfig.getWeatherWorld()).hasStorm();
 
-		if (thunder == true || rain == true) {
+		if (thunder || rain) {
 			return SpigotConfig.getRainText();
 		} else {
 			return SpigotConfig.getSunText();
