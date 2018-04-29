@@ -1,5 +1,7 @@
 # ServerlistMOTD X
 
+Codacy Project Certificate: [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e08cf8573e2142d0b127e16e2b5c3d08)](https://www.codacy.com/app/strumswell/ServerlistMOTD-X?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strumswell/ServerlistMOTD-X&amp;utm_campaign=Badge_Grade)
+
 ### General 
 
 A plugin for the Spigot API. ServerlistMOTD allows you to change your MOTD in the serverlist. You can set custom MOTDs for known players or welcome new players with a special MOTD to get the players attention. This plugin is HIGHLY compatibile with old and new versions of Bukkit/Spigot!
