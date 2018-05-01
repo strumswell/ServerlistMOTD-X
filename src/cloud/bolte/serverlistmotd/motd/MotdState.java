@@ -14,6 +14,13 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class MotdState {
+	
+	/*
+	 * Contain enabled motd(-extensions) from config to easily check which motd is
+	 * enabled
+	 */
+	private Motd motd;
+	private MotdExtension motdExtension;
 
 	/**
 	 * Contains standard motds that happen most of the time and are not "event"
@@ -51,13 +58,6 @@ public class MotdState {
 		}
 		return MotdState.instance;
 	}
-
-	/*
-	 * Contain enabled motd(-extensions) from config to easily check which motd is
-	 * enabled
-	 */
-	private Motd motd;
-	private MotdExtension motdExtension;
 
 	public Motd getMotd() {
 		return motd;
