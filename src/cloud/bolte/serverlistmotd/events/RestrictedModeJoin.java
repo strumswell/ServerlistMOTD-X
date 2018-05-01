@@ -24,7 +24,7 @@ public class RestrictedModeJoin implements Listener{
     	if (SpigotConfig.restrictedModeEnabled()) {
     		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("ServerlistMOTD.restricted.join")) {
     			e.allow();	
-    		} else e.disallow(Result.KICK_FULL, 
+    		} else e.disallow(Result.KICK_OTHER, 
     				ChatColor.translateAlternateColorCodes('&', SpigotConfig.getRestrictedKickMessage()));	
 		}
 	}

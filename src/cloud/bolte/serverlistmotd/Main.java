@@ -16,7 +16,6 @@ import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
-import cloud.bolte.serverlistmotd.motd.MotdState;
 import cloud.bolte.serverlistmotd.util.IO;
 import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
@@ -51,8 +50,6 @@ public class Main extends JavaPlugin implements Listener {
 		//Handover plugin instance to classes
 		SpigotConfig config = new SpigotConfig(this);
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
-		//Check which motds are enabled via config and initiate them
-		new MotdState();
 		
 		//Check if world set in config exists (time, weather var!)
 		config.worldConfigCheck();

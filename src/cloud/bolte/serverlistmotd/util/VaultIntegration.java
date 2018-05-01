@@ -3,7 +3,6 @@ package cloud.bolte.serverlistmotd.util;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import cloud.bolte.serverlistmotd.Main;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;

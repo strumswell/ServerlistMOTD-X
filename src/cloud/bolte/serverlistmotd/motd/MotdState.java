@@ -14,54 +14,86 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class MotdState {
-	
+
 	/**
-	 * Contains standard motds that happen most of the time and are not
-	 * "event" based. They are not optional and have to be set.
+	 * Contains standard motds that happen most of the time and are not "event"
+	 * based. They are not optional and have to be set.
 	 *
 	 */
 	public enum Motd {
 		STANDARD, RANDOM
 	}
-	
+
 	/**
-	 * Contains extensions to the motd that are "event" and player based, 
-	 * and therefore don't get triggered most of the time. They extend
-	 * the basic motd functionality and are optional.
+	 * Contains extensions to the motd that are "event" and player based, and
+	 * therefore don't get triggered most of the time. They extend the basic motd
+	 * functionality and are optional.
 	 * 
-	 * Example: Banned, whitelisted player or the lock down of the server
-	 * via restricted mode.
+	 * Example: Banned, whitelisted player or the lock down of the server via
+	 * restricted mode.
 	 *
 	 */
 	public enum MotdExtension {
 		NONE, BAN_SPIGOT, BAN_MAXBANS, BAN_BANMANAGER, WHITELIST, RESTRICTED
 	}
-	
-	public static Motd motd;
-	public static MotdExtension motdExtension;	
-	
-	/**
-	 * Set in config enabled motds in static variables on object creation
-	 * Needs to be called in onEnable() after SpigotConfig 
-	 * 
+
+	private static MotdState instance;
+
+	/* private constructor to avoid instantiation from other classes */
+	private MotdState() {
+		initializeMotds();
+	}
+
+	/* return private singleton object */
+	public static MotdState getInstance() {
+		if (MotdState.instance == null) {
+			MotdState.instance = new MotdState();
+		}
+		return MotdState.instance;
+	}
+
+	/*
+	 * Contain enabled motd(-extensions) from config to easily check which motd is
+	 * enabled
 	 */
-	public MotdState () {
+	private Motd motd;
+	private MotdExtension motdExtension;
+
+	public Motd getMotd() {
+		return motd;
+	}
+
+	public MotdExtension getMotdExtensions() {
+		return motdExtension;
+	}
+
+	/*
+	 * Checks the config and sets the enabled motd(-extentsion) Very important to
+	 * use it on config reload!
+	 */
+	public void initializeMotds() {
 		if (SpigotConfig.randomMotdEnabled()) {
 			motd = Motd.RANDOM;
-		} else motd = Motd.STANDARD;
-		
+		} else
+			motd = Motd.STANDARD;
+
 		/*
-		 * From lowest priority to highest!
-		 * If Ban and Restricted are enabled in config, Restricted will always be enabled.
-		 * If Ban and Whitelist are enabled in config, Whitelist will always be enabled.
-		 * If Whitelist and Restricted are enabled in config, Restricted will always be enabled.
+		 * From lowest priority to highest! If Ban and Restricted are enabled in config,
+		 * Restricted will always be enabled. If Ban and Whitelist are enabled in
+		 * config, Whitelist will always be enabled. If Whitelist and Restricted are
+		 * enabled in config, Restricted will always be enabled.
 		 * 
 		 */
-		motdExtension = MotdExtension.NONE; //prevent NPE
-		if (SpigotConfig.banMotdEnabled()) motdExtension = MotdExtension.BAN_SPIGOT;
-		if (Bukkit.getServer().getPluginManager().getPlugin("MaxBans") != null) motdExtension = MotdExtension.BAN_MAXBANS;
-		if (Bukkit.getServer().getPluginManager().getPlugin("BanManager") != null) motdExtension = MotdExtension.BAN_BANMANAGER;
-		if (SpigotConfig.whitelistMotdEnabled()) motdExtension = MotdExtension.WHITELIST;
-		if (SpigotConfig.restrictedModeEnabled()) motdExtension = MotdExtension.RESTRICTED;
+		motdExtension = MotdExtension.NONE; // prevent NPE
+		if (SpigotConfig.banMotdEnabled())
+			motdExtension = MotdExtension.BAN_SPIGOT;
+		if (Bukkit.getServer().getPluginManager().getPlugin("MaxBans") != null)
+			motdExtension = MotdExtension.BAN_MAXBANS;
+		if (Bukkit.getServer().getPluginManager().getPlugin("BanManager") != null)
+			motdExtension = MotdExtension.BAN_BANMANAGER;
+		if (SpigotConfig.whitelistMotdEnabled())
+			motdExtension = MotdExtension.WHITELIST;
+		if (SpigotConfig.restrictedModeEnabled())
+			motdExtension = MotdExtension.RESTRICTED;
 	}
 }

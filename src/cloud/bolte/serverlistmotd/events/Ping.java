@@ -23,15 +23,15 @@ import cloud.bolte.serverlistmotd.motd.WhitelistMotd;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class Ping implements Listener{
-	private MotdInterface motd;	
+public class Ping implements Listener {
+	private MotdInterface motd;
 
 	@EventHandler
 	public void onPing(ServerListPingEvent e) {
 		InetAddress ip = e.getAddress();
-		
-		if (MotdState.motd != null) {
-			switch(MotdState.motd) {
+
+		if (MotdState.getInstance().getMotd() != null) {
+			switch (MotdState.getInstance().getMotd()) {
 			case STANDARD:
 				motd = new ClassicMotd();
 				e.setMotd(motd.formatMotd(motd.getMOTD(ip), ip));
@@ -44,9 +44,9 @@ public class Ping implements Listener{
 				break;
 			}
 		} else System.out.println("[ServerlistMOTD] Oooops. Something went wrong creating the MOTD!");
-		
-		if (MotdState.motdExtension != null) {
-			switch(MotdState.motdExtension) {
+
+		if (MotdState.getInstance().getMotdExtensions() != null) {
+			switch (MotdState.getInstance().getMotdExtensions()) {
 			case BAN_SPIGOT:
 				BanMotd banmotd = new BanMotd();
 				banmotd.setBanMotd(e, ip);

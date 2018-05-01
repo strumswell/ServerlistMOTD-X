@@ -2,8 +2,8 @@
 # FAQ:
 #   - "Why IP Logging?": Needed for identifying players in the serverlist by their IP. Used in %player%, %money"
 #      You can turn it off if you have to comply with some data protection law. IPs and UUIDs of players are
-#      stored locally inside the IP_UUID.dat. 
-#   - "Connection turns red in serverlist with VersionText on.": Ever seen when your server is outdated in the 
+#      stored locally inside the IP_UUID.dat.
+#   - "Connection turns red in serverlist with VersionText on.": Ever seen when your server is outdated in the
 #      serverlist? SMOTD simulates this and changes the text. This is just cosmetical!
 #   - "Plugin ServerlistMOTD_10.0.3_ created a profile with 'HoverText' as an UUID.": Your HoverText normally
 #      contains a list of players. SMOTD clears that and creates a fake player with your text as its name.
@@ -26,7 +26,7 @@ Motd:
     - '&2You can add as many Motds as you want!'
     - '&eAdd bullet points to add more Motds!'
     - '&3The weather ist %weather% and it is %time%.'
-  BanMessage: 
+  BanMessage:
     Enable: false
     MessageTempBan: '&cYou are banned! Reason: &e%reason%%line%&cExpiration: &e%expdate% at
       %exptime%'
@@ -53,13 +53,13 @@ Motd:
       Enable: false
       MinSlots: 5
       MaxSlots: 100
-      AddSlotsToOnline: 1 
+      AddSlotsToOnline: 1
     OnlineMultiplier:
       Enable: false
       MinSlots: 100
       MaxSlots: 2500
       AddSlotsWhenOnline>MinSlots: 1
-      MultiplyBy: 5 
+      MultiplyBy: 5
   HoverText:
     Enable: false
     Messages:
@@ -80,10 +80,10 @@ Variables:
     Max: 100
     Min: 90
   RandomPlayerVariable:
-    UseTextWhenNobodyOnline: 
+    UseTextWhenNobodyOnline:
       Enable: false
       Text: 'Player'
-    UseDatabaseNameWhenNobodyOnline: 
+    UseDatabaseNameWhenNobodyOnline:
       Enable: true
 AutoSaveConfig:
   IntervalInMin: 30
@@ -95,3 +95,4 @@ RestrictedMode:
   Slots:
     VersionText: ''
   KickMessage: 'java.net.ConnectException: Connection timed out: no further information:'
+DoNOTtouchMe: 10.0

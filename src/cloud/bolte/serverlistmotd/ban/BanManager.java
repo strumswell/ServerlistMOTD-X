@@ -20,7 +20,7 @@ import me.confuser.banmanager.BmAPI;
  */
 
 public class BanManager implements BanInterface {
-	
+
 	public UUID getUUID(String playerName) {
 		return Bukkit.getOfflinePlayer(playerName).getUniqueId();
 	}
@@ -100,8 +100,7 @@ public class BanManager implements BanInterface {
 	public String date(String playerName) {
 		if (this.expires(playerName) != null) {
 			java.util.Date timestampconv = new java.util.Date((long) this.expires(playerName) * 1000);
-			return SpigotConfig.getFormatDate()
-					.replaceAll("DD", banExpDateDay(playerName))
+			return SpigotConfig.getFormatDate().replaceAll("DD", banExpDateDay(playerName))
 					.replaceAll("MM", banExpDateMonth(playerName))
 					.replaceAll("YYYY", timestampconv.getYear() + 1900 + "")
 					.replaceAll("YY", banExpDateYear(playerName));
@@ -113,10 +112,8 @@ public class BanManager implements BanInterface {
 	@Override
 	public String time(String playerName) {
 		if (this.expires(playerName) != null) {
-			return SpigotConfig.getFormatTime()
-					.replaceAll("hh", banExpDateHour(playerName))
-					.replaceAll("mm", banExpDateMin(playerName))
-					.replaceAll("ss", banExpDateSec(playerName));
+			return SpigotConfig.getFormatTime().replaceAll("hh", banExpDateHour(playerName))
+					.replaceAll("mm", banExpDateMin(playerName)).replaceAll("ss", banExpDateSec(playerName));
 		} else {
 			return "0";
 		}
@@ -137,39 +134,27 @@ public class BanManager implements BanInterface {
 		return String.valueOf(BmAPI.getCurrentBan(playerName).getId());
 	}
 
-	
 	public String getBanMOTD(String playerName, String playerIP) {
 		java.util.Date timestampconv = new java.util.Date((long) this.expires(playerName) * 1000);
 
 		if (timestampconv.getYear() + 1900 == 1970) {
-			return SpigotConfig.getBanForeverMotd()
-					.replaceAll("%player%", playerName)
-					.replaceAll("%reason%", banReason(playerName))
-					.replaceAll("%time%",TimeVariable.getTime())
-					.replaceAll("%weather%", WeatherVariable.getWeather())
-					.replaceAll("%line%", "\n")
+			return SpigotConfig.getBanForeverMotd().replaceAll("%player%", playerName)
+					.replaceAll("%reason%", banReason(playerName)).replaceAll("%time%", TimeVariable.getTime())
+					.replaceAll("%weather%", WeatherVariable.getWeather()).replaceAll("%line%", "\n")
 					.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
 		} else {
-			return SpigotConfig.getBanTempMotd()
-					.replaceAll("%player%", playerName)
-					.replaceAll("%reason%", banReason(playerName))
-					.replaceAll("%expdate%", date(playerName))
-					.replaceAll("%exptime%", time(playerName))
-					.replaceAll("%expsec%", banExpDateSec(playerName))
+			return SpigotConfig.getBanTempMotd().replaceAll("%player%", playerName)
+					.replaceAll("%reason%", banReason(playerName)).replaceAll("%expdate%", date(playerName))
+					.replaceAll("%exptime%", time(playerName)).replaceAll("%expsec%", banExpDateSec(playerName))
 					.replaceAll("%expmin%", banExpDateMin(playerName))
 					.replaceAll("%exphour%", banExpDateHour(playerName))
 					.replaceAll("%expday%", banExpDateDay(playerName))
 					.replaceAll("%expmonth%", banExpDateMonth(playerName))
-					.replaceAll("%expyear%", banExpDateYear(playerName))
-					.replaceAll("%actor%", banActor(playerName))
-					.replaceAll("%creationdate%", banCreated(playerName))
-					.replaceAll("%banid%", banID(playerName))
-					.replaceAll("%time%",TimeVariable.getTime())
-					.replaceAll("%weather%", WeatherVariable.getWeather())
-					.replaceAll("%line%", "\n")
-					.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
-					.replaceAll("%money%", "")
-					.replaceAll("%player%", playerName);
+					.replaceAll("%expyear%", banExpDateYear(playerName)).replaceAll("%actor%", banActor(playerName))
+					.replaceAll("%creationdate%", banCreated(playerName)).replaceAll("%banid%", banID(playerName))
+					.replaceAll("%time%", TimeVariable.getTime()).replaceAll("%weather%", WeatherVariable.getWeather())
+					.replaceAll("%line%", "\n").replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
+					.replaceAll("%money%", "").replaceAll("%player%", playerName);
 		}
 	}
 }
