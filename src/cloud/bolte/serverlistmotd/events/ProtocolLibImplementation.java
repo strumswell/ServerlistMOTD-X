@@ -26,8 +26,12 @@ public class ProtocolLibImplementation {
 
 	private static Main main;
 
-	public ProtocolLibImplementation(Main main) {
-		ProtocolLibImplementation.main = main;
+	public ProtocolLibImplementation(Main plugin) {
+		setPlugin(plugin);
+	}
+	
+	private static void setPlugin(Main plugin) {
+		main = plugin;
 	}
 
 	public void listenToServerlistPackets() {

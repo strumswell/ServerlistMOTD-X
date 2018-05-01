@@ -19,8 +19,12 @@ import cloud.bolte.serverlistmotd.motd.MotdState;
 public class SpigotConfig {
 	private static Main main;
 
-	public SpigotConfig(Main main) {
-		SpigotConfig.main = main;
+	public SpigotConfig(Main plugin) {
+		setPlugin(plugin);
+	}
+	
+	private static void setPlugin(Main plugin) {
+		main = plugin;
 	}
 
 	/*
