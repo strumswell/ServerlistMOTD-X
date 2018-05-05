@@ -126,42 +126,16 @@ public class MaxBansPlugin implements BanInterface {
 
 	@Override
 	public String banActor(String playerName) {
-		// TODO Auto-generated method stub
 		return playerName;
 	}
 
 	@Override
 	public String banCreated(String playerName) {
-		// TODO Auto-generated method stub
 		return getBan(playerName).getCreated() + "";
 	}
 
 	@Override
 	public String banID(String playerName) {
-		// TODO Auto-generated method stub
 		return getBan(playerName).getId();
-	}
-
-	public String getBanMOTD(String playerName, String playerIP) {
-
-		if (expires(playerName) == 3555L) {
-			return SpigotConfig.getBanForeverMotd().replaceAll("%player%", playerName)
-					.replaceAll("%reason%", banReason(playerName)).replaceAll("%time%", TimeVariable.getTime())
-					.replaceAll("%weather%", WeatherVariable.getWeather()).replaceAll("%line%", "\n")
-					.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
-		} else {
-			return SpigotConfig.getBanTempMotd().replaceAll("%player%", playerName)
-					.replaceAll("%reason%", banReason(playerName)).replaceAll("%expdate%", date(playerName))
-					.replaceAll("%exptime%", time(playerName)).replaceAll("%expsec%", banExpDateSec(playerName))
-					.replaceAll("%expmin%", banExpDateMin(playerName))
-					.replaceAll("%exphour%", banExpDateHour(playerName))
-					.replaceAll("%expday%", banExpDateDay(playerName))
-					.replaceAll("%expmonth%", banExpDateMonth(playerName))
-					.replaceAll("%expyear%", banExpDateYear(playerName)).replaceAll("%actor%", banActor(playerName))
-					.replaceAll("%creationdate%", banCreated(playerName)).replaceAll("%banid%", banID(playerName))
-					.replaceAll("%time%", TimeVariable.getTime()).replaceAll("%weather%", WeatherVariable.getWeather())
-					.replaceAll("%line%", "\n").replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
-					.replaceAll("%player%", playerName);
-		}
 	}
 }

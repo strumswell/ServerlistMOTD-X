@@ -58,7 +58,10 @@ public class MotdState {
 		}
 		return MotdState.instance;
 	}
-
+	
+	/*
+	 * getters for private fields
+	 */
 	public Motd getMotd() {
 		return motd;
 	}

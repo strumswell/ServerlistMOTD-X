@@ -1,5 +1,6 @@
 package cloud.bolte.serverlistmotd;
 
+import java.io.File;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -21,6 +22,7 @@ public class SpigotConfig {
 
 	public SpigotConfig(Main plugin) {
 		setPlugin(plugin);
+		migrateConfig();
 	}
 	
 	private static void setPlugin(Main plugin) {
@@ -301,22 +303,28 @@ public class SpigotConfig {
 	 * UTIL
 	 */
 
+	/**
+	 * Reload config and inform MotdState of possible changes
+	 * @param sender Sender
+	 */
 	public static void reloadSmotdConfig(CommandSender sender) {
 		main.reloadConfig();
 		sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cConfig reloaded!");
 		MotdState.getInstance().initializeMotds();
 	}
 
+	/**
+	 * Save config and inform MotdState of possible changes 
+	 */
 	public static void saveSmotdConfig() {
 		main.saveConfig();
 		MotdState.getInstance().initializeMotds();
 	}
 
-	public static void oldConfigCheck() {
-		/// NEEDS IMPLEMENTATION
-		// if 5.0 or null ...
-	}
 
+	/**
+	 * Checks if world name set in config is existent 
+	 */
 	public void worldConfigCheck() {
 		if (getWeatherWorld() == null || getTimeWorld() == null) {
 			Bukkit.getLogger().severe(
@@ -327,6 +335,28 @@ public class SpigotConfig {
 			System.out.println("[ServerlistMOTD] |                                    |");
 			System.out.println("[ServerlistMOTD] |------------------------------------|");
 			Bukkit.getPluginManager().disablePlugin(main);
+		}
+	}
+	
+	/**
+	 * Rename old config (if available) and write new one
+	 */
+	public static void migrateConfig() {
+		if (main.getConfig().getDouble("DoNOTtouchMe") == 5.0) {
+			File oldConfig = new File(main.getDataFolder(), "config.yml");
+			File newFile = new File(main.getDataFolder(), "config_old.yml");
+			
+			if (newFile.exists()) {
+				System.out.println("[ServerlistMOTD] Remove your old config.yml!");
+				Bukkit.getPluginManager().disablePlugin(main);
+			}
+			
+			boolean fileRanemed = oldConfig.renameTo(newFile);
+			if (fileRanemed) {
+				main.saveDefaultConfig();
+				main.reloadConfig();
+				System.out.println("[ServerlistMOTD] Renamed old config and created new config!");
+			}
 		}
 	}
 }

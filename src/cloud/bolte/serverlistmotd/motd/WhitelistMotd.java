@@ -12,6 +12,8 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.variables.MoneyVariable;
 import cloud.bolte.serverlistmotd.variables.PlayerVariable;
 import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
+import cloud.bolte.serverlistmotd.variables.TimeVariable;
+import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -44,7 +46,9 @@ public class WhitelistMotd implements MotdInterface {
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
 				.replaceAll("%line%", "\n")
-				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
+				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
+				.replaceAll("%weather%", WeatherVariable.getWeather())
+				.replaceAll("%time%", TimeVariable.getTime());
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
 					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip)

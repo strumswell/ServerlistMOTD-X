@@ -27,7 +27,10 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 //UNTESTED
 
 public class MaxBansMotd implements MotdInterface {
-
+	
+	/* 
+	 * Returns either the temp or fullban motd. 
+	 */
 	@Override
 	public String getMOTD(InetAddress ip) {
 		//Check for temp or full ban
@@ -39,6 +42,9 @@ public class MaxBansMotd implements MotdInterface {
 		}
 	}
 	
+	/*
+	 * Sets the motd
+	 */
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		//Check if player is known and set motd
 		if (Main.IP_UUID.containsKey(ip) && MaxBans.instance.getBanManager()
@@ -46,7 +52,11 @@ public class MaxBansMotd implements MotdInterface {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
 		}
 	}
-
+	
+	/*
+	 * Returns formatted motd with colors
+	 * and variables depending on the type
+	 */
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		BanInterface ban = new MaxBansPlugin();

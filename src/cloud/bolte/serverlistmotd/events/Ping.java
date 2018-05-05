@@ -25,7 +25,10 @@ import cloud.bolte.serverlistmotd.motd.WhitelistMotd;
 
 public class Ping implements Listener {
 	private MotdInterface motd;
-
+	
+	/*
+	 * Set motds according to config
+	 */
 	@EventHandler
 	public void onPing(ServerListPingEvent e) {
 		InetAddress ip = e.getAddress();

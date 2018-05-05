@@ -42,7 +42,6 @@ public class BanManager implements BanInterface {
 
 	@Override
 	public Long expires(String playerName) {
-		// TODO Auto-generated method stub
 		return BmAPI.getCurrentBan(playerName).getExpires();
 	}
 
@@ -132,29 +131,5 @@ public class BanManager implements BanInterface {
 	@Override
 	public String banID(String playerName) {
 		return String.valueOf(BmAPI.getCurrentBan(playerName).getId());
-	}
-
-	public String getBanMOTD(String playerName, String playerIP) {
-		java.util.Date timestampconv = new java.util.Date((long) this.expires(playerName) * 1000);
-
-		if (timestampconv.getYear() + 1900 == 1970) {
-			return SpigotConfig.getBanForeverMotd().replaceAll("%player%", playerName)
-					.replaceAll("%reason%", banReason(playerName)).replaceAll("%time%", TimeVariable.getTime())
-					.replaceAll("%weather%", WeatherVariable.getWeather()).replaceAll("%line%", "\n")
-					.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
-		} else {
-			return SpigotConfig.getBanTempMotd().replaceAll("%player%", playerName)
-					.replaceAll("%reason%", banReason(playerName)).replaceAll("%expdate%", date(playerName))
-					.replaceAll("%exptime%", time(playerName)).replaceAll("%expsec%", banExpDateSec(playerName))
-					.replaceAll("%expmin%", banExpDateMin(playerName))
-					.replaceAll("%exphour%", banExpDateHour(playerName))
-					.replaceAll("%expday%", banExpDateDay(playerName))
-					.replaceAll("%expmonth%", banExpDateMonth(playerName))
-					.replaceAll("%expyear%", banExpDateYear(playerName)).replaceAll("%actor%", banActor(playerName))
-					.replaceAll("%creationdate%", banCreated(playerName)).replaceAll("%banid%", banID(playerName))
-					.replaceAll("%time%", TimeVariable.getTime()).replaceAll("%weather%", WeatherVariable.getWeather())
-					.replaceAll("%line%", "\n").replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
-					.replaceAll("%money%", "").replaceAll("%player%", playerName);
-		}
 	}
 }

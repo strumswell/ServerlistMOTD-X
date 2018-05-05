@@ -37,7 +37,6 @@ public class RandomMotd implements MotdInterface {
 		}
 	}
 	
-	//TODO: Weather & Time
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)

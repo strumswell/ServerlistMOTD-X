@@ -34,7 +34,6 @@ public class HoverText {
 		ping.setPlayers(players);
 	}
 	
-	//TODO RANDOM PLAYER
 	private static String formatText(String hoverLine) {
 		hoverLine = ChatColor.translateAlternateColorCodes('&', hoverLine)
 				.replaceAll("%weather%", WeatherVariable.getWeather())

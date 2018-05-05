@@ -34,4 +34,16 @@ public class SlotsPlusOne {
 			ping.setPlayersMaximum(SpigotConfig.getSlotsPlusOneMaxSlots());
 		}
 	}
+	
+	public static int getSlotsPlusOneValue() {
+		int onlinenumber = Bukkit.getOnlinePlayers().size();
+		
+		if (onlinenumber >= SpigotConfig.getSlotsPlusOneMinSlots()) {
+			return onlinenumber + SpigotConfig.getSlotsPlusOneAddSlotsToOnline();
+		} else if (onlinenumber == SpigotConfig.getSlotsPlusOneMaxSlots()) {
+			return SpigotConfig.getSlotsPlusOneMaxSlots();
+		} else {
+			return SpigotConfig.getSlotsPlusOneMinSlots();
+		}
+	}
 }

@@ -24,7 +24,6 @@ public class VersionText {
 		ping.setVersionName(formatText(SpigotConfig.getVersionText()));
 	}
 	
-	//TODO: SLOTS PLUS ONE VAR
 	private static String formatText(String versionText) {
 		String realslots = Bukkit.getServer().getMaxPlayers()+"";
 		String realonline = Bukkit.getServer().getOnlinePlayers().size()+"";
@@ -36,7 +35,7 @@ public class VersionText {
 				.replaceAll("%realonline%", realonline)
 				.replaceAll("%fakeonline%", fakeonline)
 				.replaceAll("%fakeslots%", fakeslots)
-				.replaceAll("%slotsplusone%", "");		
+				.replaceAll("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"");		
 		return versionText;
 	}
 }

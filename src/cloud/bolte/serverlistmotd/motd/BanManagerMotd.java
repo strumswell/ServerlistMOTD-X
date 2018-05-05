@@ -27,7 +27,10 @@ import me.confuser.banmanager.BmAPI;
 //UNTESTED
 
 public class BanManagerMotd implements MotdInterface{
-
+	
+	/* 
+	 * Returns either the temp or fullban motd. 
+	 */
 	@Override
 	public String getMOTD(InetAddress ip) {
 		if (Long.valueOf(BmAPI.getCurrentBan(Main.IP_UUID.get(ip)).getExpires()) != null) {
@@ -37,12 +40,19 @@ public class BanManagerMotd implements MotdInterface{
 		}
 	}
 	
+	/*
+	 * Sets the motd
+	 */
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip) && BmAPI.isBanned(Main.IP_UUID.get(ip))) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
 		}
 	}
 	
+	/*
+	 * Returns formatted motd with colors
+	 * and variables depending on the type
+	 */
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd;

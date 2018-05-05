@@ -12,6 +12,7 @@ import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.ban.BanInterface;
 import cloud.bolte.serverlistmotd.ban.SpigotBan;
+import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
@@ -62,8 +63,10 @@ public class BanMotd implements MotdInterface {
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replaceAll("%line%", "\n").replaceAll("%weather%", WeatherVariable.getWeather())
-				.replaceAll("%time%", TimeVariable.getTime());
+		formattedMotd = formattedMotd.replaceAll("%line%", "\n")
+				.replaceAll("%weather%", WeatherVariable.getWeather())
+				.replaceAll("%time%", TimeVariable.getTime())
+				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
 
 		BanInterface ban = new SpigotBan();
 
@@ -78,8 +81,7 @@ public class BanMotd implements MotdInterface {
 					.replaceAll("%expmonth%", ban.banExpDateMonth(playerName))
 					.replaceAll("%expyear%", ban.banExpDateYear(playerName));
 			// FULL BAN
-		} else
-			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName));
+		} else formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName));
 		return formattedMotd;
 	}
 }

@@ -28,8 +28,7 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: Testing (IP_UUID from old ver working?, ...)
-//TODO: Commands
+//TODO: Testing
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
@@ -44,11 +43,11 @@ public class Main extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		//Load Userdata in HashMap & write config if necessary 
-		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
+		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);		
 		saveDefaultConfig();
 		
 		//Handover plugin instance to classes
-		SpigotConfig config = new SpigotConfig(this);
+		SpigotConfig config = new SpigotConfig(this);		
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		
 		//Check if world set in config exists (time, weather var!)

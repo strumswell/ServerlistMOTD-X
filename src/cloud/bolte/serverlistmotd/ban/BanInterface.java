@@ -11,6 +11,10 @@ package cloud.bolte.serverlistmotd.ban;
 
 public interface BanInterface {
 	
+	/**
+	 * @param playerName playerName
+	 * @return Ban reason
+	 */
 	public String banReason(String playerName);
 
 	/**
