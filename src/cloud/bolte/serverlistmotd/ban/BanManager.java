@@ -5,9 +5,6 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 
 import cloud.bolte.serverlistmotd.SpigotConfig;
-import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
-import cloud.bolte.serverlistmotd.variables.TimeVariable;
-import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 import me.confuser.banmanager.BmAPI;
 
 /*

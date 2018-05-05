@@ -7,9 +7,6 @@ import org.maxgamer.maxbans.banmanager.Ban;
 import org.maxgamer.maxbans.banmanager.TempBan;
 
 import cloud.bolte.serverlistmotd.SpigotConfig;
-import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
-import cloud.bolte.serverlistmotd.variables.TimeVariable;
-import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte

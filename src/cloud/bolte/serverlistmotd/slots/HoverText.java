@@ -35,10 +35,11 @@ public class HoverText {
 	}
 	
 	private static String formatText(String hoverLine) {
-		hoverLine = ChatColor.translateAlternateColorCodes('&', hoverLine)
+		String formatted = hoverLine;
+		formatted = ChatColor.translateAlternateColorCodes('&', hoverLine)
 				.replaceAll("%weather%", WeatherVariable.getWeather())
 				.replaceAll("%time%", TimeVariable.getTime()
 				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
-		return hoverLine;
+		return formatted;
 	}
 }
