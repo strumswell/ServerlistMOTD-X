@@ -21,7 +21,7 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class ClassicMotd implements MotdInterface{
+public class ClassicMotd implements Motd{
 
 	@Override
 	public String getMOTD(InetAddress ip) {

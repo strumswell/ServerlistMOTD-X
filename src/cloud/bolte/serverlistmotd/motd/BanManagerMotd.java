@@ -26,11 +26,8 @@ import me.confuser.banmanager.BmAPI;
 
 //UNTESTED
 
-public class BanManagerMotd implements MotdInterface{
+public class BanManagerMotd implements Motd{
 	
-	/* 
-	 * Returns either the temp or fullban motd. 
-	 */
 	@Override
 	public String getMOTD(InetAddress ip) {
 		if (Long.valueOf(BmAPI.getCurrentBan(Main.IP_UUID.get(ip)).getExpires()) != null) {
@@ -40,26 +37,14 @@ public class BanManagerMotd implements MotdInterface{
 		}
 	}
 	
-	/*
-	 * Sets the motd
-	 */
-	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
-		if (Main.IP_UUID.containsKey(ip) && BmAPI.isBanned(Main.IP_UUID.get(ip))) {
-				e.setMotd(formatMotd(getMOTD(ip), ip));
-		}
-	}
-	
-	/*
-	 * Returns formatted motd with colors
-	 * and variables depending on the type
-	 */
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replaceAll("%line%", "\n").replaceAll("%weather%", WeatherVariable.getWeather())
-				.replaceAll("%time%", TimeVariable.getTime());
+		formattedMotd = formattedMotd.replace("%line%", "\n")
+				.replace("%weather%", WeatherVariable.getWeather())
+				.replace("%time%", TimeVariable.getTime());
 
 		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
 
@@ -68,18 +53,32 @@ public class BanManagerMotd implements MotdInterface{
 
 		// FULL BAN
 		if (timestampconv.getYear() + 1900 == 1970) {
-			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName));
+			formattedMotd = formattedMotd.replace("%reason%", ban.banReason(playerName));
 		// TEMP BAN
 		} else {
-			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName))
-					.replaceAll("%expdate%", ban.date(playerName)).replaceAll("%exptime%", ban.time(playerName))
-					.replaceAll("%expsec%", ban.banExpDateSec(playerName))
-					.replaceAll("%expmin%", ban.banExpDateMin(playerName))
-					.replaceAll("%exphour%", ban.banExpDateHour(playerName))
-					.replaceAll("%expday%", ban.banExpDateDay(playerName))
-					.replaceAll("%expmonth%", ban.banExpDateMonth(playerName))
-					.replaceAll("%expyear%", ban.banExpDateYear(playerName));
+			formattedMotd = formattedMotd.replace("%reason%", ban.banReason(playerName))
+					.replace("%expdate%", ban.date(playerName))
+					.replace("%exptime%", ban.time(playerName))
+					.replace("%expsec%", ban.banExpDateSec(playerName))
+					.replace("%expmin%", ban.banExpDateMin(playerName))
+					.replace("%exphour%", ban.banExpDateHour(playerName))
+					.replace("%expday%", ban.banExpDateDay(playerName))
+					.replace("%expmonth%", ban.banExpDateMonth(playerName))
+					.replace("%expyear%", ban.banExpDateYear(playerName));
 		}
 		return formattedMotd;
+	}
+	
+	/**
+	 * Sets BanManager motd (external plugin) 
+	 * according to if server knows player, formats and sets it.
+	 * 
+	 * @param e ServerlistPingEvent from Spigot
+	 * @param ip IP of pinging player
+	 */
+	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
+		if (Main.IP_UUID.containsKey(ip) && BmAPI.isBanned(Main.IP_UUID.get(ip))) {
+				e.setMotd(formatMotd(getMOTD(ip), ip));
+		}
 	}
 }

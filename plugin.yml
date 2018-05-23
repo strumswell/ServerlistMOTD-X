@@ -22,7 +22,6 @@ permissions:
        serverlist.reload: true
        serverlist.restrictedmode: true
        serverlist.versiontext: true
-       serverlist.versiontext: true
        serverlist.banmotd: true
        serverlist.whitelistmotd: true
        serverlist.randommotd: true

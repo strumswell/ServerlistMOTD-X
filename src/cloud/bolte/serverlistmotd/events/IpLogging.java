@@ -15,6 +15,7 @@ import cloud.bolte.serverlistmotd.Main;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
+//TODO: Update IP if new
 public class IpLogging implements Listener{
 	@EventHandler
 	public void onJoin(AsyncPlayerPreLoginEvent e) {

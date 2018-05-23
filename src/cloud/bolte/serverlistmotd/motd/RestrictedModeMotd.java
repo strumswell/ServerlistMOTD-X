@@ -19,7 +19,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class RestrictedModeMotd implements MotdInterface {
+public class RestrictedModeMotd implements Motd {
 
 	@Override
 	public String getMOTD(InetAddress ip) {
@@ -31,13 +31,20 @@ public class RestrictedModeMotd implements MotdInterface {
 		} else return SpigotConfig.getRestrictedAccessDeniedMotd();
 	}
 	
-	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {
-		e.setMotd(formatMotd(getMOTD(ip), ip));
-	}
-
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		return ChatColor.translateAlternateColorCodes('&', motd)
-				.replaceAll("%line%", "\n");
+				.replace("%line%", "\n");
+	}
+	
+	/**
+	 * Sets RestrictedMode motd according to if server knows player,
+	 * formats and sets it.
+	 * 
+	 * @param e ServerlistPingEvent from Spigot
+	 * @param ip IP of pinging player
+	 */
+	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {
+		e.setMotd(formatMotd(getMOTD(ip), ip));
 	}
 }

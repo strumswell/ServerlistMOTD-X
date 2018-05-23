@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.variables.RandomNumberVariable;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -19,11 +20,19 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 public class VersionText {
 	
 	//Interesting: When VersionName set to null server doesn't respond -> RestrictedMode?
+	/**
+	 * Set custom protocol version and name with config text
+	 * @param ping WrappedServerPing from ProtcolLib
+	 */
 	public static void activateVersionText(WrappedServerPing ping) {
 		ping.setVersionProtocol(-1);
 		ping.setVersionName(formatText(SpigotConfig.getVersionText()));
 	}
 	
+	/**
+	 * @param versionText unformatted version text
+	 * @return formatted version text (vars, color)
+	 */
 	private static String formatText(String versionText) {
 		String formatted = versionText;
 		
@@ -33,11 +42,12 @@ public class VersionText {
 		String fakeonline = SpigotConfig.getFakeOnlinePlayerNumber()+"";
 		
 		formatted = ChatColor.translateAlternateColorCodes('&', versionText)
-				.replaceAll("%realslots%", realslots)
-				.replaceAll("%realonline%", realonline)
-				.replaceAll("%fakeonline%", fakeonline)
-				.replaceAll("%fakeslots%", fakeslots)
-				.replaceAll("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"");		
+				.replace("%realslots%", realslots)
+				.replace("%realonline%", realonline)
+				.replace("%fakeonline%", fakeonline)
+				.replace("%fakeslots%", fakeslots)
+				.replace("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"")
+				.replace("%random%", RandomNumberVariable.getRandomNumber()+"");		
 		return formatted;
 	}
 }

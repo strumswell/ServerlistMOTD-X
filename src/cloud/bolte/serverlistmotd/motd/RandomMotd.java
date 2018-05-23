@@ -23,7 +23,7 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class RandomMotd implements MotdInterface {
+public class RandomMotd implements Motd {
 
 	@Override
 	public String getMOTD(InetAddress ip) {
@@ -40,15 +40,15 @@ public class RandomMotd implements MotdInterface {
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
-				.replaceAll("%line%", "\n")
-				.replaceAll("%weather%", WeatherVariable.getWeather())
-				.replaceAll("%time%", TimeVariable.getTime()
-			    .replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
+				.replace("%line%", "\n")
+				.replace("%weather%", WeatherVariable.getWeather())
+				.replace("%time%", TimeVariable.getTime()
+			    .replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
-					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip)
-					.replaceAll("%money%", MoneyVariable.getMoney(ip)+""));
+					.replace("%player%", PlayerVariable.getNameFromIP(ip)
+					.replace("%money%", MoneyVariable.getMoney(ip)+""));
 		}
 		return formattedMotd;
 	}

@@ -35,6 +35,10 @@ public class SlotsPlusOne {
 		}
 	}
 	
+	/**
+	 * Get a SlotsPlusOne value for further usage
+	 * @return SlotsPlusOne value
+	 */
 	public static int getSlotsPlusOneValue() {
 		int onlinenumber = Bukkit.getOnlinePlayers().size();
 		

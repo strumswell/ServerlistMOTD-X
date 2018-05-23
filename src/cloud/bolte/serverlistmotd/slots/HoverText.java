@@ -26,6 +26,11 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
 public class HoverText {
 	
+	/**
+	 * Create custom GameProfile and therefore activate HoverText with custom text
+	 * @param ping WrappedServerPing from ProtocolLib
+	 * @param main Object of main class
+	 */
 	public static void activateHoverText(WrappedServerPing ping, Main main) {
 		List<WrappedGameProfile> players = new ArrayList<WrappedGameProfile>();
 		for (String string : SpigotConfig.getHoverText()) {
@@ -34,12 +39,17 @@ public class HoverText {
 		ping.setPlayers(players);
 	}
 	
+	/**
+	 * @param hoverLine unformatted HoverText set in config
+	 * @return formatted HoverText (color, var)
+	 */
 	private static String formatText(String hoverLine) {
 		String formatted = hoverLine;
 		formatted = ChatColor.translateAlternateColorCodes('&', hoverLine)
-				.replaceAll("%weather%", WeatherVariable.getWeather())
-				.replaceAll("%time%", TimeVariable.getTime()
-				.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
+				.replace("%weather%", WeatherVariable.getWeather())
+				.replace("%time%", TimeVariable.getTime())
+				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
+				.replace("%line%", "\n");
 		return formatted;
 	}
 }

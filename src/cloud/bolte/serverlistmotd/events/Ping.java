@@ -8,7 +8,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.motd.BanMotd;
 import cloud.bolte.serverlistmotd.motd.ClassicMotd;
-import cloud.bolte.serverlistmotd.motd.MotdInterface;
+import cloud.bolte.serverlistmotd.motd.Motd;
 import cloud.bolte.serverlistmotd.motd.MotdState;
 import cloud.bolte.serverlistmotd.motd.RandomMotd;
 import cloud.bolte.serverlistmotd.motd.RestrictedModeMotd;
@@ -24,7 +24,7 @@ import cloud.bolte.serverlistmotd.motd.WhitelistMotd;
  */
 
 public class Ping implements Listener {
-	private MotdInterface motd;
+	private Motd motd;
 	
 	/*
 	 * Set motds according to config

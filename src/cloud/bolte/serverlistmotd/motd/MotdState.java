@@ -15,10 +15,6 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 
 public class MotdState {
 	
-	/*
-	 * Contain enabled motd(-extensions) from config to easily check which motd is
-	 * enabled
-	 */
 	private Motd motd;
 	private MotdExtension motdExtension;
 
@@ -46,12 +42,17 @@ public class MotdState {
 
 	private static MotdState instance;
 
-	/* private constructor to avoid instantiation from other classes */
+	/**
+	 * Initialize motds on object creation
+	 */
 	private MotdState() {
 		initializeMotds();
 	}
 
-	/* return private singleton object */
+	/**
+	 * Use to get access to object of class
+	 * @return singleton object of class
+	 */
 	public static MotdState getInstance() {
 		if (MotdState.instance == null) {
 			MotdState.instance = new MotdState();
@@ -59,20 +60,25 @@ public class MotdState {
 		return MotdState.instance;
 	}
 	
-	/*
-	 * getters for private fields
+	/**
+	 * Use to get activated basic motd
+	 * @return basic motd (e.g. STANDARD)
 	 */
 	public Motd getMotd() {
 		return motd;
 	}
 
+	/**
+	 * Use to get activated motd extensions
+	 * @return extions motd (e.g. BAN)
+	 */
 	public MotdExtension getMotdExtensions() {
 		return motdExtension;
 	}
 
-	/*
-	 * Checks the config and sets the enabled motd(-extentsion) Very important to
-	 * use it on config reload!
+	/**
+	 * Checks the config and sets the enabled motd(-extentsion) 
+	 * Very important to use it on config reload! 
 	 */
 	public void initializeMotds() {
 		if (SpigotConfig.randomMotdEnabled()) {

@@ -26,11 +26,8 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
 //UNTESTED
 
-public class MaxBansMotd implements MotdInterface {
+public class MaxBansMotd implements Motd {
 	
-	/* 
-	 * Returns either the temp or fullban motd. 
-	 */
 	@Override
 	public String getMOTD(InetAddress ip) {
 		//Check for temp or full ban
@@ -42,8 +39,41 @@ public class MaxBansMotd implements MotdInterface {
 		}
 	}
 	
-	/*
-	 * Sets the motd
+	@Override
+	public String formatMotd(String motd, InetAddress ip) {
+		BanInterface ban = new MaxBansPlugin();
+		String formattedMotd;
+
+		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
+		formattedMotd = formattedMotd.replace("%line%", "\n").replace("%weather%", WeatherVariable.getWeather())
+				.replace("%time%", TimeVariable.getTime());
+
+		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
+
+		// FULL BAN
+		if (ban.expires(playerName) == 3555L) {
+			formattedMotd = formattedMotd.replace("%reason%", ban.banReason(playerName));
+		// TEMP BAND	
+		} else {
+			formattedMotd = formattedMotd
+					.replace("%reason%", ban.banReason(playerName))
+					.replace("%expdate%", ban.date(playerName)).replace("%exptime%", ban.time(playerName))
+					.replace("%expsec%", ban.banExpDateSec(playerName))
+					.replace("%expmin%", ban.banExpDateMin(playerName))
+					.replace("%exphour%", ban.banExpDateHour(playerName))
+					.replace("%expday%", ban.banExpDateDay(playerName))
+					.replace("%expmonth%", ban.banExpDateMonth(playerName))
+					.replace("%expyear%", ban.banExpDateYear(playerName));
+		}	
+		return formattedMotd;
+	}
+	
+	/**
+	 * Sets MaxBans motd (external plugin) motd according to 
+	 * if server knows player, formats and sets it.
+	 * 
+	 * @param e ServerlistPingEvent from Spigot
+	 * @param ip IP of pinging player
 	 */
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		//Check if player is known and set motd
@@ -51,38 +81,5 @@ public class MaxBansMotd implements MotdInterface {
 					.getBan(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName()) != null) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
 		}
-	}
-	
-	/*
-	 * Returns formatted motd with colors
-	 * and variables depending on the type
-	 */
-	@Override
-	public String formatMotd(String motd, InetAddress ip) {
-		BanInterface ban = new MaxBansPlugin();
-		String formattedMotd;
-
-		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replaceAll("%line%", "\n").replaceAll("%weather%", WeatherVariable.getWeather())
-				.replaceAll("%time%", TimeVariable.getTime());
-
-		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
-
-		// FULL BAN
-		if (ban.expires(playerName) == 3555L) {
-			formattedMotd = formattedMotd.replaceAll("%reason%", ban.banReason(playerName));
-		// TEMP BAND	
-		} else {
-			formattedMotd = formattedMotd
-					.replaceAll("%reason%", ban.banReason(playerName))
-					.replaceAll("%expdate%", ban.date(playerName)).replaceAll("%exptime%", ban.time(playerName))
-					.replaceAll("%expsec%", ban.banExpDateSec(playerName))
-					.replaceAll("%expmin%", ban.banExpDateMin(playerName))
-					.replaceAll("%exphour%", ban.banExpDateHour(playerName))
-					.replaceAll("%expday%", ban.banExpDateDay(playerName))
-					.replaceAll("%expmonth%", ban.banExpDateMonth(playerName))
-					.replaceAll("%expyear%", ban.banExpDateYear(playerName));
-		}	
-		return formattedMotd;
 	}
 }

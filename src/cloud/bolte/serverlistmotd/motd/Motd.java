@@ -11,17 +11,17 @@ import java.net.InetAddress;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public interface MotdInterface {
+public interface Motd {
 	
 	/**
-	 * Uses the config to determine which MOTD needs to be returned.
-	 * Has to decide between Regular, Newbie, Ban and Whitelist MOTD.
+	 * Get unformatted motd string
 	 * @param ip IP address
 	 * @return unformatted motd 
 	 */
 	public String getMOTD(InetAddress ip);
 	
 	/**
+	 * Format motd string with color and vars
 	 * @param motd MOTD that needs to be formatted
 	 * @return formatted MOTD
 	 */
