@@ -28,7 +28,7 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: Testing, RandomNumberVar, IpLogging
+//TODO: Testing, RandomNumberVar, IpLogging, Restricted Kick
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();

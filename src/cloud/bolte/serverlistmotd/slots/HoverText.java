@@ -49,7 +49,7 @@ public class HoverText {
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime())
 				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
-				.replace("%line%", "\n");
+				.replace("%line%", System.lineSeparator());
 		return formatted;
 	}
 }

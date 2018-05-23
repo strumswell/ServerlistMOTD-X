@@ -42,7 +42,7 @@ public class BanManagerMotd implements Motd{
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replace("%line%", "\n")
+		formattedMotd = formattedMotd.replace("%line%", System.lineSeparator())
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
 

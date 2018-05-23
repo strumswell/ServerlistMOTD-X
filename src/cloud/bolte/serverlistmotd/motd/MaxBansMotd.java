@@ -45,7 +45,8 @@ public class MaxBansMotd implements Motd {
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replace("%line%", "\n").replace("%weather%", WeatherVariable.getWeather())
+		formattedMotd = formattedMotd.replace("%line%", System.lineSeparator())
+				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
 
 		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();

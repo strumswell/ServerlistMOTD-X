@@ -34,15 +34,15 @@ public class ClassicMotd implements Motd{
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd;
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replaceAll("%line%", "\n")
-		.replaceAll("%weather%", WeatherVariable.getWeather())
-		.replaceAll("%time%", TimeVariable.getTime()
-		.replaceAll("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
+		formattedMotd = formattedMotd.replace("%line%", System.lineSeparator())
+				.replace("%weather%", WeatherVariable.getWeather())
+				.replace("%time%", TimeVariable.getTime()
+				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
-					.replaceAll("%player%", PlayerVariable.getNameFromIP(ip))
-					.replaceAll("%money%", MoneyVariable.getMoney(ip)+"");
+					.replace("%player%", PlayerVariable.getNameFromIP(ip))
+					.replace("%money%", MoneyVariable.getMoney(ip)+"");
 		}
 		return formattedMotd;
 	}

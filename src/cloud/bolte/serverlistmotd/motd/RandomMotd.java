@@ -40,7 +40,7 @@ public class RandomMotd implements Motd {
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
-				.replace("%line%", "\n")
+				.replace("%line%", System.lineSeparator())
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime()
 			    .replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));

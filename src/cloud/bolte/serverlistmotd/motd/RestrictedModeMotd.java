@@ -34,7 +34,7 @@ public class RestrictedModeMotd implements Motd {
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		return ChatColor.translateAlternateColorCodes('&', motd)
-				.replace("%line%", "\n");
+				.replace("%line%", System.lineSeparator());
 	}
 	
 	/**
