@@ -18,11 +18,10 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class RestrictedModeJoin implements Listener{
-	
     @EventHandler
 	public void logInRestrictedMode(PlayerLoginEvent e) {
     	if (SpigotConfig.restrictedModeEnabled()) {
-    		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("ServerlistMOTD.restricted.join")) {
+    		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("serverlist.restrictedmode.join")) {
     			e.allow();	
     		} else e.disallow(Result.KICK_OTHER, 
     				ChatColor.translateAlternateColorCodes('&', SpigotConfig.getRestrictedKickMessage()));	

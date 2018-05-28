@@ -8,6 +8,7 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.slots.FakeOnlinePlayer;
 import cloud.bolte.serverlistmotd.slots.HoverText;
 import cloud.bolte.serverlistmotd.slots.OnlineMultiplier;
 import cloud.bolte.serverlistmotd.slots.SlotsPlusOne;
@@ -48,7 +49,7 @@ public class ProtocolLibImplementation {
 						}
 
 						if (SpigotConfig.fakeOnlinePlayerEnabled()) {
-							ping.setPlayersOnline(SpigotConfig.getFakeOnlinePlayerNumber());
+							FakeOnlinePlayer.activateFakeOnlinePlayer(ping);
 						}
 
 						if (SpigotConfig.versionTextEnabled()) {

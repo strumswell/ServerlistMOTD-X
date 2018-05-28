@@ -28,54 +28,73 @@ public class SpigotConfig {
 	private static void setPlugin(Main plugin) {
 		main = plugin;
 	}
-
 	/*
-	 * GET STRINGS & LISTS
+	 * ClassicMotd
 	 */
 	public static String getNewbieMotd() {
-		return main.getConfig().getString("Motd.Message.Newbies");
+		return main.getConfig().getString("ClassicMotd.Newbies");
 	}
 
 	public static String getRegularsMotd() {
-		return main.getConfig().getString("Motd.Message.Regulars");
+		return main.getConfig().getString("ClassicMotd.Regulars");
 	}
-
+	
+	/*
+	 * RandomMotd
+	 */
 	public static List<String> getNewbieRandomMotd() {
-		return main.getConfig().getStringList("Motd.RandomMessages.Newbies");
+		return main.getConfig().getStringList("RandomMotd.Newbies");
 	}
 
 	public static List<String> getRegularsRandomMotd() {
-		return main.getConfig().getStringList("Motd.RandomMessages.Regulars");
+		return main.getConfig().getStringList("RandomMotd.Regulars");
 	}
-
-	public static List<String> getHoverText() {
-		return main.getConfig().getStringList("Motd.HoverText.Messages");
+	
+	public static boolean randomMotdEnabled() {
+		return main.getConfig().getBoolean("RandomMotd.Enable");
 	}
-
+	
+	/*
+	 * BanMotd
+	 */
 	public static String getBanTempMotd() {
-		return main.getConfig().getString("Motd.BanMessage.MessageTempBan");
+		return main.getConfig().getString("BanMotd.MessageTempBan");
 	}
 
 	public static String getBanForeverMotd() {
-		return main.getConfig().getString("Motd.BanMessage.MessageForeverBan");
+		return main.getConfig().getString("BanMotd.MessageForeverBan");
 	}
-
-	public static String getWhitelistMotd() {
-		return main.getConfig().getString("Motd.WhitelistMessage.MessageWhitelisted");
+	
+	public static boolean banMotdEnabled() {
+		return main.getConfig().getBoolean("BanMotd.Enable");
 	}
-
-	public static String getNotWhitelistedMotd() {
-		return main.getConfig().getString("Motd.WhitelistMessage.MessageNotWhitelisted");
-	}
-
+	
 	public static String getFormatDate() {
-		return main.getConfig().getString("Motd.BanMessage.FormatDate");
+		return main.getConfig().getString("BanMotd.Format.Date");
 	}
 
 	public static String getFormatTime() {
-		return main.getConfig().getString("Motd.BanMessage.FormatTime");
+		return main.getConfig().getString("BanMotd.Format.Time");
+	}
+	
+	/*
+	 * WhitelistMotd
+	 */
+	public static String getWhitelistMotd() {
+		return main.getConfig().getString("WhitelistMotd.MessageWhitelisted");
 	}
 
+	public static String getNotWhitelistedMotd() {
+		return main.getConfig().getString("WhitelistMotd.MessageNotWhitelisted");
+	}
+	
+	public static boolean whitelistMotdEnabled() {
+		return main.getConfig().getBoolean("WhitelistMotd.Enable");
+	}
+
+	/*
+	 * RestrictedMode
+	 */
 	public static String getRestrictedAccessGrantedMotd() {
 		return main.getConfig().getString("RestrictedMode.Motd.AccessGranted");
 	}
@@ -91,15 +110,134 @@ public class SpigotConfig {
 	public static String getRestrictedVersionText() {
 		return main.getConfig().getString("RestrictedMode.Slots.VersionText");
 	}
-
+	
+	public static boolean restrictedModeEnabled() {
+		return main.getConfig().getBoolean("RestrictedMode.Enable");
+	}
+	
+	/*
+	 * FakeMaxPlayer
+	 */
+	public static boolean fakeMaxPlayerEnabled() {
+		return main.getConfig().getBoolean("Slots.FakeMaxPlayer.Enable");
+	}
+	
+	public static int getFakeMaxPlayerNumber() {
+		return main.getConfig().getInt("Slots.FakeMaxPlayer.Number");
+	}
+	
+	/*
+	 * FakeOnlinePlayer
+	 */
+	public static boolean fakeOnlinePlayerEnabled() {
+		return main.getConfig().getBoolean("Slots.FakeOnlinePlayer.Enable");
+	}
+	
+	public static boolean fakeOnlinePlayerRandomNumberEnabled() {
+		return main.getConfig().getBoolean("Slots.FakeOnlinePlayer.RandomNumber.Enable");
+	}
+	
+	public static int getfakeOnlinePlayerRandomNumberMax() {
+		return main.getConfig().getInt("Slots.FakeOnlinePlayer.RandomNumber.Max");
+	}
+	
+	public static int getfakeOnlinePlayerRandomNumberMin() {
+		return main.getConfig().getInt("Slots.FakeOnlinePlayer.RandomNumber.Min");
+	}
+	
+	public static int getFakeOnlinePlayerNumber() {
+		return main.getConfig().getInt("Slots.FakeOnlinePlayer.Number");
+	}
+	
+	/*
+	 * VersionText
+	 */
 	public static String getVersionText() {
-		return main.getConfig().getString("Motd.Slots.VersionText.Message");
+		return main.getConfig().getString("Slots.VersionText.Message");
+	}
+	
+	public static boolean versionTextEnabled() {
+		return main.getConfig().getBoolean("Slots.VersionText.Enable");
+	}
+	
+	/*
+	 * UnkownSlots
+	 */
+	public static boolean unknownSlotsEnabled() {
+		return main.getConfig().getBoolean("Motd.Slots.UnknownSlots.Enable");
+	}
+	
+	/*
+	 * SlotsPlusOne
+	 */
+	public static boolean slotsPlusOneEnabled() {
+		return main.getConfig().getBoolean("Slots.SlotsPlusOne.Enable");
+	}
+	
+	public static int getSlotsPlusOneMinSlots() {
+		return main.getConfig().getInt("Slots.SlotsPlusOne.MinSlots");
 	}
 
-	public static String getRandomPlayerVariableText() {
-		return main.getConfig().getString("Variables.RandomPlayerVariable.UseTextWhenNobodyOnline.Text");
+	public static int getSlotsPlusOneMaxSlots() {
+		return main.getConfig().getInt("Slots.SlotsPlusOne.MaxSlots");
 	}
 
+	public static int getSlotsPlusOneAddSlotsToOnline() {
+		return main.getConfig().getInt("Slots.SlotsPlusOne.AddSlotsToOnline");
+	}
+
+	/*
+	 * OnlineMultiplier
+	 */
+	public static boolean onlineMultiplierEnabled() {
+		return main.getConfig().getBoolean("Slots.OnlineMultiplier.Enable");
+	}
+	
+	public static int getOnlineMultiplierMinSlots() {
+		return main.getConfig().getInt("Slots.OnlineMultiplier.MinSlots");
+	}
+
+	public static int getOnlineMultiplierMaxSlots() {
+		return main.getConfig().getInt("Slots.OnlineMultiplier.MaxSlots");
+	}
+	
+	public static int getOnlineMultiplierAddSlots() {
+		return main.getConfig().getInt("Slots.OnlineMultiplier.AddSlotsWhenOnline>MinSlots");
+	}
+
+	public static double getOnlineMultiplier() {
+		return main.getConfig().getDouble("Slots.OnlineMultiplier.MultiplyBy");
+	}
+	
+	/*
+	 * HoverText
+	 */
+	public static List<String> getHoverText() {
+		return main.getConfig().getStringList("Slots.HoverText.Messages");
+	}
+	
+	public static boolean hoverTextEnabled() {
+		return main.getConfig().getBoolean("Slots.HoverText.Enable");
+	}
+
+	/*
+	 * TimeVar
+	 */
+	public static String getTimeWorld() {
+		return main.getConfig().getString("Variables.TimeVariable.World");
+	}
+
+	public static String getDayText() {
+		return main.getConfig().getString("Variables.TimeVariable.DayText");
+	}
+
+	public static String getNightText() {
+		return main.getConfig().getString("Variables.TimeVariable.NightText");
+	}
+	
+	/*
+	 * WeatherVar
+	 */
 	public static String getRainText() {
 		return main.getConfig().getString("Variables.WeatherVariable.RainText");
 	}
@@ -112,68 +250,22 @@ public class SpigotConfig {
 		return main.getConfig().getString("Variables.WeatherVariable.World");
 	}
 
-	public static String getTimeWorld() {
-		return main.getConfig().getString("Variables.TimeVariable.World");
-	}
-
-	public static String getDayText() {
-		return main.getConfig().getString("Variables.TimeVariable.DayText");
-	}
-
-	public static String getNightText() {
-		return main.getConfig().getString("Variables.TimeVariable.NightText");
-	}
-
 	/*
-	 * GET BOOLEANS
+	 * RandomNumberVar
 	 */
-
-	public static boolean randomMotdEnabled() {
-		return main.getConfig().getBoolean("Motd.RandomMessages.Enable");
+	public static int getRandomMax() {
+		return main.getConfig().getInt("Variables.RandomNumberVariable.Max");
 	}
-
-	public static boolean banMotdEnabled() {
-		return main.getConfig().getBoolean("Motd.BanMessage.Enable");
+	
+	public static int getRandomMin() {
+		return main.getConfig().getInt("Variables.RandomNumberVariable.Min");
 	}
-
-	public static boolean whitelistMotdEnabled() {
-		return main.getConfig().getBoolean("Motd.WhitelistMessage.Enable");
-	}
-
-	public static boolean restrictedModeEnabled() {
-		return main.getConfig().getBoolean("RestrictedMode.Enable");
-	}
-
-	public static boolean fakeMaxPlayerEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.FakeMaxPlayer.Enable");
-	}
-
-	public static boolean fakeOnlinePlayerEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.FakeOnlinePlayer.Enable");
-	}
-
-	public static boolean fakeOnlinePlayerRandomNumberEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.FakeOnlinePlayer.RandomNumber.Enable");
-	}
-
-	public static boolean versionTextEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.VersionText.Enable");
-	}
-
-	public static boolean unknownSlotsEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.UnknownSlots.Enable");
-	}
-
-	public static boolean slotsPlusOneEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.SlotsPlusOne.Enable");
-	}
-
-	public static boolean onlineMultiplierEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.OnlineMultiplier.Enable");
-	}
-
-	public static boolean hoverTextEnabled() {
-		return main.getConfig().getBoolean("Motd.HoverText.Enable");
+	
+	/*
+	 * RandomPlayerVar
+	 */
+	public static String getRandomPlayerVariableText() {
+		return main.getConfig().getString("Variables.RandomPlayerVariable.UseTextWhenNobodyOnline.Text");
 	}
 
 	public static boolean randomPlayerVariableUseTextEnabled() {
@@ -185,59 +277,11 @@ public class SpigotConfig {
 	}
 
 	/*
-	 * GET INT
+	 * ConfigSave
 	 */
 
 	public static int autoSaveIntervalInMin() {
 		return main.getConfig().getInt("AutoSaveConfig.IntervalInMin");
-	}
-
-	public static int getFakeMaxPlayerNumber() {
-		return main.getConfig().getInt("Motd.Slots.FakeMaxPlayer.Number");
-	}
-
-	public static int getFakeOnlinePlayerNumber() {
-		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.Number");
-	}
-
-	public static int getFakeOnlinePlayerRandomNumberMin() {
-		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.RandomNumber.Min");
-	}
-
-	public static int getFakeOnlinePlayerRandomNumberMax() {
-		return main.getConfig().getInt("Motd.Slots.FakeOnlinePlayer.RandomNumber.Max");
-	}
-
-	public static int getOnlineMultiplierMinSlots() {
-		return main.getConfig().getInt("Motd.Slots.OnlineMultiplier.MinSlots");
-	}
-
-	public static int getOnlineMultiplierMaxSlots() {
-		return main.getConfig().getInt("Motd.Slots.OnlineMultiplier.MaxSlots");
-	}
-
-	public static int getOnlineMultiplierAddSlots() {
-		return main.getConfig().getInt("Motd.Slots.OnlineMultiplier.AddSlotsWhenOnline>MinSlots");
-	}
-
-	public static int getSlotsPlusOneMinSlots() {
-		return main.getConfig().getInt("Motd.Slots.SlotsPlusOne.MinSlots");
-	}
-
-	public static int getSlotsPlusOneMaxSlots() {
-		return main.getConfig().getInt("Motd.Slots.SlotsPlusOne.MaxSlots");
-	}
-
-	public static int getSlotsPlusOneAddSlotsToOnline() {
-		return main.getConfig().getInt("Motd.Slots.SlotsPlusOne.AddSlotsToOnline");
-	}
-
-	/*
-	 * GET DOUBLE
-	 */
-
-	public static double getOnlineMultiplier() {
-		return main.getConfig().getDouble("Motd.Slots.OnlineMultiplier.MultiplyBy");
 	}
 
 	/*

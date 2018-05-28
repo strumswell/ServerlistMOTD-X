@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
@@ -39,12 +40,18 @@ public class RestrictedModeMotd implements Motd {
 	
 	/**
 	 * Sets RestrictedMode motd according to if server knows player,
-	 * formats and sets it.
+	 * formats and sets it and kicks players without perms.
 	 * 
 	 * @param e ServerlistPingEvent from Spigot
 	 * @param ip IP of pinging player
 	 */
 	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {
 		e.setMotd(formatMotd(getMOTD(ip), ip));
+		
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			if (!(p.isOp() || p.hasPermission("serverlist.restrictedmode.nokick"))) {
+			p.kickPlayer(SpigotConfig.getRestrictedKickMessage());
+			}
+		}
 	}
 }

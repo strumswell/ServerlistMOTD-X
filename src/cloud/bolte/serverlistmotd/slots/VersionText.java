@@ -47,7 +47,7 @@ public class VersionText {
 				.replace("%fakeonline%", fakeonline)
 				.replace("%fakeslots%", fakeslots)
 				.replace("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"")
-				.replace("%random%", RandomNumberVariable.getRandomNumber()+"");		
+				.replace("%randomnumber%", RandomNumberVariable.getRandomNumber()+"");		
 		return formatted;
 	}
 }

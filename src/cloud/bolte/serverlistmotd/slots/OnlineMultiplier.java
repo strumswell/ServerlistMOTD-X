@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 
 import com.comphenix.protocol.wrappers.WrappedServerPing;
 
-import cloud.bolte.serverlistmotd.SpigotConfig;
+import static cloud.bolte.serverlistmotd.SpigotConfig.*;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -23,19 +23,19 @@ public class OnlineMultiplier {
 	 */
 	public static void activateOnlineMultiplier(WrappedServerPing ping) {
 		
-		int multipliedOnlinePlayer = (int) Math.round(Bukkit.getOnlinePlayers().size() * SpigotConfig.getOnlineMultiplier());
+		int multipliedOnlinePlayer = (int) Math.round(Bukkit.getOnlinePlayers().size() * getOnlineMultiplier());
 		
-		if (multipliedOnlinePlayer >= SpigotConfig.getOnlineMultiplierMinSlots()) {
-			ping.setPlayersMaximum(multipliedOnlinePlayer + SpigotConfig.getOnlineMultiplierAddSlots());
+		if (multipliedOnlinePlayer >= getOnlineMultiplierMinSlots()) {
+			ping.setPlayersMaximum(multipliedOnlinePlayer + getOnlineMultiplierAddSlots());
 			ping.setPlayersOnline(multipliedOnlinePlayer);
 		} else {
 			ping.setPlayersOnline(multipliedOnlinePlayer);
-			ping.setPlayersMaximum(SpigotConfig.getOnlineMultiplierMinSlots());
+			ping.setPlayersMaximum(getOnlineMultiplierMinSlots());
 		}
 
-		if (multipliedOnlinePlayer >= SpigotConfig.getOnlineMultiplierMaxSlots()) {
-			ping.setPlayersMaximum(SpigotConfig.getOnlineMultiplierMaxSlots());
-			ping.setPlayersOnline(SpigotConfig.getOnlineMultiplierMaxSlots());
+		if (multipliedOnlinePlayer >= getOnlineMultiplierMaxSlots()) {
+			ping.setPlayersMaximum(getOnlineMultiplierMaxSlots());
+			ping.setPlayersOnline(getOnlineMultiplierMaxSlots());
 		}
 	}
 }
