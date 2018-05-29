@@ -47,11 +47,5 @@ public class RestrictedModeMotd implements Motd {
 	 */
 	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {
 		e.setMotd(formatMotd(getMOTD(ip), ip));
-		
-		for (Player p : Bukkit.getOnlinePlayers()) {
-			if (!(p.isOp() || p.hasPermission("serverlist.restrictedmode.nokick"))) {
-			p.kickPlayer(SpigotConfig.getRestrictedKickMessage());
-			}
-		}
 	}
 }

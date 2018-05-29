@@ -28,7 +28,7 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: Testing
+//TODO: Testing (OnlineMultiplier + lotsPlusOne untested, rest is tested and working)
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();

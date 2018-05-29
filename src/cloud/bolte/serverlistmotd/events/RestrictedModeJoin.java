@@ -1,6 +1,5 @@
 package cloud.bolte.serverlistmotd.events;
 
-import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -23,8 +22,7 @@ public class RestrictedModeJoin implements Listener{
     	if (SpigotConfig.restrictedModeEnabled()) {
     		if (e.getPlayer().isOp() || e.getPlayer().hasPermission("serverlist.restrictedmode.join")) {
     			e.allow();	
-    		} else e.disallow(Result.KICK_OTHER, 
-    				ChatColor.translateAlternateColorCodes('&', SpigotConfig.getRestrictedKickMessage()));	
+    		} else e.disallow(Result.KICK_OTHER, SpigotConfig.getRestrictedKickMessage());	
 		}
 	}
 }

@@ -34,7 +34,6 @@ public class Serverlist implements CommandExecutor {
 				sender.sendMessage("  §e/serverlist randommotd §7§o* toggle function");
 				sender.sendMessage("  §e/serverlist banmotd §7§o* toggle function");
 				sender.sendMessage("  §e/serverlist whitelistmotd §7§o* toggle function");
-				sender.sendMessage("  §e/serverlist versiontext §7§o* toggle function");
 				return true;
 			case 1:
 				if (args[0].equalsIgnoreCase("reload")) {

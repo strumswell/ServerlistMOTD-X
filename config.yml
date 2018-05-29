@@ -43,9 +43,9 @@ RestrictedMode:
   Motd:
     AccessGranted: '&4Server is in restricted mode! You are able to join.'
     AccessDenied: '&4Can''t connect to server.'
-    Slots:
-      VersionText: ''
-      KickMessage: 'java.net.ConnectException: Connection timed out: no further information:'
+    KickMessage: 'java.net.ConnectException: Connection timed out: no further information:'
+  Slots:
+    VersionText: ''
 Slots:
   FakeMaxPlayer:
     Enable: false

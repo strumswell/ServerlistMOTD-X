@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import cloud.bolte.serverlistmotd.motd.MotdState;
 
@@ -104,7 +105,7 @@ public class SpigotConfig {
 	}
 
 	public static String getRestrictedKickMessage() {
-		return main.getConfig().getString("RestrictedMode.KickMessage");
+		return main.getConfig().getString("RestrictedMode.Motd.KickMessage");
 	}
 
 	public static String getRestrictedVersionText() {
@@ -164,7 +165,7 @@ public class SpigotConfig {
 	 * UnkownSlots
 	 */
 	public static boolean unknownSlotsEnabled() {
-		return main.getConfig().getBoolean("Motd.Slots.UnknownSlots.Enable");
+		return main.getConfig().getBoolean("Slots.UnknownSlots.Enable");
 	}
 	
 	/*
@@ -295,16 +296,22 @@ public class SpigotConfig {
 		} else {
 			main.getConfig().set("RestrictedMode.Enable", true);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cRestrictedMode toggled on!");
+			
+			for (Player p : Bukkit.getOnlinePlayers()) {
+				if (!(p.isOp() || p.hasPermission("serverlist.restrictedmode.nokick"))) {
+					p.kickPlayer(SpigotConfig.getRestrictedKickMessage());
+				}
+			}
 		}
 		SpigotConfig.saveSmotdConfig();
 	}
 
 	public static void toggleVersionText(CommandSender sender) {
 		if (SpigotConfig.versionTextEnabled()) {
-			main.getConfig().set("Motd.Slots.VersionText.Enable", false);
+			main.getConfig().set("Slots.VersionText.Enable", false);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cVersionText toggled off!");
 		} else {
-			main.getConfig().set("Motd.Slots.VersionText.Enable", true);
+			main.getConfig().set("Slots.VersionText.Enable", true);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cVersionText toggled on!");
 		}
 		SpigotConfig.saveSmotdConfig();
@@ -312,10 +319,10 @@ public class SpigotConfig {
 
 	public static void toggleRandomMotd(CommandSender sender) {
 		if (SpigotConfig.randomMotdEnabled()) {
-			main.getConfig().set("Motd.RandomMessages.Enable", false);
+			main.getConfig().set("RandomMotd.Enable", false);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cRandomMotd toggled off!");
 		} else {
-			main.getConfig().set("Motd.RandomMessages.Enable", true);
+			main.getConfig().set("RandomMotd.Enable", true);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cRandomMotd toggled on!");
 		}
 		SpigotConfig.saveSmotdConfig();
@@ -323,10 +330,10 @@ public class SpigotConfig {
 
 	public static void toggleBanMotd(CommandSender sender) {
 		if (SpigotConfig.banMotdEnabled()) {
-			main.getConfig().set("Motd.BanMessage.Enable", false);
+			main.getConfig().set("BanMotd.Enable", false);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cBanMotd toggled off!");
 		} else {
-			main.getConfig().set("Motd.BanMessage.Enable", true);
+			main.getConfig().set("BanMotd.Enable", true);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cBanMotd toggled on!");
 		}
 		SpigotConfig.saveSmotdConfig();
@@ -334,10 +341,10 @@ public class SpigotConfig {
 
 	public static void toggleWhitelistMotd(CommandSender sender) {
 		if (SpigotConfig.whitelistMotdEnabled()) {
-			main.getConfig().set("Motd.WhitelistMessage.Enable", false);
+			main.getConfig().set("WhitelistMotd.Enable", false);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cWhitelistMotd toggled off!");
 		} else {
-			main.getConfig().set("Motd.WhitelistMessage.Enable", true);
+			main.getConfig().set("WhitelistMotd.Enable", true);
 			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cWhitelistMotd toggled on!");
 		}
 		SpigotConfig.saveSmotdConfig();

@@ -13,7 +13,7 @@ public class FakeOnlinePlayer {
 			ping.setPlayersOnline(getFakeOnlinePlayerNumber());
 		} else {
 			Random random = new Random();
-			ping.setPlayersOnline(random.nextInt(getfakeOnlinePlayerRandomNumberMax() - getfakeOnlinePlayerRandomNumberMin()) 
+			ping.setPlayersOnline(random.nextInt(getfakeOnlinePlayerRandomNumberMax()+1 - getfakeOnlinePlayerRandomNumberMin()) 
 					+ getfakeOnlinePlayerRandomNumberMin());	
 		}
 	}
