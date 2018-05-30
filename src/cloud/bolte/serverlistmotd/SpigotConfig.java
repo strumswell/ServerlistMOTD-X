@@ -377,7 +377,7 @@ public class SpigotConfig {
 	 * Checks if world name set in config is existent 
 	 */
 	public void worldConfigCheck() {
-		if (getWeatherWorld() == null || getTimeWorld() == null) {
+		if (Bukkit.getWorld(getWeatherWorld()) == null || Bukkit.getWorld(getTimeWorld()) == null) {
 			Bukkit.getLogger().severe(
 					"[ServerlistMOTD] Can't find the defined world from config. Please set your world name in config!");
 			System.out.println("[ServerlistMOTD] |------------------------------------|");

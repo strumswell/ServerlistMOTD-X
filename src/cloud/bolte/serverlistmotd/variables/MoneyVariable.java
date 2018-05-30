@@ -24,6 +24,8 @@ public class MoneyVariable {
 						(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)));
 		} catch (NullPointerException npe) {
 			return -1d;
+		} catch (NoClassDefFoundError nc) {
+			return 0d;
 		}
 	}
 }
