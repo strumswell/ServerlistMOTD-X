@@ -100,7 +100,8 @@ public class IO {
 	}
 
 	/**
-	 * Used for looking up a key in a HashMap
+	 * Used for looking up a key in a HashMap. 
+	 * Use try-catch-block to prevent NPE!
 	 * 
 	 * @param hm HashMap
 	 * @param value Value in HashMap

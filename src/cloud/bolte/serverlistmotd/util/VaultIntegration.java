@@ -56,8 +56,9 @@ public class VaultIntegration {
 	}
 
 	public static void setupVault() {
-		setupEconomy();
-		setupChat();
-		setupPermissions();
+		if (setupEconomy()){
+			setupChat();
+			setupPermissions();
+		}
 	}
 }

@@ -5,7 +5,6 @@ import java.net.InetAddress;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;

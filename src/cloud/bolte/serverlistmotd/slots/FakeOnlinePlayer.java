@@ -4,7 +4,10 @@ import java.util.Random;
 
 import com.comphenix.protocol.wrappers.WrappedServerPing;
 
-import static cloud.bolte.serverlistmotd.SpigotConfig.*;
+import static cloud.bolte.serverlistmotd.SpigotConfig.fakeOnlinePlayerRandomNumberEnabled;
+import static cloud.bolte.serverlistmotd.SpigotConfig.getfakeOnlinePlayerRandomNumberMax;
+import static cloud.bolte.serverlistmotd.SpigotConfig.getfakeOnlinePlayerRandomNumberMin;
+import static cloud.bolte.serverlistmotd.SpigotConfig.getFakeOnlinePlayerNumber;;
 
 public class FakeOnlinePlayer {
 	

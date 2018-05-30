@@ -19,19 +19,16 @@ import cloud.bolte.serverlistmotd.util.IO;
 public class IpLogging implements Listener{
 	@EventHandler
 	public void onPreLogin(AsyncPlayerPreLoginEvent e) {
-		long s = System.currentTimeMillis();
 		//player not in hashmap
 		if (!Main.IP_UUID.containsKey(e.getAddress())) {
 			//player with different ip in hashmap
-			if (!IO.getKeyFromValue(Main.IP_UUID, e.getUniqueId()).equals(null)) {
+			if (IO.getKeyFromValue(Main.IP_UUID, e.getUniqueId()) != null) {
 				//clear old entry and create one with new ip
 				Main.IP_UUID.remove(IO.getKeyFromValue(Main.IP_UUID, e.getUniqueId()));
 				Main.IP_UUID.put(e.getAddress(), e.getUniqueId());
 			} else {
 				Main.IP_UUID.put(e.getAddress(), e.getUniqueId());
 			}
-		}
-		
-		System.out.println(System.currentTimeMillis()-s);
+		}	
 	}
 }
