@@ -45,7 +45,7 @@ public class MaxBansMotd implements Motd {
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replace("%line%", System.lineSeparator())
+		formattedMotd = formattedMotd.replace("%line%", "\n")
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
 
