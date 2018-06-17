@@ -7,7 +7,7 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 import static cloud.bolte.serverlistmotd.SpigotConfig.getOnlineMultiplier;
 import static cloud.bolte.serverlistmotd.SpigotConfig.getOnlineMultiplierMinSlots;
 import static cloud.bolte.serverlistmotd.SpigotConfig.getOnlineMultiplierMaxSlots;
-import static cloud.bolte.serverlistmotd.SpigotConfig.getOnlineMultiplierAddSlots;;
+import static cloud.bolte.serverlistmotd.SpigotConfig.getOnlineMultiplierAddSlots;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte

@@ -393,7 +393,7 @@ public class SpigotConfig {
 	 * Rename old config (if available) and write new one
 	 */
 	public static void migrateConfig() {
-		if (main.getConfig().getDouble("DoNOTtouchMe") == 5.0) {
+		if (!main.getConfig().isSet("DoNOTtouchMe") || main.getConfig().getDouble("DoNOTtouchMe") == 5.0) {
 			File oldConfig = new File(main.getDataFolder(), "config.yml");
 			File newFile = new File(main.getDataFolder(), "config_old.yml");
 			
