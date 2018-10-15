@@ -20,6 +20,11 @@ import static cloud.bolte.serverlistmotd.SpigotConfig.getFakeOnlinePlayerNumber;
 
 public class FakeOnlinePlayer {
 	
+	/**
+	 * Activate the FakeOnlinePlayer feature which fakes the online 
+	 * player count in the serverlist. 
+	 * @param WrappedServerPing object from ProtocolLib
+	 */
 	public static void activateFakeOnlinePlayer(WrappedServerPing ping) {
 		if (!fakeOnlinePlayerRandomNumberEnabled()) {
 			ping.setPlayersOnline(getFakeOnlinePlayerNumber());

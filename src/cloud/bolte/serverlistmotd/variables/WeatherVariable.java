@@ -13,8 +13,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class WeatherVariable {
-	
+public class WeatherVariable {	
 	/**
 	 * Checks weather from world specified in config
 	 * @return rain/sun text from config 

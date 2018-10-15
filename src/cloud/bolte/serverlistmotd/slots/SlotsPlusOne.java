@@ -23,7 +23,7 @@ public class SlotsPlusOne {
 	 */
 	public static void acitvateSlotsPlusOne(WrappedServerPing ping) {
 		int onlinenumber = Bukkit.getOnlinePlayers().size();
-		
+	
 		if (onlinenumber >= SpigotConfig.getSlotsPlusOneMinSlots()) {
 			ping.setPlayersMaximum(onlinenumber + SpigotConfig.getSlotsPlusOneAddSlotsToOnline());
 		} else {

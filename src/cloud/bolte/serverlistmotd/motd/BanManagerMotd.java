@@ -24,8 +24,6 @@ import me.confuser.banmanager.BmAPI;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//UNTESTED
-
 public class BanManagerMotd implements Motd{
 	
 	@Override

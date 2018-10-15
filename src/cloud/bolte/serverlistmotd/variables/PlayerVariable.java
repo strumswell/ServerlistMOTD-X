@@ -16,8 +16,7 @@ import cloud.bolte.serverlistmotd.Main;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-public class PlayerVariable {
-	
+public class PlayerVariable {	
 	/**
 	 * Checks if IP is known in HashMap IP_UUID
 	 * @param ip IP from player

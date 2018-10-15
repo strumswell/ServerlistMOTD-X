@@ -22,6 +22,10 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 public class RandomPlayerVariable {
 	private static Random random = new Random();
 
+	/**
+	 * Get random player name from online players
+	 * @return random player name
+	 */
 	public static String getRandomPlayer() {
 		if (Bukkit.getOnlinePlayers().size() > 0) {
 			Player player = (Player) Bukkit.getOnlinePlayers().toArray()
@@ -32,6 +36,10 @@ public class RandomPlayerVariable {
 		}
 	}
 	
+	/**
+	 * Get random player name from IP_UUID hashmap
+	 * @return random player name
+	 */
 	private static String getRandomOfflinePlayer() {
 		if (!(Main.IP_UUID.isEmpty())) {
 			ArrayList<UUID> values = new ArrayList<UUID>(Main.IP_UUID.values());

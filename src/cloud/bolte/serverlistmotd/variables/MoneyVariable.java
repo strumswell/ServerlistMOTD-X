@@ -17,7 +17,12 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  */
 
 public class MoneyVariable {
-	
+	/**
+	 * Get balance from player. Vault and a economy plugin has
+	 * tp be installed on the server.
+	 * @param user ip
+	 * @return balance
+	 */
 	public static Double getMoney(InetAddress ip) {
 		try {
 			return VaultIntegration.getEcononomy().getBalance

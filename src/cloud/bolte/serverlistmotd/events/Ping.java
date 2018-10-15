@@ -2,17 +2,10 @@ package cloud.bolte.serverlistmotd.events;
 
 import java.net.InetAddress;
 
+import cloud.bolte.serverlistmotd.motd.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
-
-import cloud.bolte.serverlistmotd.motd.BanMotd;
-import cloud.bolte.serverlistmotd.motd.ClassicMotd;
-import cloud.bolte.serverlistmotd.motd.Motd;
-import cloud.bolte.serverlistmotd.motd.MotdState;
-import cloud.bolte.serverlistmotd.motd.RandomMotd;
-import cloud.bolte.serverlistmotd.motd.RestrictedModeMotd;
-import cloud.bolte.serverlistmotd.motd.WhitelistMotd;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -32,7 +25,8 @@ public class Ping implements Listener {
 	@EventHandler
 	public void onPing(ServerListPingEvent e) {
 		InetAddress ip = e.getAddress();
-
+		
+		// Motds have to be loaded from config
 		if (MotdState.getInstance().getMotd() != null) {
 			switch (MotdState.getInstance().getMotd()) {
 			case STANDARD:
@@ -48,6 +42,7 @@ public class Ping implements Listener {
 			}
 		} else System.out.println("[ServerlistMOTD] Oooops. Something went wrong creating the MOTD!");
 
+		// Motd extensions have to be loaded from config
 		if (MotdState.getInstance().getMotdExtensions() != null) {
 			switch (MotdState.getInstance().getMotdExtensions()) {
 			case BAN_SPIGOT:
@@ -55,11 +50,11 @@ public class Ping implements Listener {
 				banmotd.setBanMotd(e, ip);
 				break;
 			case BAN_MAXBANS:
-				BanMotd maxbanmotd = new BanMotd();
+				MaxBansMotd maxbanmotd = new MaxBansMotd();
 				maxbanmotd.setBanMotd(e, ip);
 				break;
 			case BAN_BANMANAGER:
-				BanMotd banmanagermotd = new BanMotd();
+				BanManagerMotd banmanagermotd = new BanManagerMotd();
 				banmanagermotd.setBanMotd(e, ip);
 				break;
 			case WHITELIST:

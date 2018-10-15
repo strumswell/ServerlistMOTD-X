@@ -25,7 +25,6 @@ public class OnlineMultiplier {
 	 * @param ping Ping object from ProtocolLib
 	 */
 	public static void activateOnlineMultiplier(WrappedServerPing ping) {
-		
 		int multipliedOnlinePlayer = (int) Math.round(Bukkit.getOnlinePlayers().size() * getOnlineMultiplier());
 		
 		if (multipliedOnlinePlayer >= getOnlineMultiplierMinSlots()) {
