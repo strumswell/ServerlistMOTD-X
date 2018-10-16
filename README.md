@@ -1,7 +1,7 @@
 # ServerlistMOTD X [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e08cf8573e2142d0b127e16e2b5c3d08)](https://www.codacy.com/app/strumswell/ServerlistMOTD-X?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strumswell/ServerlistMOTD-X&amp;utm_campaign=Badge_Grade)
 
 The current version is untested and can contain bugs!
-### Download first Alpha: [\*click*](https://github.com/strumswell/ServerlistMOTD-X/releases/download/alpha1/ServerlistMOTD.jar)
+### Download latest Release: [\*click*](https://github.com/strumswell/ServerlistMOTD-X/releases)
 You need:
 - correct version of ProtocolLib for your Spigot version (required)
 - Vault (optional)
