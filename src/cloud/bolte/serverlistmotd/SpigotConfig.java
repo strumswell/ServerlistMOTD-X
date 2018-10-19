@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -375,19 +376,37 @@ public class SpigotConfig {
 
 	/**
 	 * Checks if world name set in config is existent 
+	 * And fixes problems automatically
 	 */
-	public boolean configWorldExists() {
+	public void configWorldCheck() {
 		if (Bukkit.getWorld(getWeatherWorld()) == null || Bukkit.getWorld(getTimeWorld()) == null) {
+			System.out.println("[ServerlistMOTD] ------------------------");
+			//Informing user of mismatch
 			Bukkit.getLogger().severe(
-					"[ServerlistMOTD] Can't find the defined world from config. Please set your world name in config!");
-			System.out.println("[ServerlistMOTD] |------------------------------------|");
-			System.out.println("[ServerlistMOTD] |                                    |");
-			System.out.println("[ServerlistMOTD] |Please change WORLD NAME in config! |");
-			System.out.println("[ServerlistMOTD] |                                    |");
-			System.out.println("[ServerlistMOTD] |------------------------------------|");
-			return false;
-		} else {
-			return true;
+					"[ServerlistMOTD] CAN'T FIND THE DEFINED WORLD FROM YOUR CONFIG!");
+			System.out.println("[ServerlistMOTD] Searching for available world...");
+			
+			//Search shortest world name
+			String worldName = "";
+			for(World w : Bukkit.getServer().getWorlds()) {
+				if (worldName.equalsIgnoreCase("") | w.getName().length() < worldName.length()) {
+					worldName = w.getName();
+				}
+			}
+			
+			//If found world is not correct disable plugin and return
+			if (Bukkit.getWorld(worldName) == null || Bukkit.getWorld(worldName) == null) {
+				Bukkit.getPluginManager().disablePlugin(main);
+				return;
+			}
+			
+			//Update config with found world name
+			main.getConfig().set("Variables.TimeVariable.World", worldName);
+			main.getConfig().set("Variables.WeatherVariable.World", worldName);
+			SpigotConfig.saveSmotdConfig();
+			System.out.println("[ServerlistMOTD] Found '" + worldName + "‘ and saved it to config.");
+			System.out.println("[ServerlistMOTD] We're good now. ;-)");
+			System.out.println("[ServerlistMOTD] ------------------------");
 		}
 	}
 	

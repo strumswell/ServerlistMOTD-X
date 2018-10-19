@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -16,6 +17,7 @@ import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
+import cloud.bolte.serverlistmotd.motd.MotdState;
 import cloud.bolte.serverlistmotd.util.IO;
 import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
@@ -42,32 +44,26 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
-		//Write config if necessary 
+		//Write config if necessary and load Userdata in HashMap
 		saveDefaultConfig();
+		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);	
 		
 		//Handover plugin instance to SpigotConfig
 		SpigotConfig config = new SpigotConfig(this);		
 		
-		//Check if world set in config exists (time, weather var!)
-		//Has to be called upon right after config loading to avoid errors
-		if (!config.configWorldExists()) { 
-			Bukkit.getPluginManager().disablePlugin(this);
-			return;
-		}
-		
-		//Load Userdata in HashMap
-		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);	
-		
 		//Handover plugin instance to ProtocolLibImplementation
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
-		
-		//Start ProtocolLib for slots stuff
-		pli.listenToServerlistPackets();
 		
 		//Register listeners
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new RestrictedModeJoin(), this);
+		
+		//Check if world set in config exists (time, weather var!)
+		config.configWorldCheck();
+		
+		//Start ProtocolLib for slots stuff
+		pli.listenToServerlistPackets();
 		
 		//Register command
 		this.getCommand("serverlist").setExecutor(new Serverlist());
