@@ -376,7 +376,7 @@ public class SpigotConfig {
 	/**
 	 * Checks if world name set in config is existent 
 	 */
-	public void worldConfigCheck() {
+	public boolean configWorldExists() {
 		if (Bukkit.getWorld(getWeatherWorld()) == null || Bukkit.getWorld(getTimeWorld()) == null) {
 			Bukkit.getLogger().severe(
 					"[ServerlistMOTD] Can't find the defined world from config. Please set your world name in config!");
@@ -385,7 +385,9 @@ public class SpigotConfig {
 			System.out.println("[ServerlistMOTD] |Please change WORLD NAME in config! |");
 			System.out.println("[ServerlistMOTD] |                                    |");
 			System.out.println("[ServerlistMOTD] |------------------------------------|");
-			Bukkit.getPluginManager().disablePlugin(main);
+			return false;
+		} else {
+			return true;
 		}
 	}
 	
@@ -402,8 +404,8 @@ public class SpigotConfig {
 				Bukkit.getPluginManager().disablePlugin(main);
 			}
 			
-			boolean fileRanemed = oldConfig.renameTo(newFile);
-			if (fileRanemed) {
+			boolean fileRenamed = oldConfig.renameTo(newFile);
+			if (fileRenamed) {
 				main.saveDefaultConfig();
 				main.reloadConfig();
 				System.out.println("[ServerlistMOTD] Renamed old config and created new config!");

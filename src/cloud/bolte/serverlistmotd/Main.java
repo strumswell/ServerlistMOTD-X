@@ -42,16 +42,24 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
-		//Load Userdata in HashMap & write config if necessary 
-		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);		
+		//Write config if necessary 
 		saveDefaultConfig();
 		
-		//Handover plugin instance to classes
+		//Handover plugin instance to SpigotConfig
 		SpigotConfig config = new SpigotConfig(this);		
-		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		
 		//Check if world set in config exists (time, weather var!)
-		config.worldConfigCheck();
+		//Has to be called upon right after config loading to avoid errors
+		if (!config.configWorldExists()) { 
+			Bukkit.getPluginManager().disablePlugin(this);
+			return;
+		}
+		
+		//Load Userdata in HashMap
+		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);	
+		
+		//Handover plugin instance to ProtocolLibImplementation
+		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		
 		//Start ProtocolLib for slots stuff
 		pli.listenToServerlistPackets();
