@@ -3,6 +3,7 @@ package cloud.bolte.serverlistmotd.variables;
 import java.net.InetAddress;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.util.VaultIntegration;
@@ -25,8 +26,14 @@ public class MoneyVariable {
 	 */
 	public static Double getMoney(InetAddress ip) {
 		try {
-			return VaultIntegration.getEcononomy().getBalance
-						(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)));
+			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));		
+			if (p.hasPlayedBefore()) {
+				return VaultIntegration.getEcononomy().getBalance(p);
+			}else {
+				//User is uncached by Spigot
+				//p is null
+				return 0d;
+			}
 		} catch (NullPointerException npe) {
 			return -1d;
 		} catch (NoClassDefFoundError nc) {

@@ -45,6 +45,10 @@ public class BanManagerMotd implements Motd{
 				.replace("%time%", TimeVariable.getTime());
 
 		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
+		
+		if(playerName.equals(null)) {
+			playerName = "Strumswell";
+		}
 
 		BanInterface ban = new BanManager();
 		Date timestampconv = new Date((long) ban.expires(playerName) * 1000);

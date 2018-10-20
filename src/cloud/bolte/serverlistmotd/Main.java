@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -17,7 +16,6 @@ import cloud.bolte.serverlistmotd.events.IpLogging;
 import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
-import cloud.bolte.serverlistmotd.motd.MotdState;
 import cloud.bolte.serverlistmotd.util.IO;
 import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
@@ -34,7 +32,7 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
-
+	
 	@Override
 	public void onDisable() {
 		//Prepare HashMap and save it to disk

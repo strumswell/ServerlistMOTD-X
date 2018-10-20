@@ -4,6 +4,7 @@ import java.net.InetAddress;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.maxgamer.maxbans.MaxBans;
 import org.maxgamer.maxbans.banmanager.TempBan;
@@ -78,9 +79,11 @@ public class MaxBansMotd implements Motd {
 	 */
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		//Check if player is known and set motd
-		if (Main.IP_UUID.containsKey(ip) && MaxBans.instance.getBanManager()
-					.getBan(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName()) != null) {
+		OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
+		if (p.hasPlayedBefore()) {
+			if (Main.IP_UUID.containsKey(ip) && MaxBans.instance.getBanManager().getBan(p.getName()) != null) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
+			}
 		}
 	}
 }

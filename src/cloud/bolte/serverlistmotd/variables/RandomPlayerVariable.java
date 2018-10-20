@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import cloud.bolte.serverlistmotd.Main;
@@ -47,9 +48,18 @@ public class RandomPlayerVariable {
 			if (SpigotConfig.randomPlayerVariableUseTextEnabled()) {
 				return SpigotConfig.getRandomPlayerVariableText();
 			} else {
-				return Bukkit.getOfflinePlayer(values.get(index)).getName();
+				OfflinePlayer p = Bukkit.getOfflinePlayer(values.get(index));
+				if (p.hasPlayedBefore()) {
+					return p.getName();
+				}else {
+					//User is uncached by Spigot
+					//p is null
+					return "<unknown>";
+				}
 			}
 		} else {
+			//No player joined before
+			//Just returning my name ;-)
 			return "Strumswell";
 		}
 	}

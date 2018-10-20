@@ -77,8 +77,10 @@ public class BanMotd implements Motd {
 	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip)) {
 			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-			if (p.isBanned()) {
-				e.setMotd(formatMotd(getMOTD(ip), ip));
+			if (p.hasPlayedBefore()) {
+				if (p.isBanned()) {
+					e.setMotd(formatMotd(getMOTD(ip), ip));
+				}
 			}
 		}
 	}

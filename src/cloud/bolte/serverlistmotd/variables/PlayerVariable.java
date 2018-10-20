@@ -36,7 +36,13 @@ public class PlayerVariable {
 	 */
 	public static String getNameFromIP(InetAddress ip) {
 		OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-		return p.getName();
+		if (p.hasPlayedBefore()) {
+			return p.getName();
+		}else {
+			//User is uncached by Spigot
+			//p is null
+			return "<unknown>";
+		}
 
 	}
 }

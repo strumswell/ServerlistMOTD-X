@@ -1,6 +1,6 @@
 name: ServerlistMOTD
 author: Strumswell
-version: X-FIRESTORM
+version: X-2018-10-20
 description: Change your Serverlist Motd!
 load: POSTWORLD
 depend: [ProtocolLib]
