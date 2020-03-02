@@ -1,6 +1,6 @@
 # ServerlistMOTD X [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e08cf8573e2142d0b127e16e2b5c3d08)](https://www.codacy.com/app/strumswell/ServerlistMOTD-X?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strumswell/ServerlistMOTD-X&amp;utm_campaign=Badge_Grade)
 
-### Download latest Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2018-10-20/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2018-10-20/ServerlistMOTD.jar)
+### Download latest Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2020-03-02/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2020-03-02/ServerlistMOTD.jar)
 
 
 You need:
