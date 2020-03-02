@@ -23,7 +23,7 @@ public class Serverlist implements CommandExecutor {
 			switch(args.length) {
 			case 0:
 				sender.sendMessage("§8§l---------------------------------");
-				sender.sendMessage("§e§lServerlist§6§lMOTD | §cFIRESTORM UPDATE");
+				sender.sendMessage("§e§lServerlist§6§lMOTD");
 				sender.sendMessage("§7   §o~by Strumswell");
 				sender.sendMessage("§8§l---------------------------------");
 				sender.sendMessage("§6§l> §eList of commands:");

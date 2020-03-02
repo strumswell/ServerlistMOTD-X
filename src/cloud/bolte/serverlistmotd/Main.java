@@ -46,10 +46,7 @@ public class Main extends JavaPlugin implements Listener {
 		saveDefaultConfig();
 		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);	
 		
-		//Handover plugin instance to SpigotConfig
 		SpigotConfig config = new SpigotConfig(this);		
-		
-		//Handover plugin instance to ProtocolLibImplementation
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
 		
 		//Register listeners
@@ -67,7 +64,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.getCommand("serverlist").setExecutor(new Serverlist());
 		
 		//Setup Vault for money var
-		VaultIntegration.setupVault();
+		VaultIntegration.setupEconomy();
 		
 		//Timer for saving userdata to disk 
 		BukkitScheduler scheduler = getServer().getScheduler();
