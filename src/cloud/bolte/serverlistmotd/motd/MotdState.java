@@ -96,9 +96,9 @@ public class MotdState {
 		motdExtension = MotdExtension.NONE; // prevent NPE
 		if (SpigotConfig.banMotdEnabled())
 			motdExtension = MotdExtension.BAN_SPIGOT;
-		if (Bukkit.getServer().getPluginManager().getPlugin("MaxBans") != null)
+		if (SpigotConfig.banMotdEnabled() && Bukkit.getServer().getPluginManager().getPlugin("MaxBans") != null)
 			motdExtension = MotdExtension.BAN_MAXBANS;
-		if (Bukkit.getServer().getPluginManager().getPlugin("BanManager") != null)
+		if (SpigotConfig.banMotdEnabled() && Bukkit.getServer().getPluginManager().getPlugin("BanManager") != null)
 			motdExtension = MotdExtension.BAN_BANMANAGER;
 		if (SpigotConfig.whitelistMotdEnabled())
 			motdExtension = MotdExtension.WHITELIST;
