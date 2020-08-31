@@ -3,6 +3,7 @@ package cloud.bolte.serverlistmotd.motd;
 import java.net.InetAddress;
 
 import org.bukkit.ChatColor;
+import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
@@ -45,5 +46,9 @@ public class ClassicMotd implements Motd{
 					.replace("%money%", MoneyVariable.getMoney(ip)+"");
 		}
 		return formattedMotd;
+	}
+
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
+		e.setMotd(formatMotd(getMOTD(ip), ip));
 	}
 }

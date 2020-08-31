@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
+import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
@@ -51,5 +52,9 @@ public class RandomMotd implements Motd {
 					.replace("%money%", MoneyVariable.getMoney(ip)+""));
 		}
 		return formattedMotd;
+	}
+
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
+		e.setMotd(formatMotd(getMOTD(ip), ip));
 	}
 }

@@ -2,6 +2,8 @@ package cloud.bolte.serverlistmotd.motd;
 
 import java.net.InetAddress;
 
+import org.bukkit.event.server.ServerListPingEvent;
+
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
  * ServerlistMOTD is licensed under a
@@ -15,7 +17,7 @@ public interface Motd {
 	
 	/**
 	 * Get unformatted motd string
-	 * @param ip IP address
+	 * @param ip IP address of user
 	 * @return unformatted motd 
 	 */
 	public String getMOTD(InetAddress ip);
@@ -26,4 +28,11 @@ public interface Motd {
 	 * @return formatted MOTD
 	 */
 	public String formatMotd(String motd, InetAddress ip);
+
+	/**
+	 * Set the formatted motd in the users serverlist
+	 * @param e ping event
+	 * @param ip IP address of user
+	 */
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip);
 }

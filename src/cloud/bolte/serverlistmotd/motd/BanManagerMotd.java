@@ -78,7 +78,7 @@ public class BanManagerMotd implements Motd{
 	 * @param e ServerlistPingEvent from Spigot
 	 * @param ip IP of pinging player
 	 */
-	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip) && BmAPI.isBanned(Main.IP_UUID.get(ip))) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));
 		}

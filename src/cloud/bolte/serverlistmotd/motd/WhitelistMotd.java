@@ -56,7 +56,7 @@ public class WhitelistMotd implements Motd {
 	 * @param e ServerlistPingEvent from Spigot
 	 * @param ip IP of pinging player
 	 */
-	public void setWhitelistMotd(ServerListPingEvent e, InetAddress ip) {
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Bukkit.hasWhitelist()) {
 			if (Main.IP_UUID.containsKey(ip)) {
 				e.setMotd(formatMotd(getMOTD(ip), ip));

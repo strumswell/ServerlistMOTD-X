@@ -25,8 +25,6 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//UNTESTED
-
 public class MaxBansMotd implements Motd {
 	
 	@Override
@@ -77,7 +75,7 @@ public class MaxBansMotd implements Motd {
 	 * @param e ServerlistPingEvent from Spigot
 	 * @param ip IP of pinging player
 	 */
-	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip)) {
 			//Check if player is known and set motd
 			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));

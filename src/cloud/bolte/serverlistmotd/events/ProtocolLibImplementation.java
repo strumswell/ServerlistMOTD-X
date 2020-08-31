@@ -39,11 +39,10 @@ public class ProtocolLibImplementation {
 		System.out.println("[ServerlistMOTD] Hooking into ProtocolLib.");
 		ProtocolLibrary.getProtocolManager().addPacketListener(
 				new PacketAdapter(PacketAdapter.params(main, PacketType.Status.Server.SERVER_INFO).optionAsync()) {
-
 					@Override
 					public void onPacketSending(PacketEvent event) {
 						WrappedServerPing ping = event.getPacket().getServerPings().read(0);
-
+						
 						if (SpigotConfig.fakeMaxPlayerEnabled()) {
 							ping.setPlayersMaximum(SpigotConfig.getFakeMaxPlayerNumber());
 						}
@@ -75,7 +74,7 @@ public class ProtocolLibImplementation {
 						if (SpigotConfig.restrictedModeEnabled()) {
 							ping.setVersionProtocol(-1);
 							ping.setVersionName(SpigotConfig.getRestrictedVersionText()); // Rest happens in Ping.class
-						}
+						}		
 					}
 				});
 	}

@@ -15,31 +15,8 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 
 public class MotdState {
 	
-	private Motd motd;
-	private MotdExtension motdExtension;
-
-	/**
-	 * Contains standard motds that happen most of the time and are not "event"
-	 * based. They are not optional and have to be set.
-	 *
-	 */
-	public enum Motd {
-		STANDARD, RANDOM
-	}
-
-	/**
-	 * Contains extensions to the motd that are "event" and player based, and
-	 * therefore don't get triggered most of the time. They extend the basic motd
-	 * functionality and are optional.
-	 * 
-	 * Example: Banned, whitelisted player or the lock down of the server via
-	 * restricted mode.
-	 *
-	 */
-	public enum MotdExtension {
-		NONE, BAN_SPIGOT, BAN_MAXBANS, BAN_BANMANAGER, WHITELIST, RESTRICTED
-	}
-
+	private Motd motdBase;
+	private Motd motdExtension;
 	private static MotdState instance;
 
 	/**
@@ -64,15 +41,15 @@ public class MotdState {
 	 * Use to get activated basic motd
 	 * @return basic motd (e.g. STANDARD)
 	 */
-	public Motd getMotd() {
-		return motd;
+	public Motd getMotdBase() {
+		return motdBase;
 	}
 
 	/**
 	 * Use to get activated motd extensions
 	 * @return extions motd (e.g. BAN)
 	 */
-	public MotdExtension getMotdExtensions() {
+	public Motd getMotdExtension() {
 		return motdExtension;
 	}
 
@@ -82,27 +59,22 @@ public class MotdState {
 	 */
 	public void initializeMotds() {
 		if (SpigotConfig.randomMotdEnabled()) {
-			motd = Motd.RANDOM;
-		} else
-			motd = Motd.STANDARD;
+			motdBase = new RandomMotd();
+		} else {
+			motdBase = new ClassicMotd();
+		}
 
-		/*
-		 * From lowest priority to highest! If Ban and Restricted are enabled in config,
-		 * Restricted will always be enabled. If Ban and Whitelist are enabled in
-		 * config, Whitelist will always be enabled. If Whitelist and Restricted are
-		 * enabled in config, Restricted will always be enabled.
-		 * 
-		 */
-		motdExtension = MotdExtension.NONE; // prevent NPE
+		//From lowest priority to highest!
+		motdExtension = null; 
 		if (SpigotConfig.banMotdEnabled())
-			motdExtension = MotdExtension.BAN_SPIGOT;
+			motdExtension = new BanMotd();
 		if (SpigotConfig.banMotdEnabled() && Bukkit.getServer().getPluginManager().getPlugin("MaxBans") != null)
-			motdExtension = MotdExtension.BAN_MAXBANS;
+			motdExtension = new MaxBansMotd();
 		if (SpigotConfig.banMotdEnabled() && Bukkit.getServer().getPluginManager().getPlugin("BanManager") != null)
-			motdExtension = MotdExtension.BAN_BANMANAGER;
+			motdExtension = new BanManagerMotd();
 		if (SpigotConfig.whitelistMotdEnabled())
-			motdExtension = MotdExtension.WHITELIST;
+			motdExtension = new WhitelistMotd();
 		if (SpigotConfig.restrictedModeEnabled())
-			motdExtension = MotdExtension.RESTRICTED;
+			motdExtension = new RestrictedModeMotd();
 	}
 }

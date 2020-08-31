@@ -74,13 +74,11 @@ public class BanMotd implements Motd {
 	 * @param e ServerlistPingEvent from Spigot
 	 * @param ip IP of pinging player
 	 */
-	public void setBanMotd(ServerListPingEvent e, InetAddress ip) {
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
 		if (Main.IP_UUID.containsKey(ip)) {
 			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-			if (p.hasPlayedBefore()) {
-				if (p.isBanned()) {
-					e.setMotd(formatMotd(getMOTD(ip), ip));
-				}
+			if (p.hasPlayedBefore() && p.isBanned()) {
+				e.setMotd(formatMotd(getMOTD(ip), ip));
 			}
 		}
 	}

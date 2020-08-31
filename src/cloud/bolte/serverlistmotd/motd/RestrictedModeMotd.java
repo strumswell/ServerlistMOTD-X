@@ -44,7 +44,7 @@ public class RestrictedModeMotd implements Motd {
 	 * @param e ServerlistPingEvent from Spigot
 	 * @param ip IP of pinging player
 	 */
-	public void setRestrictedMotd(ServerListPingEvent e, InetAddress ip) {
+	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip) {
 		e.setMotd(formatMotd(getMOTD(ip), ip));
 	}
 }

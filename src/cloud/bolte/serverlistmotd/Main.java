@@ -28,23 +28,22 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
-//TODO: Testing (OnlineMultiplier + lotsPlusOne untested, rest is tested and working)
-
 public class Main extends JavaPlugin implements Listener {
 	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
-	
+	private final File loggedIPs = new File("plugins/ServerlistMOTD/IP_UUID.dat");
+
 	@Override
 	public void onDisable() {
 		//Prepare HashMap and save it to disk
 		IO.removeUnusedEntries(); // Experimental
-		IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
+		IO.saveHashMapIntoFlatfile(loggedIPs, IP_UUID);
 	}
 
 	@Override
 	public void onEnable() {
 		//Write config if necessary and load Userdata in HashMap
 		saveDefaultConfig();
-		IO.loadFlatfileIntoHashMap(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);	
+		IO.loadFlatfileIntoHashMap(loggedIPs, IP_UUID);	
 		
 		SpigotConfig config = new SpigotConfig(this);		
 		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
@@ -71,7 +70,7 @@ public class Main extends JavaPlugin implements Listener {
 		scheduler.runTaskTimerAsynchronously(this, new Runnable() {
 			@Override
 			public void run() {
-				IO.saveHashMapIntoFlatfile(new File("plugins/ServerlistMOTD/IP_UUID.dat"), IP_UUID);
+				IO.saveHashMapIntoFlatfile(loggedIPs, IP_UUID);
 			}
 		}, SpigotConfig.autoSaveIntervalInMin() * 1200L, SpigotConfig.autoSaveIntervalInMin() * 1200L);
 	}
