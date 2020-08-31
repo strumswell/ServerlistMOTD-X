@@ -8,7 +8,7 @@
 - economy plugin (optional)
 
 ### 1.16 Support
-You can choose between two options. If you can't use ProtocolLib dev builds due to incompatibility with other plugins, use the ServerlistMOTD version without ProtocolLib dependency. Otherwise use 
+You can choose between two options. If you can't use ProtocolLib dev builds due to incompatibility with other plugins, use the ServerlistMOTD version without ProtocolLib dependency. Otherwise use the last official build.
 | Feature           | With [ProtocolLib Dev Build](https://ci.dmulloy2.net/job/ProtocolLib/lastSuccessfulBuild/) | Without ProtocolLib | 
 |-------------------|-----------------------|---------------------|
 | Fake Slots        | ✅                     | ❌                   |
