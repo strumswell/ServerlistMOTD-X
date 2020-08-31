@@ -60,18 +60,18 @@ public class SpigotBan implements BanInterface {
 	@Override
 	public String date(String playerName) {
 		return SpigotConfig.getFormatDate()
-				.replaceAll("DD", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getDate() + "")
-				.replaceAll("MM", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getMonth() + 1 + "")
-				.replaceAll("YYYY", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getYear() + 1900 + "")
-				.replaceAll("YY", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getYear() - 100 + "");
+				.replace("DD", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getDate() + "")
+				.replace("MM", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getMonth() + 1 + "")
+				.replace("YYYY", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getYear() + 1900 + "")
+				.replace("YY", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getYear() - 100 + "");
 	}
 
 	@Override
 	public String time(String playerName) {
 		return SpigotConfig.getFormatTime()
-				.replaceAll("hh", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getHours() + "")
-				.replaceAll("mm", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getMinutes() + "")
-				.replaceAll("ss", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getSeconds() + "");
+				.replace("hh", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getHours() + "")
+				.replace("mm", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getMinutes() + "")
+				.replace("ss", Bukkit.getBanList(Type.NAME).getBanEntry(playerName).getExpiration().getSeconds() + "");
 	}
 
 	@Override

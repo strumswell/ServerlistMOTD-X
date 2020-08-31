@@ -102,10 +102,10 @@ public class MaxBansPlugin implements BanInterface {
 	public String date(String playerName) {
 		if (this.expires(playerName) != null) {
 			Date timestampconv = new Date(this.expires(playerName));
-			return SpigotConfig.getFormatDate().replaceAll("DD", banExpDateDay(playerName))
-					.replaceAll("MM", banExpDateMonth(playerName))
-					.replaceAll("YYYY", timestampconv.getYear() + 1900 + "")
-					.replaceAll("YY", banExpDateYear(playerName));
+			return SpigotConfig.getFormatDate().replace("DD", banExpDateDay(playerName))
+					.replace("MM", banExpDateMonth(playerName))
+					.replace("YYYY", timestampconv.getYear() + 1900 + "")
+					.replace("YY", banExpDateYear(playerName));
 		} else {
 			return "0";
 		}
@@ -114,8 +114,8 @@ public class MaxBansPlugin implements BanInterface {
 	@Override
 	public String time(String playerName) {
 		if (this.expires(playerName) != null) {
-			return SpigotConfig.getFormatTime().replaceAll("hh", banExpDateHour(playerName))
-					.replaceAll("mm", banExpDateMin(playerName)).replaceAll("ss", banExpDateSec(playerName));
+			return SpigotConfig.getFormatTime().replace("hh", banExpDateHour(playerName))
+					.replace("mm", banExpDateMin(playerName)).replace("ss", banExpDateSec(playerName));
 		} else {
 			return "0";
 		}
