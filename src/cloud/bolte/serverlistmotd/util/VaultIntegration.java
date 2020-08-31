@@ -7,6 +7,10 @@ import net.milkbowl.vault.economy.Economy;
 
 public class VaultIntegration {
 
+	private VaultIntegration() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static Economy econ = null;
 
 	public static boolean setupEconomy() {

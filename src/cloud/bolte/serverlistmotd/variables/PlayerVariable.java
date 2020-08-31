@@ -17,6 +17,11 @@ import cloud.bolte.serverlistmotd.Main;
  */
 
 public class PlayerVariable {	
+
+	private PlayerVariable() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Checks if IP is known in HashMap IP_UUID
 	 * @param ip IP from player
@@ -40,9 +45,7 @@ public class PlayerVariable {
 			return p.getName();
 		}else {
 			//User is uncached by Spigot
-			//p is null
 			return "<unknown>";
 		}
-
 	}
 }

@@ -14,6 +14,11 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class WeatherVariable {	
+
+	private WeatherVariable() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Checks weather from world specified in config
 	 * @return rain/sun text from config 

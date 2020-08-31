@@ -18,6 +18,11 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  */
 
 public class MoneyVariable {
+
+	private MoneyVariable() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Get balance from player. Vault and a economy plugin has
 	 * tp be installed on the server.

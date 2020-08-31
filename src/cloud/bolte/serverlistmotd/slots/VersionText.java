@@ -18,6 +18,10 @@ import cloud.bolte.serverlistmotd.variables.RandomNumberVariable;
  */
 
 public class VersionText {
+
+	private VersionText() {
+		throw new IllegalStateException("Utility class");
+	}
 	
 	//Interesting: When VersionName set to null server doesn't respond -> RestrictedMode?
 	/**

@@ -24,6 +24,10 @@ import cloud.bolte.serverlistmotd.Main;
  */
 
 public class IO {
+
+	private IO() {
+		throw new IllegalStateException("Utility class");
+	}
 	
 	/**
 	 * Feed inmemory HashMap with known IPs and UUIDs to identify the player in the serverlist.

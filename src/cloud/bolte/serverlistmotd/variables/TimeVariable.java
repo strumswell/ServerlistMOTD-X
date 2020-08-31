@@ -14,6 +14,11 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class TimeVariable {
+
+	private TimeVariable() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Checks wethaer in world specified in config
 	 * @return day/night text from config

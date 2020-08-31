@@ -16,6 +16,10 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class SlotsPlusOne {
+
+	private SlotsPlusOne() {
+		throw new IllegalStateException("Utility class");
+	}
 	
 	/**
 	 * Set slots and online players according to SlotsPlusOne settings in config.

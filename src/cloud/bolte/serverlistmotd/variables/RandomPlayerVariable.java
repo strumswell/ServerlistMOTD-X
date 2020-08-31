@@ -23,6 +23,10 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 public class RandomPlayerVariable {
 	private static Random random = new Random();
 
+	private RandomPlayerVariable() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Get random player name from online players
 	 * @return random player name

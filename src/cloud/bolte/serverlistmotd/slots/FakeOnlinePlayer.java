@@ -19,6 +19,10 @@ import static cloud.bolte.serverlistmotd.SpigotConfig.getFakeOnlinePlayerNumber;
  */
 
 public class FakeOnlinePlayer {
+
+	private FakeOnlinePlayer() {
+		throw new IllegalStateException("Utility class");
+	}
 	
 	/**
 	 * Activate the FakeOnlinePlayer feature which fakes the online 

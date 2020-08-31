@@ -20,6 +20,10 @@ import static cloud.bolte.serverlistmotd.SpigotConfig.getOnlineMultiplierAddSlot
 
 public class OnlineMultiplier {
 	
+	private OnlineMultiplier() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Set slots and online players according to OnlineMultiplier settings in config.
 	 * @param ping Ping object from ProtocolLib

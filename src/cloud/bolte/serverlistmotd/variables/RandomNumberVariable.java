@@ -5,6 +5,11 @@ import java.util.Random;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 
 public class RandomNumberVariable {
+
+	private RandomNumberVariable() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * Get a random number based on min/ max from config
 	 * Only used in VersionText at the moment which you

@@ -25,6 +25,10 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  */
 
 public class HoverText {
+
+	private HoverText() {
+		throw new IllegalStateException("Utility class");
+	}
 	
 	/**
 	 * Create custom GameProfile and therefore activate HoverText with custom text
