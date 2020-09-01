@@ -17,6 +17,7 @@ import cloud.bolte.serverlistmotd.events.Ping;
 import cloud.bolte.serverlistmotd.events.ProtocolLibImplementation;
 import cloud.bolte.serverlistmotd.events.RestrictedModeJoin;
 import cloud.bolte.serverlistmotd.util.IO;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.util.VaultIntegration;
 
 /*
@@ -62,8 +63,9 @@ public class Main extends JavaPlugin implements Listener {
 		//Register command
 		this.getCommand("serverlist").setExecutor(new Serverlist());
 		
-		//Setup Vault for money var
+		//Setup Vault and Papi
 		VaultIntegration.setupEconomy();
+		PapiIntegration.setupIntegration();
 		
 		//Timer for saving userdata to disk 
 		BukkitScheduler scheduler = getServer().getScheduler();
