@@ -60,6 +60,9 @@ Slots:
   VersionText:
     Enable: false
     Message: '&aJoin now!  &e%realonline%/%realslots%'
+  OutdatedClientText:
+    Enable: false
+    Message: 'Use Minecraft 1.16 &r&7%realonline%&8/&7%realslots%'
   UnknownSlots:
     Enable: false
   SlotsPlusOne:

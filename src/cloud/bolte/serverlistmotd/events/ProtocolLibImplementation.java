@@ -11,6 +11,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.slots.FakeOnlinePlayer;
 import cloud.bolte.serverlistmotd.slots.HoverText;
 import cloud.bolte.serverlistmotd.slots.OnlineMultiplier;
+import cloud.bolte.serverlistmotd.slots.OutdatedClientText;
 import cloud.bolte.serverlistmotd.slots.SlotsPlusOne;
 import cloud.bolte.serverlistmotd.slots.VersionText;
 
@@ -49,6 +50,10 @@ public class ProtocolLibImplementation {
 
 						if (SpigotConfig.fakeOnlinePlayerEnabled()) {
 							FakeOnlinePlayer.activateFakeOnlinePlayer(ping);
+						}
+						
+						if (SpigotConfig.outdatedClientTextEnabled()) {
+							OutdatedClientText.activate(ping);
 						}
 
 						if (SpigotConfig.versionTextEnabled()) {

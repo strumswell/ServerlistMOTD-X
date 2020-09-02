@@ -163,6 +163,17 @@ public class SpigotConfig {
 	}
 	
 	/*
+	 * OutdatedClientText
+	 */
+	public static String getOudatedClientText() {
+		return main.getConfig().getString("Slots.OutdatedClientText.Message");
+	}
+	
+	public static boolean outdatedClientTextEnabled() {
+		return main.getConfig().getBoolean("Slots.OutdatedClientText.Enable");
+	}
+	
+	/*
 	 * UnkownSlots
 	 */
 	public static boolean unknownSlotsEnabled() {
