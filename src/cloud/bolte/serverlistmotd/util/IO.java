@@ -99,8 +99,10 @@ public class IO {
 	 */
 	public static void removeUnusedEntries() {
 		long start = System.currentTimeMillis();
+		int elementsStart = Main.IP_UUID.size();
 		Main.IP_UUID = invert(invert(Main.IP_UUID));
-		System.out.println("[ServerlistMOTD] Removed duplicates in userdata in "+(System.currentTimeMillis()-start)+"ms.");
+		int elementsEnd = Main.IP_UUID.size();
+		System.out.println("[ServerlistMOTD] Removed "+ (elementsStart - elementsEnd) +" duplicates in userdata in "+(System.currentTimeMillis()-start)+"ms.");
 	}
 
 	/**
