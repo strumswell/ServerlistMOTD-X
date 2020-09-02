@@ -5,7 +5,8 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 
 import cloud.bolte.serverlistmotd.SpigotConfig;
-import me.confuser.banmanager.BmAPI;
+import me.confuser.banmanager.common.api.BmAPI;
+//import me.confuser.banmanager.BmAPI; old version of BanManager
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte

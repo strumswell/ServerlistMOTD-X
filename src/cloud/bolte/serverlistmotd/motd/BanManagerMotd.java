@@ -15,7 +15,8 @@ import cloud.bolte.serverlistmotd.ban.BanManager;
 import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
-import me.confuser.banmanager.BmAPI;
+import me.confuser.banmanager.common.api.BmAPI;
+//import me.confuser.banmanager.BmAPI; old version of BanManager
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
