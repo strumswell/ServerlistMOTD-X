@@ -103,4 +103,4 @@ Variables:
       Enable: true
 AutoSaveConfig:
   IntervalInMin: 30
-DoNOTtouchMe: 10.0
+DoNOTtouchMe: 10.1

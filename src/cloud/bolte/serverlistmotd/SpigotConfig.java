@@ -19,6 +19,7 @@ import cloud.bolte.serverlistmotd.motd.MotdState;
  * If not, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
  */
 
+// TODO: Migration for OutdatedClientText from older version
 public class SpigotConfig {
 	private static Main main;
 
@@ -440,6 +441,14 @@ public class SpigotConfig {
 				main.reloadConfig();
 				System.out.println("[ServerlistMOTD] Renamed old config and created new config!");
 			}
+		}
+		if (main.getConfig().getDouble("DoNOTtouchMe") == 10.0) {
+			System.out.println("[ServerlistMOTD] Adding new features to config.yml...");
+			main.getConfig().set("Slots.OutdatedClientText.Enable", false);
+			main.getConfig().set("Slots.OutdatedClientText.Message", "Use Minecraft 1.16 &r&7%realonline%&8/&7%realslots%");
+			main.getConfig().set("DoNOTtouchMe", 10.1);
+			saveSmotdConfig();
+			System.out.println("[ServerlistMOTD] Config successfully migrated to new version.");
 		}
 	}
 }
