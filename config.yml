@@ -6,10 +6,10 @@
 #      serverlist? SMOTD simulates this and changes the text. This is just cosmetical!
 #   - "Plugin ServerlistMOTD created a profile with 'HoverText' as an UUID.": Your HoverText normally
 #      contains a list of players. SMOTD clears that and creates a fake player with your text as its name.
-#   - "ServerlistMOTD is red in plugin list and doesn't work!" You probably have a world not named "world" and
-#      didn't change that in this config. See at Time and WeatherVariable under world.
 #   - "What is Regulars and Newbies?" Players are categorized in those two groups in the list. Regular players
 #      are known by their ip while newbies are not.
+#   - "Player related placeholders from PlaceholderAPI are not working!": This is a known limitation. All this 
+#      information is not available in the serverlist because the player isn't online.
 # ----------------------------------------- [ Configuration File ]  ------------------------------------------ #
 
 ClassicMotd:

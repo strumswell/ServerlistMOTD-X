@@ -27,16 +27,16 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  */
 
 public class RandomMotd implements Motd {
+	private Random random = new Random();
 
 	@Override
 	public String getMOTD(InetAddress ip) {
-		Random random = new Random();
 		if (Main.IP_UUID.containsKey(ip)) {
 			List<String> motds = SpigotConfig.getRegularsRandomMotd();
-			return motds.get(random.nextInt(motds.size()));
+			return motds.get(this.random.nextInt(motds.size()));
 		} else {
 			List<String> motds = SpigotConfig.getNewbieRandomMotd();
-			return motds.get(random.nextInt(motds.size()));
+			return motds.get(this.random.nextInt(motds.size()));
 		}
 	}
 	
@@ -45,8 +45,8 @@ public class RandomMotd implements Motd {
 		String formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
 				.replace("%line%", "\n")
 				.replace("%weather%", WeatherVariable.getWeather())
-				.replace("%time%", TimeVariable.getTime()
-			    .replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
+				.replace("%time%", TimeVariable.getTime())
+			    .replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd

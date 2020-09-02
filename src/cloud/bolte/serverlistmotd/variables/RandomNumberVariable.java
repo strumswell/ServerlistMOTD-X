@@ -5,6 +5,8 @@ import java.util.Random;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 
 public class RandomNumberVariable {
+	
+	private static Random random = new Random();
 
 	private RandomNumberVariable() {
 		throw new IllegalStateException("Utility class");
@@ -17,7 +19,6 @@ public class RandomNumberVariable {
 	 * @return random number
 	 */
 	public static int getRandomNumber() {
-		Random random = new Random();
 		return random.nextInt(SpigotConfig.getRandomMax() - SpigotConfig.getRandomMin()) + SpigotConfig.getRandomMin();
 	}
 }
