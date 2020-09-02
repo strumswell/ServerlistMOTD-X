@@ -36,8 +36,8 @@ public class ClassicMotd implements Motd{
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd;
-		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
-		formattedMotd = formattedMotd.replace("%line%", "\n")
+		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
+				.replace("%line%", "\n")
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime()
 				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));

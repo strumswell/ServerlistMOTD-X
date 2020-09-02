@@ -9,6 +9,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.MoneyVariable;
 import cloud.bolte.serverlistmotd.variables.PlayerVariable;
 import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
@@ -41,11 +42,16 @@ public class WhitelistMotd implements Motd {
 				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
+		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
 					.replace("%player%", PlayerVariable.getNameFromIP(ip)
 					.replace("%money%", MoneyVariable.getMoney(ip)+""));
+			formattedMotd = PapiIntegration.replaceVariables(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)), formattedMotd);
+		} else {
+			formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
 		}
+		
 		return formattedMotd;
 	}
 	

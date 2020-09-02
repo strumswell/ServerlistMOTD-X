@@ -5,12 +5,14 @@ import java.util.Date;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.ban.BanInterface;
 import cloud.bolte.serverlistmotd.ban.BanManager;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 import me.confuser.banmanager.BmAPI;
@@ -35,6 +37,7 @@ public class BanManagerMotd implements Motd{
 		}
 	}
 	
+	// This needs to be cleaned up
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		String formattedMotd;
@@ -44,7 +47,8 @@ public class BanManagerMotd implements Motd{
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
 
-		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
+		OfflinePlayer player = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
+		String playerName = player.getName();
 		
 		if(playerName.equals(null)) {
 			playerName = "Strumswell";
@@ -68,6 +72,7 @@ public class BanManagerMotd implements Motd{
 					.replace("%expmonth%", ban.banExpDateMonth(playerName))
 					.replace("%expyear%", ban.banExpDateYear(playerName));
 		}
+		formattedMotd = PapiIntegration.replaceVariables(player, formattedMotd);
 		return formattedMotd;
 	}
 	

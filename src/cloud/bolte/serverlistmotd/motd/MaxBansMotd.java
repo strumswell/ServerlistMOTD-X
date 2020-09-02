@@ -13,6 +13,7 @@ import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.ban.BanInterface;
 import cloud.bolte.serverlistmotd.ban.MaxBansPlugin;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
 
@@ -42,13 +43,15 @@ public class MaxBansMotd implements Motd {
 	public String formatMotd(String motd, InetAddress ip) {
 		BanInterface ban = new MaxBansPlugin();
 		String formattedMotd;
+		OfflinePlayer player = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
+		String playerName = player.getName();
+
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
 		formattedMotd = formattedMotd.replace("%line%", "\n")
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
 
-		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
 
 		// FULL BAN
 		if (ban.expires(playerName) == 3555L) {
@@ -65,6 +68,7 @@ public class MaxBansMotd implements Motd {
 					.replace("%expmonth%", ban.banExpDateMonth(playerName))
 					.replace("%expyear%", ban.banExpDateYear(playerName));
 		}	
+		formattedMotd = PapiIntegration.replaceVariables(player, formattedMotd);
 		return formattedMotd;
 	}
 	

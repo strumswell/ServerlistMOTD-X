@@ -4,11 +4,13 @@ import java.net.InetAddress;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.MoneyVariable;
 import cloud.bolte.serverlistmotd.variables.PlayerVariable;
 import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
@@ -50,6 +52,9 @@ public class RandomMotd implements Motd {
 			formattedMotd = formattedMotd
 					.replace("%player%", PlayerVariable.getNameFromIP(ip)
 					.replace("%money%", MoneyVariable.getMoney(ip)+""));
+			formattedMotd = PapiIntegration.replaceVariables(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)), formattedMotd);
+		} else {
+			formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
 		}
 		return formattedMotd;
 	}

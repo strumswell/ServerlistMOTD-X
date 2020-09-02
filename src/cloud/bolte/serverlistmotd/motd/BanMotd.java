@@ -12,6 +12,7 @@ import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.ban.BanInterface;
 import cloud.bolte.serverlistmotd.ban.SpigotBan;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
@@ -40,7 +41,8 @@ public class BanMotd implements Motd {
 	
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
-		String playerName = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)).getName();
+		OfflinePlayer player = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
+		String playerName = player.getName();
 		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
@@ -64,6 +66,7 @@ public class BanMotd implements Motd {
 					.replace("%expyear%", ban.banExpDateYear(playerName));
 		// FULL BAN
 		} else formattedMotd = formattedMotd.replace("%reason%", ban.banReason(playerName));
+		formattedMotd = PapiIntegration.replaceVariables(player, formattedMotd);
 		return formattedMotd;
 	}
 	

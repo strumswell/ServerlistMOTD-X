@@ -11,6 +11,7 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.RandomPlayerVariable;
 import cloud.bolte.serverlistmotd.variables.TimeVariable;
 import cloud.bolte.serverlistmotd.variables.WeatherVariable;
@@ -48,12 +49,12 @@ public class HoverText {
 	 * @return formatted HoverText (color, var)
 	 */
 	private static String formatText(String hoverLine) {
-		String formatted = hoverLine;
-		formatted = ChatColor.translateAlternateColorCodes('&', hoverLine)
+		String formatted = ChatColor.translateAlternateColorCodes('&', hoverLine)
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime())
 				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer())
 				.replace("%line%", "\n");
+		formatted = PapiIntegration.replaceVariables(null, formatted);
 		return formatted;
 	}
 }

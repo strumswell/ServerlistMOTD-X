@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import cloud.bolte.serverlistmotd.SpigotConfig;
+import cloud.bolte.serverlistmotd.util.PapiIntegration;
 import cloud.bolte.serverlistmotd.variables.RandomNumberVariable;
 
 /*
@@ -38,20 +39,20 @@ public class VersionText {
 	 * @return formatted version text (vars, color)
 	 */
 	private static String formatText(String versionText) {
-		String formatted = versionText;
-		
 		String realslots = Bukkit.getServer().getMaxPlayers()+"";
 		String realonline = Bukkit.getServer().getOnlinePlayers().size()+"";
 		String fakeslots = SpigotConfig.getFakeMaxPlayerNumber()+"";
 		String fakeonline = SpigotConfig.getFakeOnlinePlayerNumber()+"";
 		
-		formatted = ChatColor.translateAlternateColorCodes('&', versionText)
+		String formatted = ChatColor.translateAlternateColorCodes('&', versionText)
 				.replace("%realslots%", realslots)
 				.replace("%realonline%", realonline)
 				.replace("%fakeonline%", fakeonline)
 				.replace("%fakeslots%", fakeslots)
 				.replace("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"")
-				.replace("%randomnumber%", RandomNumberVariable.getRandomNumber()+"");		
+				.replace("%randomnumber%", RandomNumberVariable.getRandomNumber()+"");	
+		formatted = PapiIntegration.replaceVariables(null, formatted);
+		
 		return formatted;
 	}
 }
