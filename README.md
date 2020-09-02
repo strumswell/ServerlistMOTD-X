@@ -1,4 +1,4 @@
-# ServerlistMOTD X [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e08cf8573e2142d0b127e16e2b5c3d08)](https://www.codacy.com/app/strumswell/ServerlistMOTD-X?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strumswell/ServerlistMOTD-X&amp;utm_campaign=Badge_Grade)
+# ServerlistMOTD X
 
 ### Download latest Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2020-03-02/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2020-03-02/ServerlistMOTD.jar)
 
@@ -6,6 +6,7 @@
 - correct version of ProtocolLib for your Spigot version (required)
 - Vault (optional)
 - economy plugin (optional)
+- PlaceholderAPI (soon!)
 
 ### 1.16 Support
 You can choose between two options. If you can't use ProtocolLib dev builds due to incompatibility with other plugins, use the ServerlistMOTD version without ProtocolLib dependency. Otherwise use the last official build.
