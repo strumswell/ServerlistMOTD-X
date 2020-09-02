@@ -39,8 +39,8 @@ public class ClassicMotd implements Motd{
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd)
 				.replace("%line%", "\n")
 				.replace("%weather%", WeatherVariable.getWeather())
-				.replace("%time%", TimeVariable.getTime()
-				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer()));
+				.replace("%time%", TimeVariable.getTime())
+				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd

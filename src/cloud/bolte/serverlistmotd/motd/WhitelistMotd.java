@@ -45,8 +45,8 @@ public class WhitelistMotd implements Motd {
 		
 		if (PlayerVariable.isKnownPlayer(ip)) {
 			formattedMotd = formattedMotd
-					.replace("%player%", PlayerVariable.getNameFromIP(ip)
-					.replace("%money%", MoneyVariable.getMoney(ip)+""));
+					.replace("%player%", PlayerVariable.getNameFromIP(ip))
+					.replace("%money%", MoneyVariable.getMoney(ip)+"");
 			formattedMotd = PapiIntegration.replaceVariables(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)), formattedMotd);
 		} else {
 			formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
