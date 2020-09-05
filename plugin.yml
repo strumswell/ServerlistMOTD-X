@@ -1,6 +1,6 @@
 name: ServerlistMOTD
 author: Strumswell
-version: X-2020-05-14
+version: X-2020-09-05
 description: Change your Serverlist Motd!
 load: POSTWORLD
 depend: [ProtocolLib]
