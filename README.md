@@ -8,25 +8,13 @@
 - economy plugin (optional)
 - PlaceholderAPI (optional)
 
-### 1.16 Support
-You can choose between two options. If you can't use ProtocolLib dev builds due to incompatibility with other plugins, use the ServerlistMOTD version without ProtocolLib dependency. Otherwise use the last official build.
-| Feature           | With [ProtocolLib Dev Build](https://ci.dmulloy2.net/job/ProtocolLib/lastSuccessfulBuild/) | Without ProtocolLib | 
-|-------------------|-----------------------|---------------------|
-| Fake Slots        | ✅                     | ❌                   |
-| Fake Player Count | ✅                     | ❌                   |
-| Other Slot Manipulation | ✅                     | ❌                   |
-| Version Text      | ✅                     | ❌                   |
-| Hover Text      | ✅                     | ❌                   |
-| Everything else      | ✅                     | ✅                   |
-| ServerlistMOTD Build     | [Download](https://github.com/strumswell/ServerlistMOTD-X/releases/)                     | [Download](https://github.com/strumswell/ServerlistMOTD-X/issues/10#issuecomment-650731335)                   |
-
 ### General 
 
 A plugin for the Spigot API. ServerlistMOTD allows you to change your MOTD in the serverlist. You can set custom MOTDs for known players or welcome new players with a special MOTD to get the players attention. This plugin is HIGHLY compatibile with old and new versions of Bukkit/Spigot!
 
 Project page: https://dev.bukkit.org/projects/serverlistmotd
 
-ServerlistMOTD is one of the most popular serverlist plugins for the SpigotAPI with over 60,000 downloads.
+ServerlistMOTD is one of the most popular serverlist plugins for the SpigotAPI with over 70,000 downloads.
 
 ![smotd](https://i.imgur.com/z3uzpYZ.png)
 
