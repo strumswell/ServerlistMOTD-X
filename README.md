@@ -4,7 +4,7 @@
 ### Download Lite version for Spigot 1.17 (ProtocolLib not needed!): [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/LITE-X-2021-06-13/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/LITE-X-2021-06-13/ServerlistMOTD.jar)
 
 ### Dependencies
-- correct version of ProtocolLib for your Spigot version (required, **not for LITE-X-2021-06-13!**)
+- Correct version of ProtocolLib for your Spigot version (required, **not for LITE-X-2021-06-13!**)
 - Vault (optional)
 - economy plugin (optional)
 - PlaceholderAPI (optional)
@@ -29,8 +29,7 @@ The feature set of LITE-X-2021-06-13 compares to the last full version of Server
 | OnlineMultiplier   |   🔴                |   🟢           |
 | HoverText          |  🔴                 |   🟢           |
 
-[The developer of ProtocolLib recommends using ViaVersion with Spigot 1.16 to allow 1.17 player to join.](https://github.com/dmulloy2/ProtocolLib/issues/1209) In this case, you can use the latest version ProtocolLib and X-2020-09-05 with all features just fine. If you want a 1.17 server, this lite version is for you.
-
+The developer of ProtocolLib recommends using [ViaVersion](https://www.spigotmc.org/resources/viaversion.19254/) with Spigot 1.16 to allow 1.17 player to join. In this case, you can use the latest version ProtocolLib and X-2020-09-05 with all features just fine. If you want a 1.17 server, this lite version is for you.
 
 ### General 
 
