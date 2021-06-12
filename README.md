@@ -1,12 +1,36 @@
 # ServerlistMOTD X
 
 ### Download latest Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2020-09-05/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2020-09-05/ServerlistMOTD.jar)
+### Download Lite version for Spigot 1.17 (ProtocolLib not needed!): [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/LITE-X-2021-06-13/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/LITE-X-2021-06-13/ServerlistMOTD.jar)
 
 ### Dependencies
-- correct version of ProtocolLib for your Spigot version (required)
+- correct version of ProtocolLib for your Spigot version (required, **not for LITE-X-2021-06-13!**)
 - Vault (optional)
 - economy plugin (optional)
 - PlaceholderAPI (optional)
+
+### Working features while we wait for a ProtocolLib update...
+The feature set of LITE-X-2021-06-13 compares to the last full version of ServerlistMOTD X-2020-09-05 as follows:
+
+| Feature            | LITE-X-2021-06-13 | X-2020-09-05 |
+|--------------------|-------------------|--------------|
+| Works with        |   1.17 and below               | 1.16 and below             |
+| ClassicMotd        |   🟢                | 🟢             |
+| RandomMotd         |  🟢                 |   🟢           |
+| BanMotd            |  🟢                 |   🟢           |
+| WhitelistMotd      |   🟢                | 🟢             |
+| RestrictedMode     |  🟠                 |   🟢           |
+| FakeMaxPlayer      |   🔴                |   🟢           |
+| FakeOnlinePlayer   |  🔴                 | 🟢             |
+| VersionText        |  🔴                 |   🟢           |
+| OutdatedClientText | 🔴                  | 🟢             |
+| UnknownSlots       |  🔴                 |   🟢           |
+| SlotsPlusOne       |   🔴                |   🟢           |
+| OnlineMultiplier   |   🔴                |   🟢           |
+| HoverText          |  🔴                 |   🟢           |
+
+[The developer of ProtocolLib recommends using ViaVersion with Spigot 1.16 to allow 1.17 player to join.](https://github.com/dmulloy2/ProtocolLib/issues/1209) In this case, you can use the latest version ProtocolLib and X-2020-09-05 with all features just fine. If you want a 1.17 server, this lite version is for you.
+
 
 ### General 
 
