@@ -2,6 +2,7 @@ package cloud.bolte.serverlistmotd.motd;
 
 import java.net.InetAddress;
 
+import cloud.bolte.serverlistmotd.util.HexResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.server.ServerListPingEvent;
@@ -50,6 +51,7 @@ public class ClassicMotd implements Motd{
 		} else {
 			formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
 		}
+		formattedMotd = HexResolver.parseHexString(formattedMotd);
 		return formattedMotd;
 	}
 

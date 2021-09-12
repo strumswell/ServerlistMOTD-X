@@ -40,11 +40,15 @@ public class PlayerVariable {
 	 * @return Name from player
 	 */
 	public static String getNameFromIP(InetAddress ip) {
-		OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
-		if (p.hasPlayedBefore()) {
-			return p.getName();
-		}else {
-			//User is uncached by Spigot
+		try {
+			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
+			if (p.hasPlayedBefore()) {
+				return p.getName();
+			}else {
+				//User is uncached by Spigot
+				return "<unknown>";
+			}
+		} catch(NullPointerException npe) {
 			return "<unknown>";
 		}
 	}

@@ -23,7 +23,7 @@ public class PapiIntegration {
 	
 	public static void setupIntegration() {
 		if (Bukkit.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-			System.out.println("[ServerlistMOTD] Hooking into PlaceholderAPI.");
+			Bukkit.getLogger().info("[ServerlistMOTD] Hooking into PlaceholderAPI.");
 			papiIsEnabled = true;
 		}
 	}

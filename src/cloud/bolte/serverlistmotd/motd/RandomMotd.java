@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.util.List;
 import java.util.Random;
 
+import cloud.bolte.serverlistmotd.util.HexResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.server.ServerListPingEvent;
@@ -56,6 +57,7 @@ public class RandomMotd implements Motd {
 		} else {
 			formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
 		}
+		formattedMotd = HexResolver.parseHexString(formattedMotd);
 		return formattedMotd;
 	}
 

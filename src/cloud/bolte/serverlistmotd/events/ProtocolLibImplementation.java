@@ -14,6 +14,7 @@ import cloud.bolte.serverlistmotd.slots.OnlineMultiplier;
 import cloud.bolte.serverlistmotd.slots.OutdatedClientText;
 import cloud.bolte.serverlistmotd.slots.SlotsPlusOne;
 import cloud.bolte.serverlistmotd.slots.VersionText;
+import org.bukkit.Bukkit;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -37,7 +38,7 @@ public class ProtocolLibImplementation {
 	}
 
 	public void listenToServerlistPackets() {
-		System.out.println("[ServerlistMOTD] Hooking into ProtocolLib.");
+		Bukkit.getLogger().info("Hooking into ProtocolLib.");
 		ProtocolLibrary.getProtocolManager().addPacketListener(
 				new PacketAdapter(PacketAdapter.params(main, PacketType.Status.Server.SERVER_INFO).optionAsync()) {
 					@Override

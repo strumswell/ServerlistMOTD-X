@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import java.util.UUID;
 
 import cloud.bolte.serverlistmotd.Main;
+import org.bukkit.Bukkit;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -51,8 +52,8 @@ public class IO {
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
-			System.out.println("[ServerlistMOTD] Loaded userdata from IP_UUID.dat("+f.length()+"bytes) into memory in "
-					+(System.currentTimeMillis()-start)+"ms.");
+			Bukkit.getLogger().info("[ServerlistMOTD] Loaded userdata from IP_UUID.dat(" + f.length() + "bytes) into memory in "
+					+ (System.currentTimeMillis() - start) + "ms.");
 		}
 	}
 
@@ -76,7 +77,7 @@ public class IO {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-		System.out.println("[ServerlistMOTD] Saved userdata into IP_UUID.dat in "+(System.currentTimeMillis()-start)+"ms.");
+		// SHUT UP :) Bukkit.getLogger().info(("[ServerlistMOTD] Saved userdata into IP_UUID.dat in "+(System.currentTimeMillis()-start)+"ms.");
 	}
 
 	/**
@@ -102,7 +103,7 @@ public class IO {
 		int elementsStart = Main.IP_UUID.size();
 		Main.IP_UUID = invert(invert(Main.IP_UUID));
 		int elementsEnd = Main.IP_UUID.size();
-		System.out.println("[ServerlistMOTD] Removed "+ (elementsStart - elementsEnd) +" duplicates in userdata in "+(System.currentTimeMillis()-start)+"ms.");
+		// SHUT UP :) Bukkit.getLogger().info("[ServerlistMOTD] Removed "+ (elementsStart - elementsEnd) +" duplicates in userdata in "+(System.currentTimeMillis()-start)+"ms.");
 	}
 
 	/**

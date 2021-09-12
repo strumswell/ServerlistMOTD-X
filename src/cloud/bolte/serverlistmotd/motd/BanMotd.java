@@ -2,6 +2,7 @@ package cloud.bolte.serverlistmotd.motd;
 
 import java.net.InetAddress;
 
+import cloud.bolte.serverlistmotd.util.HexResolver;
 import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -67,6 +68,7 @@ public class BanMotd implements Motd {
 		// FULL BAN
 		} else formattedMotd = formattedMotd.replace("%reason%", ban.banReason(playerName));
 		formattedMotd = PapiIntegration.replaceVariables(player, formattedMotd);
+		formattedMotd = HexResolver.parseHexString(formattedMotd);
 		return formattedMotd;
 	}
 	

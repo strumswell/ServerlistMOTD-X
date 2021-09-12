@@ -3,6 +3,7 @@ package cloud.bolte.serverlistmotd.motd;
 import java.net.InetAddress;
 import java.util.Date;
 
+import cloud.bolte.serverlistmotd.util.HexResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -74,6 +75,7 @@ public class BanManagerMotd implements Motd{
 					.replace("%expyear%", ban.banExpDateYear(playerName));
 		}
 		formattedMotd = PapiIntegration.replaceVariables(player, formattedMotd);
+		formattedMotd = HexResolver.parseHexString(formattedMotd);
 		return formattedMotd;
 	}
 	

@@ -392,11 +392,11 @@ public class SpigotConfig {
 	 */
 	public void configWorldCheck() {
 		if (Bukkit.getWorld(getWeatherWorld()) == null || Bukkit.getWorld(getTimeWorld()) == null) {
-			System.out.println("[ServerlistMOTD] ------------------------");
+			Bukkit.getLogger().info("------------------------");
 			//Informing user of mismatch
 			Bukkit.getLogger().severe(
-					"[ServerlistMOTD] CAN'T FIND THE DEFINED WORLD FROM YOUR CONFIG!");
-			System.out.println("[ServerlistMOTD] Searching for available world...");
+					"CAN'T FIND THE DEFINED WORLD FROM YOUR CONFIG!");
+			Bukkit.getLogger().info("Searching for available world...");
 			
 			//Search shortest world name
 			String worldName = "";
@@ -416,9 +416,9 @@ public class SpigotConfig {
 			main.getConfig().set("Variables.TimeVariable.World", worldName);
 			main.getConfig().set("Variables.WeatherVariable.World", worldName);
 			SpigotConfig.saveSmotdConfig();
-			System.out.println("[ServerlistMOTD] Found '" + worldName + "‘ and saved it to config.");
-			System.out.println("[ServerlistMOTD] We're good now. ;-)");
-			System.out.println("[ServerlistMOTD] ------------------------");
+			Bukkit.getLogger().info("Found '" + worldName + "‘ and saved it to config.");
+			Bukkit.getLogger().info("We're good now. ;-)");
+			Bukkit.getLogger().info("------------------------");
 		}
 	}
 	
@@ -431,7 +431,7 @@ public class SpigotConfig {
 			File newFile = new File(main.getDataFolder(), "config_old.yml");
 			
 			if (newFile.exists()) {
-				System.out.println("[ServerlistMOTD] Remove your old config.yml!");
+				Bukkit.getLogger().severe("Remove your old config.yml!");
 				Bukkit.getPluginManager().disablePlugin(main);
 			}
 			
@@ -439,16 +439,16 @@ public class SpigotConfig {
 			if (fileRenamed) {
 				main.saveDefaultConfig();
 				main.reloadConfig();
-				System.out.println("[ServerlistMOTD] Renamed old config and created new config!");
+				Bukkit.getLogger().info("Renamed old config and created new config!");
 			}
 		}
 		if (main.getConfig().getDouble("DoNOTtouchMe") == 10.0) {
-			System.out.println("[ServerlistMOTD] Adding new features to config.yml...");
+			Bukkit.getLogger().info("Adding new features to config.yml...");
 			main.getConfig().set("Slots.OutdatedClientText.Enable", false);
 			main.getConfig().set("Slots.OutdatedClientText.Message", "Use Minecraft 1.16 &r&7%realonline%&8/&7%realslots%");
 			main.getConfig().set("DoNOTtouchMe", 10.1);
 			saveSmotdConfig();
-			System.out.println("[ServerlistMOTD] Config successfully migrated to new version.");
+			Bukkit.getLogger().info("Config successfully migrated to new version.");
 		}
 	}
 }
