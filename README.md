@@ -1,6 +1,8 @@
 # ServerlistMOTD X
 
 ### Download latest Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2020-09-05/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2020-09-05/ServerlistMOTD.jar)
+### Download latest Beta (HEX): [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2021-09-12-BETA/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2021-09-12-BETA/ServerlistMOTD.jar)
+*How to use HEX colors and gradients with Beta: [Wiki](https://github.com/strumswell/ServerlistMOTD-X/wiki/9.-ColorCodes#hex-support-116-and-up)*
 
 ### Dependencies
 - [Correct version of ProtocolLib](#versions) for your Spigot version [](#head1234)
