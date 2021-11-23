@@ -52,7 +52,6 @@ public class VersionText {
 				.replace("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"")
 				.replace("%randomnumber%", RandomNumberVariable.getRandomNumber()+"");	
 		formatted = PapiIntegration.replaceVariables(null, formatted);
-		
 		return formatted;
 	}
 }

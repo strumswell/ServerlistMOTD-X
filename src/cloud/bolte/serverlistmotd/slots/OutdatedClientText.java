@@ -51,7 +51,6 @@ public class OutdatedClientText {
 				.replace("%slotsplusone%", SlotsPlusOne.getSlotsPlusOneValue()+"")
 				.replace("%randomnumber%", RandomNumberVariable.getRandomNumber()+"");	
 		formatted = PapiIntegration.replaceVariables(null, formatted);
-		
 		return formatted;
 	}
 }

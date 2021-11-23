@@ -30,13 +30,13 @@ import cloud.bolte.serverlistmotd.util.VaultIntegration;
  */
 
 public class Main extends JavaPlugin implements Listener {
-	public static Map<InetAddress, UUID> IP_UUID = new HashMap<InetAddress, UUID>();
+	public static Map<InetAddress, UUID> IP_UUID = new HashMap<>();
 	private final File loggedIPs = new File("plugins/ServerlistMOTD/IP_UUID.dat");
 
 	@Override
 	public void onDisable() {
 		//Prepare HashMap and save it to disk
-		IO.removeUnusedEntries(); // Experimental
+		IO.removeUnusedEntries();
 		IO.saveHashMapIntoFlatfile(loggedIPs, IP_UUID);
 	}
 
@@ -47,8 +47,11 @@ public class Main extends JavaPlugin implements Listener {
 		IO.loadFlatfileIntoHashMap(loggedIPs, IP_UUID);	
 		
 		SpigotConfig config = new SpigotConfig(this);		
-		ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
-		
+
+		//Setup Vault and Papi
+		VaultIntegration.setupEconomy();
+		PapiIntegration.setupIntegration();
+
 		//Register listeners
 		Bukkit.getServer().getPluginManager().registerEvents(new Ping(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IpLogging(), this);
@@ -57,15 +60,17 @@ public class Main extends JavaPlugin implements Listener {
 		//Check if world set in config exists (time, weather var!)
 		config.configWorldCheck();
 		
-		//Start ProtocolLib for slots stuff
-		pli.listenToServerlistPackets();
-		
+		//Try to hook into ProtocolLib for extended feature set
+		if (Bukkit.getServer().getPluginManager().isPluginEnabled("ProtocolLib")) {
+			ProtocolLibImplementation pli = new ProtocolLibImplementation(this);
+			pli.setupIntegration();
+		} else {
+			Bukkit.getLogger().warning("[ServerlistMOTD] ProtocolLib could not be loaded! You only have access to a reduced feature set.");
+			Bukkit.getLogger().warning("[ServerlistMOTD] Disabled features: FakeMaxPlayer, FakeOnlinePlayer, VersionText, OutdatedClientText, UnknownSlots, SlotsPlusOne, OnlineMultiplier, HoverText");
+		}
+
 		//Register command
 		this.getCommand("serverlist").setExecutor(new Serverlist());
-		
-		//Setup Vault and Papi
-		VaultIntegration.setupEconomy();
-		PapiIntegration.setupIntegration();
 		
 		//Timer for saving userdata to disk 
 		BukkitScheduler scheduler = getServer().getScheduler();

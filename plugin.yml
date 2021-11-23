@@ -1,10 +1,9 @@
 name: ServerlistMOTD
 author: Strumswell
-version: X-2021-09-12-BETA
+version: X-2021-11-23
 description: Change your Serverlist Motd!
 load: POSTWORLD
-depend: [ProtocolLib]
-softdepend: [Vault, PlaceholderAPI, BanManager, MaxBans, MultiVerse, Multiverse-Core, Multiverse-Portals, Multiverse-NetherPortals, Multiverse-Inventories, Towny, Essentials]
+softdepend: [ProtocolLib, Vault, PlaceholderAPI, BanManager, MaxBans, MultiVerse, Multiverse-Core, Multiverse-Portals, Multiverse-NetherPortals, Multiverse-Inventories, Towny, Essentials]
 main: cloud.bolte.serverlistmotd.Main
 commands:
    serverlist:

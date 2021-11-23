@@ -13,10 +13,10 @@ public class VaultIntegration {
 
 	public static Economy econ = null;
 
-	public static boolean setupEconomy() {
+	public static void setupEconomy() {
 		if (Bukkit.getPluginManager().getPlugin("Vault") == null) {
 			Bukkit.getLogger().warning("[ServerlistMOTD] Couldn't find Vault. No %money%!");
-			return false;
+			return;
 		}
 
 		Bukkit.getLogger().info("[ServerlistMOTD] Hooking into Vault.");
@@ -24,14 +24,13 @@ public class VaultIntegration {
 		RegisteredServiceProvider<Economy> rsp = Bukkit.getServer().getServicesManager().getRegistration(Economy.class);
 		if (rsp == null) {
 			Bukkit.getLogger().warning("[ServerlistMOTD] Couldn't find Economy-Plugin. No %money%!");
-			return false;
+			return;
 		}
 		econ = rsp.getProvider();
 		Bukkit.getLogger().info("[ServerlistMOTD] Using "+econ+" via Vault.");
-		return econ != null;
 	}
 
-	public static Economy getEcononomy() {
+	public static Economy getEconomy() {
 		return econ;
 	}
 }

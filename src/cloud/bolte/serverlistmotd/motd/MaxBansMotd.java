@@ -43,16 +43,14 @@ public class MaxBansMotd implements Motd {
 	@Override
 	public String formatMotd(String motd, InetAddress ip) {
 		BanInterface ban = new MaxBansPlugin();
-		String formattedMotd;
 		OfflinePlayer player = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));
 		String playerName = player.getName();
-
+		String formattedMotd;
 
 		formattedMotd = ChatColor.translateAlternateColorCodes('&', motd);
 		formattedMotd = formattedMotd.replace("%line%", "\n")
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime());
-
 
 		// FULL BAN
 		if (ban.expires(playerName) == 3555L) {

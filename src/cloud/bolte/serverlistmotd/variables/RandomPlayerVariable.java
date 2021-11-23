@@ -21,7 +21,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
  */
 
 public class RandomPlayerVariable {
-	private static Random random = new Random();
+	private final static Random random = new Random();
 
 	private RandomPlayerVariable() {
 		throw new IllegalStateException("Utility class");
@@ -47,7 +47,7 @@ public class RandomPlayerVariable {
 	 */
 	private static String getRandomOfflinePlayer() {
 		if (!(Main.IP_UUID.isEmpty())) {
-			ArrayList<UUID> values = new ArrayList<UUID>(Main.IP_UUID.values());
+			ArrayList<UUID> values = new ArrayList<>(Main.IP_UUID.values());
 			int index = random.nextInt(values.size());
 			if (SpigotConfig.randomPlayerVariableUseTextEnabled()) {
 				return SpigotConfig.getRandomPlayerVariableText();

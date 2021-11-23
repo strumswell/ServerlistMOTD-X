@@ -1,11 +1,5 @@
 package cloud.bolte.serverlistmotd.events;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.events.PacketAdapter;
-import com.comphenix.protocol.events.PacketEvent;
-import com.comphenix.protocol.wrappers.WrappedServerPing;
-
 import cloud.bolte.serverlistmotd.Main;
 import cloud.bolte.serverlistmotd.SpigotConfig;
 import cloud.bolte.serverlistmotd.slots.FakeOnlinePlayer;
@@ -15,6 +9,12 @@ import cloud.bolte.serverlistmotd.slots.OutdatedClientText;
 import cloud.bolte.serverlistmotd.slots.SlotsPlusOne;
 import cloud.bolte.serverlistmotd.slots.VersionText;
 import org.bukkit.Bukkit;
+
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketEvent;
+import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 /*
  * ServerlistMOTD (c) by Strumswell, Philipp Bolte
@@ -26,7 +26,6 @@ import org.bukkit.Bukkit;
  */
 
 public class ProtocolLibImplementation {
-
 	private static Main main;
 
 	public ProtocolLibImplementation(Main plugin) {
@@ -37,14 +36,14 @@ public class ProtocolLibImplementation {
 		main = plugin;
 	}
 
-	public void listenToServerlistPackets() {
-		Bukkit.getLogger().info("Hooking into ProtocolLib.");
+	public void setupIntegration() {
+		Bukkit.getLogger().info("[ServerlistMOTD] Hooking into ProtocolLib.");
 		ProtocolLibrary.getProtocolManager().addPacketListener(
 				new PacketAdapter(PacketAdapter.params(main, PacketType.Status.Server.SERVER_INFO).optionAsync()) {
 					@Override
 					public void onPacketSending(PacketEvent event) {
 						WrappedServerPing ping = event.getPacket().getServerPings().read(0);
-						
+
 						if (SpigotConfig.fakeMaxPlayerEnabled()) {
 							ping.setPlayersMaximum(SpigotConfig.getFakeMaxPlayerNumber());
 						}
@@ -73,8 +72,10 @@ public class ProtocolLibImplementation {
 							ping.setPlayersVisible(false);
 						}
 
-						if (SpigotConfig.hoverTextEnabled()) {
-							HoverText.activateHoverText(ping, main);
+						// Unknown slots won't work if hover text is enabled as well. Result: 0/0 instead of ???
+						// I won't introduce a check here to not introduce unexpected behaviour with existing config.ymls
+						if (SpigotConfig.hoverTextEnabled()) { //  && !SpigotConfig.unknownSlotsEnabled()
+							HoverText.activateHoverText(ping);
 						}
 
 						if (SpigotConfig.restrictedModeEnabled()) {

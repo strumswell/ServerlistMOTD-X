@@ -363,6 +363,28 @@ public class SpigotConfig {
 		SpigotConfig.saveSmotdConfig();
 	}
 
+	public static void toggleHoverText(CommandSender sender) {
+		if (SpigotConfig.hoverTextEnabled()) {
+			main.getConfig().set("Slots.HoverText.Enable", false);
+			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cHoverText toggled off!");
+		} else {
+			main.getConfig().set("Slots.HoverText.Enable", true);
+			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cHoverText toggled on!");
+		}
+		SpigotConfig.saveSmotdConfig();
+	}
+
+	public static void toggleUnknownSlots(CommandSender sender) {
+		if (SpigotConfig.unknownSlotsEnabled()) {
+			main.getConfig().set("Slots.UnknownSlots.Enable", false);
+			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cUnknownSlots toggled off!");
+		} else {
+			main.getConfig().set("Slots.UnknownSlots.Enable", true);
+			sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cUnknownSlots toggled on!");
+		}
+		SpigotConfig.saveSmotdConfig();
+	}
+
 	/*
 	 * UTIL
 	 */

@@ -28,9 +28,7 @@ public class PlayerVariable {
 	 * @return true/false if known
 	 */
 	public static boolean isKnownPlayer(InetAddress ip) {
-		if (Main.IP_UUID.containsKey(ip)) {
-			return true;
-		} else return false;
+		return Main.IP_UUID.containsKey(ip);
 	}
 	
 	/**

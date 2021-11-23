@@ -6,7 +6,7 @@ import cloud.bolte.serverlistmotd.SpigotConfig;
 
 public class RandomNumberVariable {
 	
-	private static Random random = new Random();
+	private final static Random random = new Random();
 
 	private RandomNumberVariable() {
 		throw new IllegalStateException("Utility class");

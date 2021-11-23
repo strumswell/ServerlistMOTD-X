@@ -25,10 +25,8 @@ public class IpLogging implements Listener{
 			if (IO.getKeyFromValue(Main.IP_UUID, e.getUniqueId()) != null) {
 				//clear old entry and create one with new ip
 				Main.IP_UUID.remove(IO.getKeyFromValue(Main.IP_UUID, e.getUniqueId()));
-				Main.IP_UUID.put(e.getAddress(), e.getUniqueId());
-			} else {
-				Main.IP_UUID.put(e.getAddress(), e.getUniqueId());
 			}
+			Main.IP_UUID.put(e.getAddress(), e.getUniqueId());
 		}	
 	}
 }

@@ -27,7 +27,7 @@ public class FakeOnlinePlayer {
 	/**
 	 * Activate the FakeOnlinePlayer feature which fakes the online 
 	 * player count in the serverlist. 
-	 * @param WrappedServerPing object from ProtocolLib
+	 * @param ping object from ProtocolLib
 	 */
 	public static void activateFakeOnlinePlayer(WrappedServerPing ping) {
 		if (!fakeOnlinePlayerRandomNumberEnabled()) {

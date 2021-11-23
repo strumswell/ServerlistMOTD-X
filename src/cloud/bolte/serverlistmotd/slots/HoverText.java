@@ -34,10 +34,9 @@ public class HoverText {
 	/**
 	 * Create custom GameProfile and therefore activate HoverText with custom text
 	 * @param ping WrappedServerPing from ProtocolLib
-	 * @param main Object of main class
 	 */
-	public static void activateHoverText(WrappedServerPing ping, Main main) {
-		List<WrappedGameProfile> players = new ArrayList<WrappedGameProfile>();
+	public static void activateHoverText(WrappedServerPing ping) {
+		List<WrappedGameProfile> players = new ArrayList<>();
 		for (String string : SpigotConfig.getHoverText()) {
 			players.add(new WrappedGameProfile(UUID.randomUUID(), formatText(string)));
 		}

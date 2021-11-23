@@ -13,80 +13,80 @@ package cloud.bolte.serverlistmotd.ban;
 public interface BanInterface {
 	
 	/**
-	 * @param playerName playerName
+	 * @param playerName Players username
 	 * @return Ban reason
 	 */
-	public String banReason(String playerName);
+	String banReason(String playerName);
 
 	/**
 	 * @param playerName
 	 * @return Expiration date
 	 */
-	public Long expires(String playerName);
+	Long expires(String playerName);
 
 	/**
 	 * @param playerName
 	 * @return Seconds of expiration date
 	 */
-	public String banExpDateSec(String playerName);
+	String banExpDateSec(String playerName);
 
 	/**
 	 * @param playerName
 	 * @return Minutes of expiration date
 	 */
-	public String banExpDateMin(String playerName);
+	String banExpDateMin(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Hours of expiration date
 	 */
-	public String banExpDateHour(String playerName);
+	String banExpDateHour(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Day of expiration date
 	 */
-	public String banExpDateDay(String playerName);
+	String banExpDateDay(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Month of expiration date
 	 */
-	public String banExpDateMonth(String playerName);
+	String banExpDateMonth(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Year of expiration date
 	 */
-	public String banExpDateYear(String playerName);
+	String banExpDateYear(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Returns the date
 	 */
-	public String date(String playerName);
+	String date(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Returns the time
 	 */
-	public String time(String playerName);
+	String time(String playerName);
 
 	/**
 	 * @param playerName	 
 	 * @return Returns the actor
 	 */
-	public String banActor(String playerName);
+	String banActor(String playerName);
 
 	/**
 	 * @param playerName 
 	 * @return Returns when the ban was created
 	 */
-	public String banCreated(String playerName);
+	String banCreated(String playerName);
 
 	/**
 	 * @param playerName
 	 * @return This method returns a unique ID belonging to a ban
 	 */
-	public String banID(String playerName);
+	String banID(String playerName);
 }

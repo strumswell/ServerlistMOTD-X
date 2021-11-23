@@ -42,15 +42,18 @@ public class ClassicMotd implements Motd{
 				.replace("%weather%", WeatherVariable.getWeather())
 				.replace("%time%", TimeVariable.getTime())
 				.replace("%randomplayer%", RandomPlayerVariable.getRandomPlayer());
-		
-		if (PlayerVariable.isKnownPlayer(ip)) {
-			formattedMotd = formattedMotd
-					.replace("%player%", PlayerVariable.getNameFromIP(ip))
-					.replace("%money%", MoneyVariable.getMoney(ip)+"");
-			formattedMotd = PapiIntegration.replaceVariables(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)), formattedMotd);
-		} else {
-			formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
-		}
+
+		try {
+			if (PlayerVariable.isKnownPlayer(ip)) {
+				formattedMotd = formattedMotd
+						.replace("%player%", PlayerVariable.getNameFromIP(ip))
+						.replace("%money%", MoneyVariable.getMoney(ip)+"");
+				formattedMotd = PapiIntegration.replaceVariables(Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip)), formattedMotd);
+			} else {
+				formattedMotd = PapiIntegration.replaceVariables(null, formattedMotd);
+			}
+		} catch(NullPointerException npe) { }
+
 		formattedMotd = HexResolver.parseHexString(formattedMotd);
 		return formattedMotd;
 	}

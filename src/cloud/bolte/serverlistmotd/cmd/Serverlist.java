@@ -34,6 +34,8 @@ public class Serverlist implements CommandExecutor {
 				sender.sendMessage("  §e/serverlist randommotd §7§o* toggle function");
 				sender.sendMessage("  §e/serverlist banmotd §7§o* toggle function");
 				sender.sendMessage("  §e/serverlist whitelistmotd §7§o* toggle function");
+				sender.sendMessage("  §e/serverlist hovertext §7§o* toggle function");
+				sender.sendMessage("  §e/serverlist unknownslots §7§o* toggle function");
 				return true;
 			case 1:
 				if (args[0].equalsIgnoreCase("reload")) {
@@ -41,29 +43,39 @@ public class Serverlist implements CommandExecutor {
 						SpigotConfig.reloadSmotdConfig(sender);
 					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
 					return true;
-				} else  if (args[0].equalsIgnoreCase("restrictedmode")) {
+				} else if (args[0].equalsIgnoreCase("restrictedmode")) {
 					if (sender.hasPermission("serverlist.restrictedmode")) {
 						SpigotConfig.toggleRestrictedMode(sender);
 					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
 					return true;
-				} else  if (args[0].equalsIgnoreCase("versiontext")) {
+				} else if (args[0].equalsIgnoreCase("versiontext")) {
 					if (sender.hasPermission("serverlist.versiontext")) {
 						SpigotConfig.toggleVersionText(sender);
 					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
 					return true;
-				} else  if (args[0].equalsIgnoreCase("randommotd")) {
+				} else if (args[0].equalsIgnoreCase("randommotd")) {
 					if (sender.hasPermission("serverlist.randommotd")) {
 						SpigotConfig.toggleRandomMotd(sender);
 					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
 					return true;
-				} else  if (args[0].equalsIgnoreCase("banmotd")) {
+				} else if (args[0].equalsIgnoreCase("banmotd")) {
 					if (sender.hasPermission("serverlist.banmotd")) {
 						SpigotConfig.toggleBanMotd(sender);
 					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
-					return true;		
-				} else  if (args[0].equalsIgnoreCase("whitelistmotd")) {
+					return true;
+				} else if (args[0].equalsIgnoreCase("whitelistmotd")) {
 					if (sender.hasPermission("serverlist.whitelistmotd")) {
 						SpigotConfig.toggleWhitelistMotd(sender);
+					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
+					return true;
+				} else if (args[0].equalsIgnoreCase("hovertext")) {
+					if (sender.hasPermission("serverlist.hovertext")) {
+						SpigotConfig.toggleHoverText(sender);
+					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
+					return true;
+				} else if (args[0].equalsIgnoreCase("unknownslots")) {
+					if (sender.hasPermission("serverlist.unknownslots")) {
+						SpigotConfig.toggleUnknownSlots(sender);
 					} else sender.sendMessage("§e§oServerlist§6§lMOTD §7> §cYou don't have permissions!");
 					return true;
 				} else return false;

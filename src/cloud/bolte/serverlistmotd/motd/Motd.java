@@ -20,19 +20,19 @@ public interface Motd {
 	 * @param ip IP address of user
 	 * @return unformatted motd 
 	 */
-	public String getMOTD(InetAddress ip);
+	String getMOTD(InetAddress ip);
 	
 	/**
 	 * Format motd string with color and vars
 	 * @param motd MOTD that needs to be formatted
 	 * @return formatted MOTD
 	 */
-	public String formatMotd(String motd, InetAddress ip);
+	String formatMotd(String motd, InetAddress ip);
 
 	/**
 	 * Set the formatted motd in the users serverlist
 	 * @param e ping event
 	 * @param ip IP address of user
 	 */
-	public void setServerlistMotd(ServerListPingEvent e, InetAddress ip);
+	void setServerlistMotd(ServerListPingEvent e, InetAddress ip);
 }

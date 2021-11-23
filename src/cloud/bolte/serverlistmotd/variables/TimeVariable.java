@@ -25,7 +25,7 @@ public class TimeVariable {
 	 */
 	public static String getTime() {
 		String currentTime = Bukkit.getServer().getWorld(SpigotConfig.getTimeWorld()).getTime()+"";
-		Integer time = Integer.valueOf(currentTime);
+		int time = Integer.parseInt(currentTime);
 
 		if (time < 12000) {
 			return SpigotConfig.getDayText();

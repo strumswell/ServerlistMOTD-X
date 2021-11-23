@@ -8,7 +8,7 @@
 #      contains a list of players. SMOTD clears that and creates a fake player with your text as its name.
 #   - "What is Regulars and Newbies?" Players are categorized in those two groups in the list. Regular players
 #      are known by their ip while newbies are not.
-#   - "Player related placeholders from PlaceholderAPI are not working!": This is a known limitation. All this 
+#   - "Player related placeholders from PlaceholderAPI are not working!": This is a known limitation. All this
 #      information is not available in the serverlist because the player isn't online.
 # ----------------------------------------- [ Configuration File ]  ------------------------------------------ #
 
@@ -21,12 +21,12 @@ RandomMotd:
     - '&bHey %player%! %line%&3Those Motds change totally random!'
     - '&2You can add as many Motds as you want!'
     - '&eAdd bullet points to add more Motds!'
-    - '&3The weather ist %weather% and it is %time%'
+    - '&3The weather is %weather% and it is %time%'
   Newbies:
     - '&bHey Newbie. %line%&3Those Motds change totally random!'
     - '&2You can add as many Motds as you want!'
     - '&eAdd bullet points to add more Motds!'
-    - '&3The weather ist %weather% and it is %time%.'
+    - '&3The weather is %weather% and it is %time%.'
 BanMotd:
   Enable: false
   MessageTempBan: '&cYou are banned! Reason: &e%reason%%line%&cExpiration: &e%expdate% at %exptime%'
@@ -53,7 +53,7 @@ Slots:
   FakeOnlinePlayer:
     Enable: false
     Number: 122
-    RandomNumber: 
+    RandomNumber:
       Enable: false
       Max: 100
       Min: 90

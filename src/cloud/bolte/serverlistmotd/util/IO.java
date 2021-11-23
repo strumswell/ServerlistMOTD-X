@@ -64,7 +64,6 @@ public class IO {
 	 * @param m Empty Hashmap
 	 */
 	public static void saveHashMapIntoFlatfile(File f, Map<InetAddress, UUID> m) {
-		long start = System.currentTimeMillis();
 		try {
 			FileOutputStream fos = new FileOutputStream(f);
 			fos.flush();
@@ -77,17 +76,16 @@ public class IO {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-		// SHUT UP :) Bukkit.getLogger().info(("[ServerlistMOTD] Saved userdata into IP_UUID.dat in "+(System.currentTimeMillis()-start)+"ms.");
 	}
 
 	/**
 	 * Invertes a HashMap
 	 * 
-	 * @param map
-	 * @return
+	 * @param map map to be inverted
+	 * @return Inverted HashMap
 	 */
 	private static <K, V> Map<V, K> invert(Map<K, V> map) {
-		Map<V, K> result = new HashMap<V, K>();
+		Map<V, K> result = new HashMap<>();
 		for (Entry<K, V> entry : map.entrySet()) {
 			result.put(entry.getValue(), entry.getKey());
 		}
@@ -99,11 +97,7 @@ public class IO {
 	 * Invertes HashMap two times to remove possible duplicates
 	 */
 	public static void removeUnusedEntries() {
-		long start = System.currentTimeMillis();
-		int elementsStart = Main.IP_UUID.size();
 		Main.IP_UUID = invert(invert(Main.IP_UUID));
-		int elementsEnd = Main.IP_UUID.size();
-		// SHUT UP :) Bukkit.getLogger().info("[ServerlistMOTD] Removed "+ (elementsStart - elementsEnd) +" duplicates in userdata in "+(System.currentTimeMillis()-start)+"ms.");
 	}
 
 	/**
@@ -112,7 +106,7 @@ public class IO {
 	 * 
 	 * @param hm HashMap
 	 * @param value Value in HashMap
-	 * @return
+	 * @return key of requested value in HashMap
 	 */
 	public static Object getKeyFromValue(Map<?, ?> hm, Object value) {
 		for (Object o : hm.keySet()) {

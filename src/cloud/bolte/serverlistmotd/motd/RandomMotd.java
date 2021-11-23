@@ -28,17 +28,17 @@ import cloud.bolte.serverlistmotd.variables.WeatherVariable;
  */
 
 public class RandomMotd implements Motd {
-	private Random random = new Random();
+	private final Random random = new Random();
 
 	@Override
 	public String getMOTD(InetAddress ip) {
+		List<String> motds;
 		if (Main.IP_UUID.containsKey(ip)) {
-			List<String> motds = SpigotConfig.getRegularsRandomMotd();
-			return motds.get(this.random.nextInt(motds.size()));
+			motds = SpigotConfig.getRegularsRandomMotd();
 		} else {
-			List<String> motds = SpigotConfig.getNewbieRandomMotd();
-			return motds.get(this.random.nextInt(motds.size()));
+			motds = SpigotConfig.getNewbieRandomMotd();
 		}
+		return motds.get(this.random.nextInt(motds.size()));
 	}
 	
 	@Override

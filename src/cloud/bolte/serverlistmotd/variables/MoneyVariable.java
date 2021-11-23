@@ -25,15 +25,15 @@ public class MoneyVariable {
 
 	/**
 	 * Get balance from player. Vault and a economy plugin has
-	 * tp be installed on the server.
-	 * @param user ip
+	 * to be installed on the server.
+	 * @param ip IP from known player
 	 * @return balance
 	 */
 	public static Double getMoney(InetAddress ip) {
 		try {
 			OfflinePlayer p = Bukkit.getOfflinePlayer(Main.IP_UUID.get(ip));		
 			if (p.hasPlayedBefore()) {
-				return VaultIntegration.getEcononomy().getBalance(p);
+				return VaultIntegration.getEconomy().getBalance(p);
 			}else {
 				//User is uncached by Spigot
 				//p is null
