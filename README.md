@@ -1,6 +1,6 @@
 # ServerlistMOTD X
 
-### Download newest release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2021-11-23/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2021-11-23/ServerlistMOTD.jar)
+### Download newest Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2021-11-23/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2021-11-23/ServerlistMOTD.jar)
 
 ### Download last Release: [![](https://img.shields.io/github/downloads/strumswell/ServerlistMOTD-X/X-2020-09-05/total)](https://github.com/strumswell/ServerlistMOTD-X/releases/download/X-2020-09-05/ServerlistMOTD.jar)
 
